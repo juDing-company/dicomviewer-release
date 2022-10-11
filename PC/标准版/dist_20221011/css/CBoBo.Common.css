@@ -1,0 +1,290 @@
+﻿body,
+a,
+p,
+span,
+img,
+div {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+body {
+    font-family: 'Microsoft YaHei';
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+}
+
+@font-face {
+    font-family: "icomoon";
+    src: url('icon/fonts/icomoon.eot');
+    /* IE9*/
+    src: url('icon/fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+        url('icon/fonts/icomoon.woff') format('woff'),
+        url('icon/fonts/icomoon.ttf') format('truetype'),
+        url('icon/fonts/icomoon.svg#iconfont') format('svg');
+}
+
+.icon_tool {
+    font-family: 'icomoon';
+}
+
+.icon-player {
+    font-family: 'icomoon';
+}
+
+.icon_ww_tool a:hover {
+    background-color: #000;
+    color: #05aa72;
+}
+
+.config-conerinfoitem:hover {
+    background: #555;
+}
+
+.rotate:hover {
+    cursor: pointer;
+    background: #c6c6c6;
+}
+
+.pc-pseudocolor:hover {
+    cursor: pointer;
+    background: #c6c6c6;
+}
+
+.ctxmenu:hover {
+    cursor: pointer;
+    background: #c6c6c6;
+    outline: 1px solid #09F;
+}
+
+.player:hover {
+    cursor: pointer;
+    color: #059090;
+}
+
+.tool-item:hover {
+    box-shadow: 0 0 10px #aaa;
+}
+
+
+/*标注样式*/
+.layer-ipt {
+    height: 20px;
+    font-size: 14px;
+    border: 1px solid #979797;
+    border-radius: 3px;
+    color: #464646;
+    outline: medium none;
+    padding: 4px 5px;
+    box-shadow: 2px 2px 3px #EDEDED inset;
+    width: 80px;
+
+}
+
+.layer-wrap>header {
+    color: #30c099;
+    line-height: 40px;
+    text-indent: 15px;
+    font-size: 18px;
+}
+
+.layer-content {
+    text-align: center;
+    margin-top: 40px;
+
+}
+
+.layer-wrap .footer {
+    /* border-top: 1px solid #d9dada; */
+    text-align: right;
+    padding: 0 20px 20px 20px;
+    margin-top: 35px;
+}
+
+.layer-wrap .footer span.darkgreen {
+    background: #05aa72;
+    color: #fff;
+    border: 1px solid #008c5c;
+}
+
+.layer-wrap .footer span.darkgreen {
+    background: #05aa72;
+    color: #fff;
+    border: 1px solid #008c5c;
+}
+
+c .footer span {
+    transition: background-color 0.3s ease-in-out 0s;
+}
+
+.layer-wrap .footer span {
+    display: inline-block;
+    width: 80px;
+    height: 23px;
+    border: 1px solid #919191;
+    color: #3d4045;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: 14px;
+    line-height: 23px;
+    cursor: pointer;
+    background: #f1f1f1;
+    margin: 0px 0 0 16px;
+    padding: 4px;
+    border-radius: 3px;
+}
+
+
+
+.layer-wrap .layer-iptdiv {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+/*  */
+.zzhsettingBox {
+    width: 600px;
+    height: 300px;
+    padding: 6px;
+    border: 2px solid #171717;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 4px;
+    margin-top: -150px;
+    background-color: #bad2ea;
+    margin-left: -300px;
+    z-index: 100001;
+    display: none;
+}
+
+.addPrintterContainer {
+    width: 400px;
+    height: 200px;
+    padding: 6px;
+    color: #000;
+    border: 2px solid #171717;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 4px;
+    margin-top: -100px;
+    background-color: #bad2ea;
+    margin-left: -200px;
+    z-index: 100002;
+    display: none;
+}
+
+.addPrintterContainer .inputItem {
+    display: flex;
+    height: 30px;
+    margin-top: 4px;
+}
+
+.addPrintterContainer .inputName {
+    width: 30%;
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+}
+
+.addPrintterContainer .inputContainer {
+    width: 70%;
+    height: 30px;
+    line-height: 30px;
+}
+
+.addPrintterContainer .inputContainer input {
+    width: 240px;
+    height: 24px;
+}
+
+.zzhsettingBox .title-container,
+.addPrintterContainer .title-container {
+    height: 30px;
+    position: relative;
+    color: #333;
+    font: 14px bold;
+    text-align: center;
+}
+
+.zzhsettingBox .setting-content {
+    height: 258px;
+    padding: 6px;
+    background-color: #d5e3f5;
+}
+
+.zzhsettingBox .setting-content .table-content {
+    width: 100%;
+    height: 180px;
+    margin-top: 6px;
+    border: 1px solid #333;
+    color: #000;
+    font-size: 14px;
+    font-weight: normal;
+    overflow: hidden;
+}
+
+.zzhsettingBox .setting-content .table-content table tr.current {
+    background-color: #f2f2f2;
+}
+
+.zzhsettingBox .setting-content .contentScroll {
+    height: 146px;
+    overflow-y: scroll;
+}
+
+.zzhsettingBox .setting-content .contentScroll table tr:hover {
+    background-color: #f2f2f2;
+}
+
+.zzhsettingBox .setting-content table {
+    width: 100%;
+}
+
+.zzhsettingBox .setting-content table th {
+    padding: 6px;
+    text-align: left;
+    border: 1px solid #f2f2f2;
+    border-top: 0;
+    border-right: 0;
+}
+
+.zzhsettingBox .setting-content table td {
+    padding: 6px;
+    height: 20px;
+}
+
+.zzhsettingBox .setting-content .operation-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.zzhsettingBox .setting-content .setting-btn,
+.addPrintterContainer .setting-btn {
+    padding: 6px 0;
+    width: 80px;
+    border: 1px solid #adadad;
+    border-radius: 3px;
+}
+
+.addPrintterContainer .setting-btn {
+    margin-left: 3px;
+}
+
+.setting-footer {
+    margin-top: 6px;
+    text-align: center;
+}
