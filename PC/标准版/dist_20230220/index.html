@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DicomViewer</title>
+    <link rel="stylesheet" href="dicomviewer/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="dicomviewer/css/CBoBo.Common.css">
+    <link rel="stylesheet" href="dicomviewer/css/CBoBo.ElemParts.css">
+    <link rel="stylesheet" href="dicomviewer/css/CBoBo.MenuBall.css">
+</head>
+
+<body>
+    <script>
+        window.config = {
+            pseudoColorPath: './dicomviewer/css/pseudocolor/', //伪彩图片路径
+            threadDecodePath: './dicomviewer/js/min/Thread.Decode.min.js' //线程解码js路径
+        }
+    </script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/simple2k13/dist/simple.min.js"></script> -->
+    <script src="dicomviewer/js/min/simple.min.js"></script>
+    <script src="dicomviewer/js/plugins/jquery-2.1.4.min.js"></script>
+    <script src="dicomviewer/js/plugins/interact.js"></script>
+    <script src="dicomviewer/js/plugins/jquery.mCustomScrollbar.js"></script>
+    <script src="dicomviewer/js/plugins/jquery.mousewheel.min.js"></script>
+    <script src="dicomviewer/js/plugins/touch-0.2.14.min.js"></script>
+    <script src="dicomviewer/js/plugins/layer/layer.js"></script>
+    <script src="dicomviewer/js/min/DicomViewer.min.js"></script>
+    <script src="dicomviewer/js/plugins/model/ai.js"></script>
+
+    <div id="dicomContainer"></div>
+    <!-- example.html?WadoURL=http://192.168.85.118:8084/api/Wado&Hospid=222&Studyuid=600 -->
+    <!-- {
+        WadoURL : string,
+        Hospid : string,
+        Studyuid : string,
+        /** 以上为必要参数 **/
+        imageType : '0'|'1' /** 0 png 1 dcm 默认0 **/
+        token : string,
+        departCode : string,
+        isDesens : '0'|'1'
+        showProgress : '0'|'1' /** 显示进度条 **/
+        prefetchNum : number /** 预先堆叠加载数量 默认0 **/
+    } -->
+</body>
+
+</html>
