@@ -34,13 +34,16 @@
         WadoURL : string,
         Hospid : string,
         Studyuid : string,
-        /** 以上为必要参数 **/
-        imageType : '0'|'1' /** 0 png 1 dcm 默认0 **/
+        /* 以上为必要参数 */
+        imageType : '0'|'1' /* 0 png 1 dcm 默认0 */
         token : string,
         departCode : string,
         isDesens : '0'|'1'
-        showProgress : '0'|'1' /** 显示进度条 **/
+        showProgress : '0'|'1' /** 显示进度条 默认0**/
         prefetchNum : number /** 预先堆叠加载数量 默认0 **/
+        scrollLoadLazyNum : number /** 滚动预加载数量 默认7，-1则全部下载**/
+        isKeyImage: '0'|'1'/* 是否关键影像 */
+        isInternal : '0'|'1' /* 获取影像路径内外网，默认外网云存储 */
     } -->
 </body>
 
