@@ -30,8 +30,14 @@
                 cacheImagesDefault: boolean, /* 是否启用缓存，默认启用*/
                 scrollPreload: boolean, /* 是否启用滚动加载，默认启用 */
                 fullLoad: boolean, /*关闭序列按需加载，开启全部序列下载，默认序列按需加载 */
-                themeBackground: string, /* 例：rgb(0,0,0) or 'color' or '#000' */
-                themecolor: string, /* 例：rgb(0,0,0) or 'color' or '#000' */
+                theme: {
+                    background: string, /* 背景色  例：rgb(0,0,0) or 'color' or '#000' */
+                    'background-active': string, /* 背景选中色  例：rgb(0,0,0) or 'color' or '#000' */
+                    'background-hover': string, /* 背景hover色  例：rgb(0,0,0) or 'color' or '#000' */
+                    color: string, /* 文字色  例：rgb(0,0,0) or 'color' or '#000' */
+                    color2: string, /* 辅助、其他色  例：rgb(0,0,0) or 'color' or '#000' */
+                },
+                logoURL: string, /* 例：url or  'data:image/png;base64' or ' '; ' '为不显示logo */
                 toolsBar: {
                     MPRVisibility: boolean, /* MPR显示隐藏 */
                     fastImageModeVisibility: boolean /* 极速模式显示隐藏，非云端储存平台无法压缩，则关闭该模式选项 */
