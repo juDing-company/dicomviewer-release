@@ -154,9 +154,15 @@
     // const hospId = "222"
     // const options = {}
 
-    // /* 定位线 */
+    /* AI */
+    // const wadoURL = "http://39.105.182.189:8084/api/wado"
+    // const studyUID = "1.2.840.113619.2.289.3.279733505.786.1659887560.714"
+    // const hospId = "68567"
+    // const options = {}
+
+    /* 定位线 */
     const wadoURL = "http://yjpwap.clear-sz.com/api/wado"
-    const studyUID = "1.2.840.113619.2.289.3.279733505.786.1659887560.714"
+    const studyUID = "1.2.840.113619.2.289.3.279733505.786.1659887560.714,1.2.840.113619.2.55.3.346829569.498.1673482788.21"
     const hospId = "222"
     const options = {}
 
@@ -294,6 +300,58 @@
                 // scrollPreload?: boolean, /* 是否启用滚动加载，默认启用 */
                 // fullLoad?: boolean, /*关闭序列按需加载，开启全部序列下载，默认序列按需加载 */
                 // minRenderCountMPR3D: boolean, /*MPR/3D最小渲染数量*/
+                // AI:{
+                //     parseSuccess?:boolean, /* 已获得AI分析结果 默认false*/
+                //     active?:boolean, /* AI按钮高亮显示AI结果 默认false*/
+                //     jumpFirstAI?:boolean, /* 跳转到序列首张AI 默认false*/
+                //     getParseHandler: ({ studyArr, departCode, hospId }) => { /* 申请AI分析，执行业务层事件*/
+                //         /*
+                //         业务层获得AI分析结果后
+                //         可执行以下方法打开AI(结合实际情况选择)
+                //         new WebDicomView(...,{
+                //             AI: {
+                //                 ...
+                //                 parseSuccess:true
+                //             }
+                //         })
+
+                //         or
+
+                //         webDicomView.activeAI({
+                //              parseSuccess,
+                //              active,
+                //              jumpFirstAI,
+                //              getParseHandler
+                //         })
+                //         */
+                //     }
+                // },
+                AI: {
+                    parseSuccess: true, /* 已获得AI分析结果 默认false*/
+                    active: true, /* AI按钮高亮显示AI结果 默认false*/
+                    jumpFirstAI: false, /* 跳转到序列首张AI 默认false*/
+                    getParseHandler: ({ studyArr, departCode, hospId }) => { /* 申请AI分析，执行业务层事件*/
+                        /*
+                        业务层获得AI分析结果后
+                        可执行以下方法打开AI(结合实际情况选择)
+                        new WebDicomView(...,{
+                            AI: {
+                                ...
+                                parseSuccess:true
+                            }
+                        })
+
+                        or
+
+                        webDicomView.activeAI({
+                             parseSuccess,
+                             active,
+                             jumpFirstAI,
+                             getParseHandler
+                        })
+                        */
+                    }
+                },
                 // theme?: {
                 //     background?: 'rgb(102,145,254)', /* 背景色  例：rgb(0,0,0) or 'color' or '#000' */
                 //     'background-active'?: 'rgb(23, 46, 254)', /* 背景选中色  例：rgb(0,0,0) or 'color' or '#000' */
@@ -305,6 +363,7 @@
                 // toolsBar?: {
                 //     MPRVisibility?: boolean, /* MPR显示隐藏，默认显示 */
                 //     VRTVisibility?: boolean, /* 3D显示隐藏，默认显示*/
+                //     AIVisibility?: boolean, /* AI显示隐藏，默认显示*/
                 //     enhanceVisibility?: boolean, /* 增强显示隐藏，默认隐藏不加载opencv*/
                 //     fastImageModeVisibility?: boolean /* 极速模式显示隐藏，默认显示非云端储存平台无法压缩，则关闭该模式选项 */
                 // },
@@ -318,7 +377,14 @@
             },
         )
         // webDicomView.addStudy('1.2.392.200036.9125.2.138612190166.20230507000190')
-        // webDicomView.addStudy('1.2.840.113619.2.289.3.279733505.786.1659887560.714')
+        // webDicomView.activeAI({
+        //     parseSuccess: true,
+        //     active: true,
+        //     jumpFirstAI: false,
+        //     getParseHandler: ({ studyArr, departCode, hospId }) => {
+        //         console.log({ studyArr, departCode, hospId })
+        //     }
+        // })
     }
 
     init()
