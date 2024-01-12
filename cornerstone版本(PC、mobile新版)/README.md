@@ -36,7 +36,7 @@
             studyUID: string,
             { /* 可选参数 */
                 GPUBenchmarksURL?:"./dicomviewer-cornerstone/GPUbenchmarks", /* GPUBenchmarks路径，不配置无法使用GPU加速 */
-                sharedArrayBuffer?:boolean, /* 是否开启共享缓冲区加速，默认true,注：检测到系统支持则默认开启，该配置将不生效；配置开启后不支持的有相应方案提示*/
+                sharedArrayBuffer?:boolean, /* 是否开启MPR渲染加速，默认true,注：检测到系统支持则默认开启，该配置将不生效；配置开启后不支持的有相应方案提示*/
                 imageTypeDefault?:-1 | 0 | 1, /* -1 png极速模式 0 png标准模式 1 dcm专业模式 ,注：PC 默认专业模式 mobile 默认标准模式  */
                 token?:string,
                 departCode?:string,
@@ -44,11 +44,44 @@
                 isKeyImage?:boolean, /* 是否关键影像，默认false*/
                 isInternal?:boolean, /* 获取影像路径内外网，默认外网云存储 */
                 clientType?:number, /* 客户端类型，默认值是0 */
-                cacheImagesDefault?:boolean, /* 是否启用缓存，默认启用*/
+                cacheImagesDefault?:boolean, /* 是否启用缓存，默认启用 */
                 scrollPreload?:boolean, /* 是否启用滚动加载，默认启用 */
-                fullLoad?:boolean, /*关闭序列按需加载，开启全部序列下载，默认序列按需加载 */
-                minRenderCountMPR3D:boolean, /*MPR/3D最小渲染数量*/
+                fullLoad?:boolean, /* 关闭序列按需加载，开启全部序列下载，默认序列按需加载 */
+                minRenderCountMPR3D:boolean, /* MPR/3D最小渲染数量 */
                 logoURL?:string, /* 例：url or  'data:image/png;base64' or ' '; ' '为不显示logo */
+                closePageResetDefault?: { /* 关闭页面恢复默认设置 */
+                    imageType?:boolean, /* 模式 */
+                    cacheImages?:boolean /* 缓存 */
+                }
+                AI?:{
+                    resultURL: URL,/* AI分析结果接口地址，注：parseSuccess设为false时可以不配置*/
+                    parseSuccess?:boolean, /* 已获得AI分析结果 默认false，注：设为false或未配置时，点击AI按键会执行=》getParseHandler函数 */
+                    active?:boolean, /* AI按钮高亮为选中，显示AI结果 默认false */
+                    jumpFirstAI?:boolean, /* 跳转到序列首张AI 默认false */
+                    getParseHandler:({ studyArr, departCode, hospId }) => { /* 申请AI分析，执行业务层事件 */
+                        /*
+                        业务层获得AI分析结果后
+                        可执行以下方法打开AI(结合实际情况选择)
+                        new WebDicomView(...,{
+                            AI:{
+                                ...
+                            }
+                        })
+
+                        or
+
+                        webDicomView.activeAI({
+                            /* 可选参数
+                            resultURL,
+                            parseSuccess,
+                            active,
+                            jumpFirstAI,
+                            getParseHandler
+                            */
+                        })
+                        */
+                    }
+                },
                 theme?:{
                     background?:string, /* 背景色  例：rgb(0,0,0) or 'color' or '#000' */
                     'background-active'?:string, /* 背景选中色  例：rgb(0,0,0) or 'color' or '#000' */
@@ -59,6 +92,7 @@
                 toolsBar?:{
                     MPRVisibility?:boolean, /* MPR显示隐藏，默认显示 */
                     VRTVisibility?:boolean, /* 3D显示隐藏，默认显示*/
+                    AIVisibility?: boolean, /* AI显示隐藏，默认显示*/
                     enhanceVisibility?:boolean, /* 增强显示隐藏，默认隐藏不加载opencv*/
                     fastImageModeVisibility?:boolean /* 极速模式显示隐藏，默认显示非云端储存平台无法压缩，则关闭该模式选项 */
                 },
@@ -76,6 +110,15 @@
         /* 追加检查 */
         webDicomView.addStudy('1.2.840.1659887560.714.444')
 
+        /* 显示AI结果 */
+        webDicomView.activeAI({
+            parseSuccess: true,
+            active: true,
+            jumpFirstAI: true,
+            getParseHandler: ({ studyArr, departCode, hospId }) => {
+                console.log({ studyArr, departCode, hospId })
+            }
+        })
 
         /* 使用完后请记得销毁！！！，以免造成内存占用过多影响业务层！！！ */
         webDicomView.destroy()
