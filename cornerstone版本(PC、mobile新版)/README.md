@@ -35,9 +35,10 @@
             hospId as string,
             studyUID: string,
             { /* 可选参数 */
-                GPUBenchmarksURL?:"./dicomviewer-cornerstone/GPUbenchmarks", /* GPUBenchmarks路径，不配置无法使用GPU加速 */
-                sharedArrayBuffer?:boolean, /* 是否开启MPR渲染加速，默认true,注：检测到系统支持则默认开启，该配置将不生效；配置开启后不支持的有相应方案提示*/
+                GPUBenchmarksURL?:"./dicomviewer-cornerstone/GPUbenchmarks", /* GPUBenchmarks路径，不配置无法使用GPU加速 ,注：结合实际调整路径 */
+                sharedArrayBuffer?:boolean, /* 开启MPR渲染加速，默认自动检测系统支持*/
                 imageTypeDefault?:-1 | 0 | 1, /* -1 png极速模式 0 png标准模式 1 dcm专业模式 ,注：PC 默认专业模式 mobile 默认标准模式  */
+                seriesLayoutDefault?:{x:number, y:number}  /* 序列布局，注：配置后，内部默认配置失效  */
                 token?:string,
                 departCode?:string,
                 isDesensitize?:boolean,
@@ -46,15 +47,17 @@
                 clientType?:number, /* 客户端类型，默认值是0 */
                 cacheImagesDefault?:boolean, /* 是否启用缓存，默认启用 */
                 scrollPreload?:boolean, /* 是否启用滚动加载，默认启用 */
+                scrollPreloadNum?:number, /* 滚动预加载数量, 默认9 注：scrollPreload为true 生效*/
+                seriesPreFetchNum?:number, /* 各序列初始预加载数量, 默认0,0为自动 */
                 fullLoad?:boolean, /* 关闭序列按需加载，开启全部序列下载，默认序列按需加载 */
                 minRenderCountMPR3D:boolean, /* MPR/3D最小渲染数量 */
-                logoURL?:string, /* 例：url or  'data:image/png;base64' or ' '; ' '为不显示logo */
+                logoURL?:url | base64 | ' ', /*  注：' '(内有空格)为不显示logo */
                 closePageResetDefault?: { /* 关闭页面恢复默认设置 */
                     imageType?:boolean, /* 模式 */
                     cacheImages?:boolean /* 缓存 */
                 }
                 AI?:{
-                    resultURL: URL,/* AI分析结果接口地址，注：parseSuccess设为false时可以不配置*/
+                    resultURL: url,/* AI分析结果接口地址，注：parseSuccess设为false时可以不配置*/
                     parseSuccess?:boolean, /* 已获得AI分析结果 默认false，注：设为false或未配置时，点击AI按键会执行=》getParseHandler函数 */
                     active?:boolean, /* AI按钮高亮为选中，显示AI结果 默认false */
                     jumpFirstAI?:boolean, /* 跳转到序列首张AI 默认false */
@@ -90,20 +93,31 @@
                     color2?:string, /* 辅助、其他色  例：rgb(0,0,0) or 'color' or '#000' */
                 },
                 toolsBar?:{
+                    navigationBottomLayout:?:boolean, /* 序列栏底部显示，默认false */
+                    seriesBarVisibility?:boolean,/* 序列栏按钮显示隐藏，默认显示 */
                     MPRVisibility?:boolean, /* MPR显示隐藏，默认显示 */
-                    VRTVisibility?:boolean, /* 3D显示隐藏，默认显示*/
+                    VRTVisibility?:boolean, /* 3D显示隐藏，默认调取接口判断*/
                     AIVisibility?: boolean, /* AI显示隐藏，默认显示*/
-                    enhanceVisibility?:boolean, /* 增强显示隐藏，默认隐藏不加载opencv*/
-                    fastImageModeVisibility?:boolean /* 极速模式显示隐藏，默认显示非云端储存平台无法压缩，则关闭该模式选项 */
+                    enhanceVisibility?:boolean, /* 增强显示隐藏，默认隐藏，不加载opencvopencv模块*/
+                    aboutUsVisibility?:boolean, /* 关于我们显示隐藏，默认显示*/
+                    fastImageModeVisibility?:boolean /* 废弃改为 fasModeVisibility*/,
+                    fasModeVisibility?:boolean /* 极速模式显示隐藏，默认显示，平台不支持压缩则关闭该模式选项 */,
+                    staModeVisibility?:boolean /* 标准模式显示隐藏，默认显示 */,
+                    majModeVisibility?:boolean /* 专业模式显示隐藏，默认显示 */,
+                    imageModeVisibility?:boolean:/* 模式按钮显示隐藏，默认显示 */,
+                    customMenu?:{ /* 自定义菜单，谨慎配置，详情见下方：customMenu配置  */
+                        main?:ToolData[], /* 2D菜单 */
+                        MPR?:ToolData[], /* MPR菜单 */
+                        VRT?:ToolData[] /* 3D菜单 */
+                    }
                 },
                 aboutUs?:{
-                    version?:string, /* 版本号，例如1.1.1_20230101 注：默认无需配置*/
-                    copyright?:string, /* 公司名称 */
-                    description?:string, /* 简介 */
-                    tel?:string, /* 电话 */
+                    imgURl?:url | base64 | false, /* 注：默认无需配置!,false为不显示 */
+                    description?:string | false, /* 简介; 注：false为不显示 */
+                    version?:string | false, /* 版本号，例如1.1.1_20230101; 注：默认无需配置!,false为不显示 */
+                    copyright?:string | false, /* 公司名称; 注：false为不显示 */
+                    tel?:string | false, /* 电话; 注：false为不显示 */
                 },
-                prefetchNum?:number, /* 预先堆叠加载数量 默认0 未支持*/
-                scrollLoadLazyNum?:number, /* 滚动预加载数量 默认7，-1则全部下载 未支持*/
             }
         )
 
@@ -134,13 +148,36 @@
     safe-area-inset-top：安全区域距离顶部边界的距离
     safe-area-inset-bottom ：安全距离底部边界的距离
 
-    ```
+```
+
    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 
     .style {
       height: calc(100vw - env(safe-area-inset-top) - env(safe-area-inset-bottom));
     }
-    ```
+```
+
+## customMenu 配置
+
+- 默认配置打印(请以此为模板进行修改！！！)：
+
+```
+    console.log(WebDicomView.getMenuDefault())
+```
+
+```
+
+    interface ToolData {
+        toolName: (() => string) | string /* 调整顺序只需要配置此项！，注：[极速｜标准｜专业]模式特殊处理，使用toolTag来配置！ */
+        toolNameAlias?: string; /* 菜单重命名 */
+        divider?: boolean /* 分割线 */
+        visibility?: (() => boolean) | boolean /* 显示隐藏，注：默认无需配置!!！1.内部会根据PC、mobile环境自动判断，如自行配置，则以配置项为准；2. toolsBar配置单独约定的[XXX]Visibility配置，请不要在此处配置!!!此配置只暴力处理显示隐藏，不处理于此相关的功能，例如enhanceVisibility 才会触发依赖模块加载 */
+        iconText?: string /* 文本内容代替icon */
+        iconImg?: url｜base64 /* img代替icon */
+        icon?: (() => string) | string /* 必须是本系统内已有的iconClass */
+        children?: ToolData[]
+    }
+```
 
 ## build
 

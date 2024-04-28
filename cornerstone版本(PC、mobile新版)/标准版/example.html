@@ -1,12 +1,10 @@
-<!DOCTYPE html>
+<!-- @prettier -->
+<!doctype html>
 <html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport"
-        content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
     <!-- <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
     <script>
         // VConsole will be exported to `window.VConsole` by default.
@@ -14,379 +12,258 @@
     </script> -->
     <title>example</title>
     <style>
-        * {
-            margin: 0;
-        }
+      * {
+        margin: 0;
+      }
 
-        #app {
-            /* height: 100vh;
+      #app {
+        /* height: 100vh;
             width: 100vw; */
-            height: calc(100vh - 40px - env(safe-area-inset-bottom));
-            width: calc(100vw - 40px);
-            top: calc(20px + env(safe-area-inset-top));
-            left: 20px;
-        }
+        height: calc(100vh - 40px - env(safe-area-inset-bottom));
+        width: calc(100vw - 40px);
+        top: calc(20px + env(safe-area-inset-top));
+        left: 20px;
+      }
 
-        .button {
-            position: absolute;
-            top: 0px;
-        }
+      .button {
+        position: absolute;
+        top: 0px;
+      }
     </style>
-<link href="./webDicomView.min.css" rel="stylesheet"></head>
+  <link href="./webDicomView.min.css" rel="stylesheet"></head>
 
-<body>
+  <body>
     <div class="button">
-        <button id="init">init</button>
-        <button id="destroy">destroy</button>
+      <button id="init">init</button>
+      <button id="destroy">destroy</button>
     </div>
     <div id="app"></div>
-<script src="./WebDicomView.min.js"></script><script src="./webDicomViewMPR.min.js"></script></body>
-<script>
+  <script src="./WebDicomView.min.js"></script><script src="./webDicomViewMPR.min.js"></script></body>
+  <script>
+    let options = {};
+
     /* CT2 */
     // const wadoURL = "http://192.168.85.118:8084/api/Wado"
     // const studyUID = "236"
     // const hospId = "1"
-    // const options = {
-    //     imageTypeDefault: 0,
-    //     cacheImagesDefault: true
-    // }
 
-    /* CT55 */
+    /* 报告黑屏 */
+    // const wadoURL = "http://192.168.85.118:8084/api/Wado"
+    // const studyUID = "232212111111111111111212121"
+    // const hospId = "222"
+
+    /* CT55 MPR*/
     // const wadoURL = "https://im.chinayichuang.com/Wado"
     // const studyUID = "1.2.840.113619.2.417.3.2831206918.525.1675241339.492."
     // const hospId = "cf8c4631f3ae468da28fc369437335c3"
-    // const options = {
-    //     imageTypeDefault: 0,
-    //     cacheImagesDefault: true
-    // }
 
-    /* CT264 */
+    /* CT264 MPR*/
     // const wadoURL = "http://192.168.85.118:8084/api/Wado"
     // const studyUID = "1.2.840.113619.2.289.3.279733505.508.1659259123.390"
     // const hospId = "222"
-    // const options = {
-    //     imageTypeDefault: 0,
-    //     cacheImagesDefault: true
-    // }
 
     /* CT27 */
     // const wadoURL = "http://192.168.85.118:8084/api/Wado"
     // const studyUID = "1.2.840.113619.2.81.325.1.25976.20211218.212431"
     // const hospId = "222"
-    // const options = {
-    //     imageTypeDefault: 0,
-    //     cacheImagesDefault: true
-    // }
 
-
-    /* ct28 */
+    /* ct28 MPR*/
     // const wadoURL = "https://im.chinayichuang.com/Wado"
     // const studyUID = "1.2.156.112605.66988328093047.220908034005.2.6292.14719"
     // const hospId = "ec75273ddb7a43b380a9c1c9c012e60e"
-    // const options = {
-    //     imageTypeDefault: 0,
-    //     cacheImagesDefault:true
-    // }
 
-    /* MR22 */
+    /* MR22 MPR*/
     // const wadoURL = "https://im.chinayichuang.com/Wado"
     // const studyUID = "1.2.3.4.5.19730908.10539"
     // const hospId = "c0cea9063b174c3a82db52b04c7afbda"
-    // const options = {
-    //     imageTypeDefault: 0,
-    //     cacheImagesDefault: true
-    // }
-
 
     /* CT 247 */
     // const wadoURL = "http://yjpwap.clear-sz.com/api/wado"
     // const studyUID = "1.2.826.0.1.3680043.2.461.13165104.1229315138,1.2.840.113619.2.289.3.279733505.786.1659887560.714,1.2.826.0.1.3680043.2.634.10.513.1109181614225.20110918161422,1.2.826.0.1.3680043.2.461.13165104.1229315138,1.2.826.0.1.3680043.2.461.13159108.3515413113"
     // const hospId = "222"
-    // const options = {
-    //     imageTypeDefault: 0,
-    // }
 
-    /* CT 166 */  /* 伪彩 */
+    /* CT 166 MPR*/ /* 伪彩 */
     // const wadoURL = "http://yjpwap.clear-sz.com/api/wado"
     // const studyUID = "1.2.826.0.1.3680043.2.461.13165104.1229315138"
     // const hospId = "222"
-    // const options = {
-    //     imageTypeDefault: 1,
-    //     endableDBCacheImagesDefault: true
-    // }
 
     /* CT 20 */
     // const wadoURL = "https://im.chinayichuang.com/Wado"
     // const studyUID = "1.2.840.113619.2.81.325.1.18802.20170316.190657"
     // const hospId = "afb753f1185b414ab1c6c8df078a88de"
-    // const options = {
-    //     imageTypeDefault: 0,
-    //     cacheImagesDefault: true,
-    //     scrollPreload: true,
-    //     isDesensitize: true,
-    //     token: undefined,
-    //     departCode: '1',
-    //     isKeyImage: true,
-    //     isInternal: true,
-    // }
 
-    // /* DX分歧 png  1.2.840.10008.1.2.4.70*/
-    // const wadoURL = "http://yjpwap.clear-sz.com/api/wado"
-    // const studyUID = "1.2.826.0.1.3680043.2.461.13159108.3515413113,1.2.840.31314.14143234.20220815075810.20177453"
-    // const hospId = "222"
-    // const options = {}
+    // /* DX分歧 png  1.2.840.10008.1.2.4.70 MPR*/
+    // const wadoURL = 'http://yjpwap.clear-sz.com/api/wado';
+    // const studyUID = '1.2.826.0.1.3680043.2.461.13159108.3515413113,1.2.840.31314.14143234.20220815075810.20177453';
+    // const hospId = '222';
 
     /* XA 多帧 */
     // const wadoURL = "http://192.168.18.190:8989/Wado"
     // const studyUID = "1.3.46.670589.28.9616003758312019080508361649681"
     // const hospId = "111"
-    // const options = { }
 
     /* cw */
-    // const wadoURL = "http://yjpwap.clear-sz.com/api/wado"
-    // const studyUID = "1.2.826.0.1.3680043.2.461.13951944.3454694210,1.2.826.0.1.3680043.2.461.13493267.1811413257,1.2.840.113619.2.55.3.346829569.498.1673482788.21"
-    // const hospId = "222"
-    // const options = {}
+    const wadoURL = 'http://yjpwap.clear-sz.com/api/wado';
+    const studyUID =
+      '1.2.826.0.1.3680043.2.461.13951944.3454694210,1.2.826.0.1.3680043.2.461.13493267.1811413257,1.2.840.113619.2.55.3.346829569.498.1673482788.21';
+    const hospId = '222';
 
+    /* MPR */
     // const wadoURL = "http://yjpwap.clear-sz.com/api/wado"
     // const studyUID = "1.2.840.113619.2.55.3.346829569.498.1673482788.21"
     // const hospId = "222"
-    // const options = {
-    //     // closePageResetDefault: {
-    //     //     imageType: true, /* 模式 */
-    //     //     cacheImages: true /* 缓存 */
-    //     // },
-    // }
 
-    /* MR 900 */
-    const wadoURL = "http://223.96.94.69:8084/api/wado"
-    const studyUID = "1.2.840.113619.2.340.3.1721146459.895.1704468734.619"
-    const hospId = "53358"
-    const options = {}
+    /* IMS */
+    // const wadoURL = "http://39.105.182.189:8084/api/wado"
+    // const studyUID = "1.1.230026917708213887236905654343031710335"
+    // const hospId = "61358"
 
-    /* 黑屏 */
+    /* MR 900 MPR*/
+    // const wadoURL = "http://223.96.94.69:8084/api/wado"
+    // const studyUID = "1.2.840.113619.2.340.3.1721146459.895.1704468734.619"
+    // const hospId = "53358"
+
+    /* 黑屏 MPR*/
     // const wadoURL = "http://36.133.181.189:8084/api/wado"
     // const studyUID = "202401171642405407"
     // const hospId = "11982"
-    // const options = {}
 
     /* 未支持专业模式 */
     // const wadoURL = "http://117.159.144.67:8083/Wado"
     // const studyUID = "12483551"
     // const hospId = "15032"
-    // const options = {}
 
     /* DCM压缩 */
     // const wadoURL = "http://yjpwap.clear-sz.com/api/wado"
     // const studyUID = "12a"
     // const hospId = "222"
-    // const options = {}
 
     /* 未压缩 */
     // const wadoURL = "http://yjpwap.clear-sz.com/api/wado"
     // const studyUID = "12b"
     // const hospId = "222"
-    // const options = {}
 
     /* DX */
     // const wadoURL = "http://ims-guangzhou-1-yd.fs-salon.cn/api/wado"
     // const studyUID = "1.2.392.200036.9125.2.138612190166.20240109000299"
     // const hospId = "55317"
-    // const options = {}
 
-    /* AI 1.2.840.10008.1.2.2 */
+    /* DX 1.2.840.10008.1.2.2 */
     // const wadoURL = "http://192.168.18.188:8989/Wado"
     // const studyUID = "1.2.276.0.7230010.3.3.1.20181201000000000.2124293143"
     // const hospId = "111"
-    // const options = {}
-
 
     /* AI png错误 */
     // const wadoURL = "http://yjpwap.clear-sz.com/api/wado"
-    // const studyUID = "1.2.840.113619.2.55.3.346829569.498.1673482788.21,1.2.840.113619.2.289.3.279733505.786.1659887560.714"
-    // const hospId = "222"
-    // const options = {
-    //     AI: {
-    //         resultURL: 'https://efilmapi.fs-salon.cn/api/V1.0/AI/GetSJAiCheckResult',
-    //         parseSuccess: true,
-    //         active: true,
-    //         jumpFirstAI: true,
-    //         getParseHandler: ({ studyArr, departCode, hospId }) => {
-    //             console.log(studyArr, departCode, hospId)
-    //         }
+    // const studyUID = '1.2.840.113619.2.55.3.346829569.498.1673482788.21,1.2.840.113619.2.289.3.279733505.786.1659887560.714';
+    // const hospId = '222';
+    // options = {
+    //   AI: {
+    //     resultURL: 'https://efilmapi.fs-salon.cn/api/V1.0/AI/GetSJAiCheckResult',
+    //     parseSuccess: true,
+    //     active: true,
+    //     jumpFirstAI: true,
+    //     getParseHandler: ({ studyArr, departCode, hospId }) => {
+    //       console.log(studyArr, departCode, hospId);
     //     },
-    // }
+    //   },
+    // };
 
     /* 定位线 */
-    // const wadoURL = "http://yjpwap.clear-sz.com/api/wado"
-    // const studyUID = "1.2.840.113619.2.55.3.346829569.498.1673482788.21,1.2.840.113619.2.289.3.279733505.786.1659887560.714"
-    // const hospId = "222"
-    // const options = {
-    //     AI: {
-    //         resultURL: 'https://efilmapi.fs-salon.cn/api/V1.0/AI/GetSJAiCheckResult',/* AI分析结果接口地址*/
-    //         parseSuccess: true, /* 已获得AI分析结果 默认false*/
-    //         active: true, /* AI按钮高亮显示AI结果 默认false*/
-    //         jumpFirstAI: true, /* 跳转到序列首张AI 默认false*/
-    //         getParseHandler: ({ studyArr, departCode, hospId }) => { /* 申请AI分析，执行业务层事件*/
-    //             console.log(studyArr, departCode, hospId)
-    //         }
-    //     },
-    // theme: {
+    // const wadoURL = 'http://yjpwap.clear-sz.com/api/wado';
+    // const studyUID = '1.2.840.113619.2.55.3.346829569.498.1673482788.21,1.2.840.113619.2.289.3.279733505.786.1659887560.714';
+    // const hospId = '222';
+    // options = {
+    //   theme: {
     //     background: 'rgb(102,145,254)',
     //     'background-active': 'rgb(23, 46, 254)',
     //     'background-hover': 'rgb(61, 90, 254)',
     //     color: '#fff',
     //     color2: '#297FFF',
-    // },
-    // }
+    //   },
+    // };
 
     /* NM */
     // const wadoURL = "http://219.137.2.203:58084/api/wado"
     // const studyUID = "2310101034031434"
     // const hospId = "62744"
-    // const options = {}
 
-    /* 大田 */
+    /* 大田*/
     // const wadoURL = "http://192.168.18.190:8989/Wado"
     // const studyUID = "10881667"
     // const hospId = "111"
-    // const options = {}
 
     /* DX分歧 png */
-    // const wadoURL = "http://yjpwap.clear-sz.com/api/wado"
-    // const studyUID = "1.2.826.0.1.3680043.2.461.13159108.3515413113,1.2.840.31314.14143234.20220815075810.20177453,"
-    // const hospId = "222"
-    // const options = {}
-
-    /* DX分歧 png */
-    // const wadoURL = "https://yjp.xinmiaospine.cn/wado"
-    // const studyUID = "DR202307170009"
-    // const hospId = "XMTS"
-    // const options = {}
+    // const wadoURL = 'https://yjp.xinmiaospine.cn/wado';
+    // const studyUID = 'DR202307170009';
+    // const hospId = 'XMTS';
 
     /* CT */
     // const wadoURL = "http://59.44.172.10:8084/api/wado"
     // const studyUID = "1.3.12.2.1107.5.1.4.65561202307051836136367766.3000001207251"
     // const hospId = "54990"
-    // const options = {}
 
     /* CT */
     // const wadoURL = "https://im.chinayichuang.com/Wado"
     // const studyUID = "1.2.840.113619.2.81.325.1.18802.20170316.190657"
     // const hospId = "afb753f1185b414ab1c6c8df078a88de"
-    // const options = {
-    //     loadType: 1,
-    //     cacheImagesDefault: true,
-    //     scrollPreload: true,
-    //     isDesensitize: true,
-    //     token: undefined,
-    //     departCode: '1',
-    //     isKeyImage: true,
-    //     isInternal: true,
-    // }
-
     /* 3d 45*/
     // const wadoURL = "http://yjpwap.clear-sz.com/api/wado"
-    // const studyUID = "1.2.826.0.1.3680043.2.461.13159108.3515413113,1.2.826.0.1.3680043.2.634.10.513.1109181614225.20110918161422"
+    // const studyUID = "1.2.826.0.1.3680043.2.634.10.513.1109181614225.20110918161422,1.2.826.0.1.3680043.2.461.13159108.3515413113,232212111111111111111212121"
     // const hospId = "222"
-    // const options = {
-    //     // imageTypeDefault: 1,
-    //     // themeBackground: 'blue',
-    //     // themeColor:'red',
-    //     // cacheImagesDefault: true,
-    //     // scrollPreload: true,
-    //     isDesensitize: true,
-    //     // token: undefined,
-    //     // departCode: '1',
-    //     // isKeyImage: true,
-    //     // isInternal: true,
-    // }
 
     /* 影像下载失败，请退出稍后重试！未将对象引用设置到对象的实例。 */
     // const wadoURL = "https://im.chinayichuang.com/Wado"
     // const studyUID = "1.2.392.200036.9125.2.138612190166.20220908000877"
     // const hospId = "19005755"
-    // const options = {
-    //     imageTypeDefault: 0,
-    //     cacheImagesDefault: true
-    // }
-
-    /* 影像下载失败，请退出稍后重试！未将对象引用设置到对象的实例 */
-    // const wadoURL = "https://im.chinayichuang.com/Wado"
-    // const studyUID = "1.2.392.200036.9125.2.138612190166.20220908000247"
-    // const hospId = "19005755"
-    // const options = {
-    //     imageTypeDefault: 0,
-    //     cacheImagesDefault: true
-    // }
 
     /* 数据异常 */
     // const wadoURL = "https://stzxyycloudfilm.clear-sz.com/imsapi/api/wado"
     // const studyUID = "1.2.392.200036.9125.2.138612190166.20220726003330"
     // const hospId = "stzxyy"
-    // const options = {
-    //     imageTypeDefault: 0,
-    //     cacheImagesDefault: true
-    // }
 
     /* 系统出错了，请重试或联系客服解决！ */
     // const wadoURL = "http://192.168.85.118:8084/api/Wado"
     // const studyUID = "1.2.840.113619.186.21217482123183196.20211207090511976.944"
     // const hospId = "267"
-    // const options = {
-    //     imageTypeDefault: 0,
-    //     cacheImagesDefault: true
-    // }
 
     /* 图像格式错误 没有找到该检查 */
     // const wadoURL = "http://192.168.85.19:9000/im/Wado"
     // const studyUID = "1.2.156.14702.1.1000.16.0.20190116085635640"
     // const hospId = "555"
-    // const options = {
-    //     imageTypeDefault: 0,
-    //     cacheImagesDefault:true
-    // }
 
     /* 当前检查为历史检查，文件下载中，请退出稍后进入 */
     // const wadoURL = "http://192.168.85.118:8084/api/Wado"
     // const studyUID = "1198967"
     // const hospId = "222"
-    // const options = {
-    //     imageTypeDefault: 0,
-    //     cacheImagesDefault: true
-    // }
 
-    let webDicomView
+    let webDicomView;
     function init() {
-        webDicomView = new WebDicomView(
-            document.querySelector('#app'),
-            wadoURL,
-            hospId,
-            studyUID,
-            { /* 可选参数,配置项以README.md为准 */
-                GPUBenchmarksURL: "./GPUbenchmarks", /* GPUBenchmarks路径，不配置无法使用GPU */
-                ...options,
-            },
-        )
-        // webDicomView.addStudy('1.2.392.200036.9125.2.138612190166.20230507000190')
-        // webDicomView.activeAI({
-        //     parseSuccess: true,
-        //     active: true,
-        //     jumpFirstAI: false,
-        //     getParseHandler: ({ studyArr, departCode, hospId }) => {
-        //         console.log({ studyArr, departCode, hospId })
-        //     }
-        // })
+      webDicomView = new WebDicomView(document.querySelector('#app'), wadoURL, hospId, studyUID, {
+        /* 可选参数,配置项以README.md为准 */ GPUBenchmarksURL: './GPUbenchmarks' /* GPUBenchmarks路径，不配置无法使用GPU */,
+        ...options,
+        // toolsBar: {
+        //     navigationBottomLayout: true,
+        // }
+      });
+      // webDicomView.addStudy('1.2.392.200036.9125.2.138612190166.20230507000190')
+      // webDicomView.activeAI({
+      //     parseSuccess: true,
+      //     active: true,
+      //     jumpFirstAI: false,
+      //     getParseHasndler: ({ studyArr, departCode, hospId }) => {
+      //         console.log({ studyArr, departCode, hospId })
+      //     }
+      // })
     }
 
-    init()
+    console.log(WebDicomView.getMenuDefault());
 
-    document.getElementById('init').addEventListener('click', () => init())
+    init();
+    document.getElementById('init').addEventListener('click', () => init());
     document.getElementById('destroy').addEventListener('click', () => {
-        webDicomView.destroy()
-        webDicomView = undefined
-    })
-
-</script>
-
+      webDicomView.destroy();
+      webDicomView = undefined;
+    });
+  </script>
 </html>
