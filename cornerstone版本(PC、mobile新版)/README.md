@@ -23,6 +23,8 @@
   </head>
   <body>
     ...
+    <!-- 可以在locale/目录新增、自定义语言包导入，注：已内置中文语言，再次导入会覆盖内置。 -->
+    <script src="./dicomviewer-cornerstone/locale/en.js">
     <!-- 启用MPR功能请导入该模块，不启用请勿导入，以免造成资源加载浪费，注：defer可以优化加载避免阻塞 -->
     <script defer src="./dicomviewer-cornerstone/webDicomViewMPR.min.js"></script>
     <!-- 核心基础模块，请结合实际情况放在所有script标签最未处，以免造成不必要的阻塞 -->
@@ -32,13 +34,14 @@
         webDicomView = new WebDicomView(
             container as HTMLDivElement|string, /* 例：document.querySelector('#app') or 'app' */
             wadoURL as string, /* 多检查使用“,”拼接；例：1.2.840.1659887560.714,1.2.840.1659887560.333 */
-            hospId as string,
+            hospID as string,
             studyUID: string,
             { /* 可选参数 */
                 GPUBenchmarksURL?:"./dicomviewer-cornerstone/GPUbenchmarks", /* GPUBenchmarks路径，不配置无法使用GPU加速 ,注：结合实际调整路径 */
                 sharedArrayBuffer?:boolean, /* 开启MPR渲染加速，默认自动检测系统支持*/
                 imageTypeDefault?:-1 | 0 | 1, /* -1 png极速模式 0 png标准模式 1 dcm专业模式 ,注：PC 默认专业模式 mobile 默认标准模式  */
                 seriesLayoutDefault?:{x:number, y:number}  /* 序列布局，注：配置后，内部默认配置失效  */
+                languageDefault?: string, /* 语言，例：'zh-CN' | 'en'，注：默认无需配置!系统自动检测，可按下方文档任意扩展语言包 */
                 token?:string,
                 departCode?:string,
                 isDesensitize?:boolean,
@@ -50,7 +53,7 @@
                 scrollPreloadNum?:number, /* 滚动预加载数量, 默认9 注：scrollPreload为true 生效*/
                 seriesPreFetchNum?:number, /* 各序列初始预加载数量, 默认0,0为自动 */
                 fullLoad?:boolean, /* 关闭序列按需加载，开启全部序列下载，默认序列按需加载 */
-                minRenderCountMPR3D:boolean, /* MPR/3D最小渲染数量 */
+                minRenderCountMPR3D?:number, /* MPR/3D最小渲染数量 */
                 logoURL?:url | base64 | ' ', /*  注：' '(内有空格)为不显示logo */
                 closePageResetDefault?: { /* 关闭页面恢复默认设置 */
                     imageType?:boolean, /* 模式 */
@@ -93,18 +96,19 @@
                     color2?:string, /* 辅助、其他色  例：rgb(0,0,0) or 'color' or '#000' */
                 },
                 toolsBar?:{
-                    navigationBottomLayout:?:boolean, /* 序列栏底部显示，默认false */
+                    navigationBottomLayout:?:boolean, /* 序列栏底部显示，默认true */
                     seriesBarVisibility?:boolean,/* 序列栏按钮显示隐藏，默认显示 */
                     MPRVisibility?:boolean, /* MPR显示隐藏，默认显示 */
                     VRTVisibility?:boolean, /* 3D显示隐藏，默认调取接口判断*/
-                    AIVisibility?: boolean, /* AI显示隐藏，默认显示*/
+                    AIVisibility?:boolean, /* AI显示隐藏，默认显示*/
                     enhanceVisibility?:boolean, /* 增强显示隐藏，默认隐藏，不加载opencvopencv模块*/
                     aboutUsVisibility?:boolean, /* 关于我们显示隐藏，默认显示*/
                     fastImageModeVisibility?:boolean /* 废弃改为 fasModeVisibility*/,
                     fasModeVisibility?:boolean /* 极速模式显示隐藏，默认显示，平台不支持压缩则关闭该模式选项 */,
                     staModeVisibility?:boolean /* 标准模式显示隐藏，默认显示 */,
-                    majModeVisibility?:boolean /* 专业模式显示隐藏，默认显示 */,
+                    majModeVisibility?:boolean /* 专业模式显示隐藏，默认隐藏 */,
                     imageModeVisibility?:boolean:/* 模式按钮显示隐藏，默认显示 */,
+                    languageVisibility?:boolean /* 语言显示隐藏，默认隐藏 */
                     customMenu?:{ /* 自定义菜单，谨慎配置，详情见下方：customMenu配置  */
                         main?:ToolData[], /* 2D菜单 */
                         MPR?:ToolData[], /* MPR菜单 */
@@ -162,21 +166,46 @@
 - 默认配置打印(请以此为模板进行修改！！！)：
 
 ```
-    console.log(WebDicomView.getMenuDefault())
+    console.log(webDicomView.getMenuDefault(isI18n?:boolean))<!-- isI18n：是否返回国际化菜单，不传则自动判断 ==> 检测加载了多个语言包&&(设置了默认语言||开启了语言菜单显示)）） -->
 ```
 
 ```
 
     interface ToolData {
-        toolName: (() => string) | string /* 调整顺序只需要配置此项！，注：[极速｜标准｜专业]模式特殊处理，使用toolTag来配置！ */
+        toolTag: string;/* 禁止修改参数！注：此项为菜单UID */
+        toolName: (() => string) | string /* 禁止修改参数！注：未配置国际化时，此项也可以当菜单伪UID(本土语言语意性强) 可以不配置toolTag */
         toolNameAlias?: string; /* 菜单重命名 */
         divider?: boolean /* 分割线 */
-        visibility?: (() => boolean) | boolean /* 显示隐藏，注：默认无需配置!!！1.内部会根据PC、mobile环境自动判断，如自行配置，则以配置项为准；2. toolsBar配置单独约定的[XXX]Visibility配置，请不要在此处配置!!!此配置只暴力处理显示隐藏，不处理于此相关的功能，例如enhanceVisibility 才会触发依赖模块加载 */
+        visibility?: (() => boolean) | boolean /* 显示隐藏，注：默认无需配置!!！（要隐藏该菜单请直接屏蔽或删除该条数据）1.内部会根据PC、mobile环境自动判断，如自行配置，则以配置项为准；2. toolsBar配置单独约定的[XXX]Visibility配置，请不要在此处配置!!!此配置只暴力处理显示隐藏，不处理于此相关的功能，例如enhanceVisibility 才会触发依赖模块加载 */
         iconText?: string /* 文本内容代替icon */
         iconImg?: url｜base64 /* img代替icon */
         icon?: (() => string) | string /* 必须是本系统内已有的iconClass */
         children?: ToolData[]
     }
+```
+
+## 国际化
+- 导入语言包，可以在locale/目录新增、自定义语言包导入，注：已内置中文语言，再次导入会覆盖内置。
+
+```
+    <script src="./dicomviewer-cornerstone/locale/en.js">
+    <script src="./dicomviewer-cornerstone/locale/xxx.js">
+```
+- 获取本系统语言
+```
+      console.log(WebDicomView.i18n.getLanguage());
+```
+
+## 业务建议
+- 可以将json文件作为基础配置放置于服务器，方便维护
+```
+const config = await fetch("/webDicomViewConfig.json");
+const options = {};
+
+new WebDicomView(document.querySelector("#app"), wadoURL, hospID, studyUID, {
+  ...(await config.json()),
+  ...options,
+});
 ```
 
 ## build
