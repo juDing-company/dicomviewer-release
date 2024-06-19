@@ -1,0 +1,10 @@
+{
+  "GPUBenchmarksURL": "/GPUbenchmarks",
+  "aboutUs": { "description": "版权所有，未经授权的复制或传播本内容将受到民事和刑事处罚。" },
+  "toolsBar": {
+    "majModeVisibility": true,
+    "languageVisibility": true,
+    "enhanceVisibility": true,
+    "seriesBarVisibility": false
+  }
+}
