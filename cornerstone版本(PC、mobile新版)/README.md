@@ -99,8 +99,9 @@
                     navigationBottomLayout:?:boolean, /* 序列栏底部显示，默认true */
                     seriesBarVisibility?:boolean,/* 序列栏按钮显示隐藏，默认显示 */
                     MPRVisibility?:boolean, /* MPR显示隐藏，默认显示 */
+                    MPRFusionVisibility: true /*  MPR融合显示隐藏*，默认显示/,
                     VRTVisibility?:boolean, /* 3D显示隐藏，默认调取接口判断*/
-                    AIVisibility?:boolean, /* AI显示隐藏，默认显示*/
+                    AIVisibility?:boolean, /* AI显示隐藏，根据是否配置AI参数自动判断*/
                     enhanceVisibility?:boolean, /* 增强显示隐藏，默认隐藏，不加载opencvopencv模块*/
                     aboutUsVisibility?:boolean, /* 关于我们显示隐藏，默认显示*/
                     fastImageModeVisibility?:boolean /* 废弃改为 fasModeVisibility*/,
