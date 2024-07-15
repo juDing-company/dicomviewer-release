@@ -1,5 +1,63 @@
 ﻿# DicomViewer
 
+## 版本发布说明
+
+###  V1.0.0
+
+####  新增功能
+- 支持2D、3D、MPR基础模块
+
+###  V1.1.0
+
+####  新增功能
+- 支持移动端
+
+###  V1.2.0
+
+####  新增功能
+- 支持AI
+
+###  V1.3.0
+
+####  新增功能
+- 支持标尺
+- 新增高性能模式
+
+### 改进
+- 序列栏显示优化
+- 移动端布局优化
+- 提示语优化
+- 图像解析优化
+- 移动端适配优化
+- 性能优化
+- MPR优化
+- 播放优化
+
+###  V1.4.0
+
+####  新增功能
+- 支持PET-CT
+
+#### 调整
+- *影像模式名称变更* 压缩模式=>有损模式，标准模式=>无损模式
+- *专业模式改为默认隐藏*
+
+###  V1.4.1
+
+####  新增功能
+- 新增PET-CT颜色栏
+- 新增MPR无损渲染配置：losslessMPR
+- 新增公共目录路径配置：publicPath
+
+####  改进
+- PET-CT优化
+
+#### 调整
+- *MPR无损渲染默认启用*
+- *去除MPR画质工具*
+
+
+
 ## 部署、接入
 
 ![image.](https://s1.ax1x.com/2023/08/08/pPVYEwV.png)
@@ -37,15 +95,16 @@
             hospID as string,
             studyUID: string,
             { /* 可选参数 */
-                GPUBenchmarksURL?:"./dicomviewer-cornerstone/GPUbenchmarks", /* GPUBenchmarks路径，不配置无法使用GPU加速 ,注：结合实际调整路径 */
+                publicPath?:'dicomviewer-cornerstone/', /* 公共目录路径，默认情况无需配置，系统默认推断，注： V1.4.1 开始支持 */
+                GPUBenchmarksURL?:"./dicomviewer-cornerstone/GPUbenchmarks", /* 废弃！  GPUBenchmarks路径，默认无需配置,注：系统会自动补全，如提示GPU路径不存在，结合实际调整路径 */
                 sharedArrayBuffer?:boolean, /* 开启MPR渲染加速，默认自动检测系统支持*/
-                imageTypeDefault?:-1 | 0 | 1, /* -1 png极速模式 0 png标准模式 1 dcm专业模式 ,注：PC 默认专业模式 mobile 默认标准模式  */
+                imageTypeDefault?:-1 | 0 | 1, /* -1 png极速模式 0 png标准模式 1 dcm专业模式 ,注：PC 默认专业模式 mobile 默认标准模式, 用户自主选择后以用户选择为默认 */
                 seriesLayoutDefault?:{x:number, y:number}  /* 序列布局，注：配置后，内部默认配置失效  */
                 languageDefault?: string, /* 语言，例：'zh-CN' | 'en'，注：默认无需配置!系统自动检测，可按下方文档任意扩展语言包 */
                 token?:string,
                 departCode?:string,
-                isDesensitize?:boolean,
-                isKeyImage?:boolean, /* 是否关键影像，默认false*/
+                isDesensitize?:boolean, /* 是否脱敏，默认false */
+                isKeyImage?:boolean, /* 是否关键影像，默认false */
                 isInternal?:boolean, /* 获取影像路径内外网，默认外网云存储 */
                 clientType?:number, /* 客户端类型，默认值是0 */
                 cacheImagesDefault?:boolean, /* 是否启用缓存，默认启用 */
@@ -54,6 +113,7 @@
                 seriesPreFetchNum?:number, /* 各序列初始预加载数量, 默认0,0为自动 */
                 fullLoad?:boolean, /* 关闭序列按需加载，开启全部序列下载，默认序列按需加载 */
                 minRenderCountMPR3D?:number, /* MPR/3D最小渲染数量 */
+                losslessMPR?:boolean, /* MPR无损渲染，默认true,注： V1.4.1开始支持*/
                 logoURL?:url | base64 | ' ', /*  注：' '(内有空格)为不显示logo */
                 closePageResetDefault?: { /* 关闭页面恢复默认设置 */
                     imageType?:boolean, /* 模式 */
@@ -99,7 +159,7 @@
                     navigationBottomLayout:?:boolean, /* 序列栏底部显示，默认true */
                     seriesBarVisibility?:boolean,/* 序列栏按钮显示隐藏，默认显示 */
                     MPRVisibility?:boolean, /* MPR显示隐藏，默认显示 */
-                    MPRFusionVisibility: true /*  MPR融合显示隐藏*，默认显示/,
+                    MPRFusionVisibility?:boolean /*  MPR融合显示隐藏*，默认显示/,
                     VRTVisibility?:boolean, /* 3D显示隐藏，默认调取接口判断*/
                     AIVisibility?:boolean, /* AI显示隐藏，根据是否配置AI参数自动判断*/
                     enhanceVisibility?:boolean, /* 增强显示隐藏，默认隐藏，不加载opencvopencv模块*/
@@ -198,7 +258,7 @@
 ```
 
 ## 业务建议
-- 可以将json文件作为基础配置放置于服务器，方便维护
+- 可以将json文件作为基础配置放置于服务器，或提供接口服务，避免业务耦合
 ```
 const config = await fetch("/webDicomViewConfig.json");
 const options = {};
@@ -209,6 +269,10 @@ new WebDicomView(document.querySelector("#app"), wadoURL, hospID, studyUID, {
 });
 ```
 
+## MPR、PET-CT无法渲染
+
+- 详见：[ doc/*.pdf文件](./标准版/doc/IntelGPU&BrowserCompatibilitySolutions-zh.pdf)
+
 ## build
 
-- 见 :[ package.json](./package.json)
+- 详见 :[package.json](./package.json)
