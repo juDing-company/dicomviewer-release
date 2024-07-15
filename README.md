@@ -47,7 +47,7 @@
 ####  新增功能
 - 新增PET-CT颜色栏
 - 新增MPR无损渲染配置：losslessMPR
-- 新增公共目录路径配置：publicPath
+- 新增公共目录路径配置：publicPath 代替 GPUBenchmarksURL
 
 ####  改进
 - PET-CT优化
@@ -55,7 +55,7 @@
 #### 调整
 - *MPR无损渲染默认启用*
 - *去除MPR画质工具*
-
+- *GPUBenchmarksURL建议废弃，使用publicPath代替*
 
 
 ## 部署、接入
@@ -95,10 +95,10 @@
             hospID as string,
             studyUID: string,
             { /* 可选参数 */
-                publicPath?:'dicomviewer-cornerstone/', /* 公共目录路径，默认情况无需配置，系统默认推断，注： V1.4.1 开始支持 */
-                GPUBenchmarksURL?:"./dicomviewer-cornerstone/GPUbenchmarks", /* 废弃！  GPUBenchmarks路径，默认无需配置,注：系统会自动补全，如提示GPU路径不存在，结合实际调整路径 */
+                publicPath?:'dicomviewer-cornerstone/', /* 公共目录路径，默认情况无需配置，系统默认推断，注： V1.4.1 开始支持，代替GPUBenchmarksURL */
+                GPUBenchmarksURL?:"./dicomviewer-cornerstone/GPUbenchmarks", /* 1.4.1废弃！  GPUBenchmarks路径，默认无需配置,注：系统会自动补全，如提示GPU路径不存在，结合实际调整路径 */
                 sharedArrayBuffer?:boolean, /* 开启MPR渲染加速，默认自动检测系统支持*/
-                imageTypeDefault?:-1 | 0 | 1, /* -1 png极速模式 0 png标准模式 1 dcm专业模式 ,注：PC 默认专业模式 mobile 默认标准模式, 用户自主选择后以用户选择为默认 */
+                imageTypeDefault?:-1 | 0 | 1, /* -1 png有损模式 0 png无损模式 1 dcm专业模式 ,注：PC 默认专业模式 mobile 默认：无损模式, 用户自主选择后以用户选择为默认 */
                 seriesLayoutDefault?:{x:number, y:number}  /* 序列布局，注：配置后，内部默认配置失效  */
                 languageDefault?: string, /* 语言，例：'zh-CN' | 'en'，注：默认无需配置!系统自动检测，可按下方文档任意扩展语言包 */
                 token?:string,
@@ -165,9 +165,9 @@
                     enhanceVisibility?:boolean, /* 增强显示隐藏，默认隐藏，不加载opencvopencv模块*/
                     aboutUsVisibility?:boolean, /* 关于我们显示隐藏，默认显示*/
                     fastImageModeVisibility?:boolean /* 废弃改为 fasModeVisibility*/,
-                    fasModeVisibility?:boolean /* 极速模式显示隐藏，默认显示，平台不支持压缩则关闭该模式选项 */,
-                    staModeVisibility?:boolean /* 标准模式显示隐藏，默认显示 */,
-                    majModeVisibility?:boolean /* 专业模式显示隐藏，默认隐藏 */,
+                    fasModeVisibility?:boolean /* 有损模式显示隐藏，默认显示，平台不支持压缩则关闭该模式选项 */,
+                    staModeVisibility?:boolean /* 无损模式显示隐藏，默认显示 */,
+                    majModeVisibility?:boolean /* 专业模式显示隐藏，默认隐藏 ，1.4.0 改为默认隐藏*/,
                     imageModeVisibility?:boolean:/* 模式按钮显示隐藏，默认显示 */,
                     languageVisibility?:boolean /* 语言显示隐藏，默认隐藏 */
                     customMenu?:{ /* 自定义菜单，谨慎配置，详情见下方：customMenu配置  */
@@ -246,6 +246,7 @@
 ```
 
 ## 国际化
+
 - 导入语言包，可以在locale/目录新增、自定义语言包导入，注：已内置中文语言，再次导入会覆盖内置。
 
 ```
@@ -258,7 +259,9 @@
 ```
 
 ## 业务建议
+
 - 可以将json文件作为基础配置放置于服务器，或提供接口服务，避免业务耦合
+
 ```
 const config = await fetch("/webDicomViewConfig.json");
 const options = {};
@@ -271,8 +274,8 @@ new WebDicomView(document.querySelector("#app"), wadoURL, hospID, studyUID, {
 
 ## MPR、PET-CT无法渲染
 
-- 详见：[ doc/*.pdf文件](./标准版/doc/IntelGPU&BrowserCompatibilitySolutions-zh.pdf)
+- 详见：[ doc/*.pdf](./标准版/doc/IntelGPU&BrowserCompatibilitySolutions-zh.pdf)
 
 ## build
 
-- 详见 :[package.json](./package.json)
+- 详见：[package.json](./package.json)
