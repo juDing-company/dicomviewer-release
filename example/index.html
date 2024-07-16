@@ -251,7 +251,7 @@
       const config = await fetch('/example/config.json');
       webDicomView = new WebDicomView(document.querySelector('#app'), wadoURL, hospID, studyUID, {
         ...(await config.json()),
-        // /* 可选参数,配置项以README.md为准 */ GPUBenchmarksURL: './GPUbenchmarks' /* GPUBenchmarks路径，不配置无法使用GPU */,
+         /* 可选参数,配置项以README.md为准 */
         // theme: {
         //   background: 'rgb(102,145,254)',
         //   'background-active': 'rgb(23, 46, 254)',
@@ -259,7 +259,7 @@
         //   color: '#fff',
         //   color2: 'red',
         // },
-        languageDefault: 'en',
+        // languageDefault: 'en',
         ...options,
       });
       // webDicomView.addStudy('1.2.392.200036.9125.2.138612190166.20230507000190')
