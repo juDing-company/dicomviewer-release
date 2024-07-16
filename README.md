@@ -57,6 +57,12 @@
 - *去除MPR画质工具*
 - *GPUBenchmarksURL建议废弃，使用publicPath代替*
 
+###  V1.4.2
+
+####  改进
+- PET-CT颜色栏移动端兼容
+
+
 
 ## 部署、接入
 
