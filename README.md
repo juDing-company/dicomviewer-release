@@ -295,7 +295,7 @@ new WebDicomView(document.querySelector("#app"), wadoURL, hospID, studyUID, {
 
 ## MPR、PET-CT无法渲染
 
-- 详见：[ doc/*.pdf](./标准版/doc/IntelGPU&BrowserCompatibilitySolutions-zh.pdf)
+- 详见：[ doc/*.pdf](./doc/IntelGPU&BrowserCompatibilitySolutions-zh.pdf)
 
 ## build
 
