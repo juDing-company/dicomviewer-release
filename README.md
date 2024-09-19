@@ -62,6 +62,18 @@
 ####  改进
 - PET-CT颜色栏移动端兼容
 
+###  V1.5.0
+
+####  新增功能
+- MPR 容积功能支持右键调窗、方位标识
+- 支持专业模式DSA
+- 新增3D探针
+- 新增自动、手动联动模式
+- 新增调窗快捷按键
+— 保存标注
+- 新增显示隐藏标注 详见syncLabels配置开启
+- 新增关键影像功能 详见syncMarkersImage配置开启
+
 
 
 ## 部署、接入
@@ -121,16 +133,19 @@
                 minRenderCountMPR3D?:number, /* MPR/3D最小渲染数量 */
                 losslessMPR?:boolean, /* MPR无损渲染，默认true,注： V1.4.1开始支持*/
                 logoURL?:url | base64 | ' ', /*  注：' '(内有空格)为不显示logo */
+                syncLabels?:boolean, /* 保存标注，默认false,注： V1.5开始支持*/
+                syncMarkersImage?:boolean, /* 保存关键影像，默认false,注： V1.5开始支持*/
                 closePageResetDefault?: { /* 关闭页面恢复默认设置 */
-                    imageType?:boolean, /* 模式 */
-                    cacheImages?:boolean /* 缓存 */
-                }
+                    imageType?:boolean, /* 影像模式 */
+                    cacheImages?:boolean, /* 缓存 */
+                    tackSynchronizerType?: boolean, /* 滚动联动模式,注： V1.5 开始支持， */
+                },
                 AI?:{
                     resultURL: url,/* AI分析结果接口地址，注：parseSuccess设为false时可以不配置*/
                     parseSuccess?:boolean, /* 已获得AI分析结果 默认false，注：设为false或未配置时，点击AI按键会执行=》getParseHandler函数 */
                     active?:boolean, /* AI按钮高亮为选中，显示AI结果 默认false */
                     jumpFirstAI?:boolean, /* 跳转到序列首张AI 默认false */
-                    getParseHandler:({ studyArr, departCode, hospId }) => { /* 申请AI分析，执行业务层事件 */
+                    getParseHandler:({ studyArr, departCode, hospID }) => { /* 申请AI分析，执行业务层事件 */
                         /*
                         业务层获得AI分析结果后
                         可执行以下方法打开AI(结合实际情况选择)
@@ -200,8 +215,8 @@
             parseSuccess: true,
             active: true,
             jumpFirstAI: true,
-            getParseHandler: ({ studyArr, departCode, hospId }) => {
-                console.log({ studyArr, departCode, hospId })
+            getParseHandler: ({ studyArr, departCode, hospID }) => {
+                console.log({ studyArr, departCode, hospID })
             }
         })
 
@@ -280,7 +295,7 @@ new WebDicomView(document.querySelector("#app"), wadoURL, hospID, studyUID, {
 
 ## MPR、PET-CT无法渲染
 
-- 详见：[ doc/*.pdf](./标准版/doc/IntelGPU&BrowserCompatibilitySolutions-zh.pdf)
+- 详见：[ doc/*.pdf](./doc/IntelGPU&BrowserCompatibilitySolutions-zh.pdf)
 
 ## build
 
