@@ -95,6 +95,11 @@
 - 同步器优化
 - 线程注册优化
 
+###  V1.5.4
+
+####  改进
+- 软件升级后将用户设置（影像模式、联动模式、使用缓存）重置为默认
+
 
 ## 部署、接入
 
@@ -320,3 +325,10 @@ new WebDicomView(document.querySelector("#app"), wadoURL, hospID, studyUID, {
 ## build
 
 - 详见：[package.json](./package.json)
+
+## 取包git地址
+
+- 详见：[http://192.168.18.134:8081/dicomviewer/dicomviewer-release](http://192.168.18.134:8081/dicomviewer/dicomviewer-release)
+## 独立站点git地址
+
+- 详见：[http://192.168.18.134:8081/dicomviewer/dicomviewer-site](http://192.168.18.134:8081/dicomviewer/dicomviewer-site)
