@@ -62,7 +62,7 @@
 ####  改进
 - PET-CT颜色栏移动端兼容
 
-###  V1.5
+###  V1.5.0
 
 ####  新增功能
 - MPR 容积功能支持右键调窗、方位标识
@@ -71,9 +71,43 @@
 - 新增自动、手动联动模式
 - 新增调窗快捷按键
 — 保存标注
-- 新增显示隐藏标注 详见syncLabels配置开启
-- 新增关键影像功能 详见syncMarkersImage配置开启
+- 新增显示隐藏标注 详见syncLabels配置开启(需后端接口配合)
+- 新增关键影像功能 详见syncMarkersImage配置开启(需后端接口配合)
 
+###  V1.5.1
+
+####  改进
+- 修复专业模式部分US图像异常
+- 修复部分CT RGB、报告图像异常
+
+###  V1.5.2
+
+####  新增功能
+
+-支持有损、无损模式DSA(需后端接口调整)
+
+
+###  V1.5.3
+
+####  改进
+- 修复部分情况下部分3D探针失效
+- 修复destroy方法
+- 同步器优化
+- 线程注册优化
+
+###  V1.5.4
+
+####  改进
+- 软件升级后将用户设置（影像模式、联动模式、使用缓存）重置为默认
+
+###  V1.6.0
+
+####  新增功能
+- 支持PC端打印排版,默认隐藏 详见printVisibility配置开启(需后端接口配合)
+
+####  改进
+- 锐化、平滑从无极调节改为高中低三级，优化增强渲染速度
+- 左、右标记改为每个图像限制为标记一次
 
 
 ## 部署、接入
@@ -191,6 +225,7 @@
                     majModeVisibility?:boolean /* 专业模式显示隐藏，默认隐藏 ，1.4.0 改为默认隐藏*/,
                     imageModeVisibility?:boolean:/* 模式按钮显示隐藏，默认显示 */,
                     languageVisibility?:boolean /* 语言显示隐藏，默认隐藏 */
+                    printVisibility?:boolean /* 打印胶片显示隐藏，默认隐藏，注： V1.6.0 开始支持 */
                     customMenu?:{ /* 自定义菜单，谨慎配置，详情见下方：customMenu配置  */
                         main?:ToolData[], /* 2D菜单 */
                         MPR?:ToolData[], /* MPR菜单 */
@@ -300,3 +335,10 @@ new WebDicomView(document.querySelector("#app"), wadoURL, hospID, studyUID, {
 ## build
 
 - 详见：[package.json](./package.json)
+
+## 取包git地址
+
+- 详见：[http://192.168.18.134:8081/dicomviewer/dicomviewer-release](http://192.168.18.134:8081/dicomviewer/dicomviewer-release)
+## 独立站点git地址
+
+- 详见：[http://192.168.18.134:8081/dicomviewer/dicomviewer-site](http://192.168.18.134:8081/dicomviewer/dicomviewer-site)

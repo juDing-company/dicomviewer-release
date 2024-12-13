@@ -1,10 +1,19 @@
 /** @prettier  */
-importScripts('./opencv.min.js');
 
-let opencvConfig;
+if (!self.register) {
+  importScripts('./opencv.min.js');
+  self.registerTaskHandler({
+    taskType: 'opencvDecode',
+    handler,
+    initialize,
+  });
+} else {
+  throw 'Duplicate registration';
+}
 
 function initialize(config) {
-  opencvConfig = config;
+  self.opencvConfig = config;
+  self.register = true;
 }
 
 function sharpen(cv, mat, sigma) {
@@ -55,6 +64,7 @@ async function handler(data, doneCallback) {
   const opencv = await self.cv;
   const mat = opencv.matFromImageData(imageData);
   let newMat;
+
   switch (kernelType) {
     case 'blur':
       newMat = blur(opencv, mat, sigma);
@@ -75,9 +85,3 @@ async function handler(data, doneCallback) {
     transferList: [newImageData.data.buffer],
   };
 }
-
-self.registerTaskHandler({
-  taskType: 'opencvDecode',
-  handler,
-  initialize,
-});
