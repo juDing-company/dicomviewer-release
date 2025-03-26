@@ -59,12 +59,12 @@ function matToImageData(cv, mat) {
 }
 
 async function handler(data, doneCallback) {
-  console.log('run');
   const imageData = data.data.imageData;
   const { sigma, kernelType } = data.data.info;
   const opencv = await self.cv;
   const mat = opencv.matFromImageData(imageData);
   let newMat;
+
   switch (kernelType) {
     case 'blur':
       newMat = blur(opencv, mat, sigma);
