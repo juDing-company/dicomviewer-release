@@ -1,15 +1,17 @@
 {
+  "seriesLayoutDefault": { "x": 3, "y": 2 },
+  "imageTypeDefault": 0,
   "isDesensitize": true,
   "syncLabels": true,
   "syncMarkersImage": true,
   "aboutUs": { "description": "版权所有，未经授权的复制或传播本内容将受到民事和刑事处罚。" },
   "losslessMPR": true,
   "toolsBar": {
-    "navigationBottomLayout": true,
     "majModeVisibility": true,
     "languageVisibility": true,
     "enhanceVisibility": true,
-    "seriesBarVisibility": false,
+    "seriesBarVisibility": true,
+    "navigationBottomLayout": true,
     "printVisibility": true
   }
 }
