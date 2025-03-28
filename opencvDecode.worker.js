@@ -1,6 +1,6 @@
 /** @prettier  */
 
-if (!self.register) {
+if (!self.opencvDecode) {
   importScripts('./opencv.min.js');
   self.registerTaskHandler({
     taskType: 'opencvDecode',
@@ -8,12 +8,12 @@ if (!self.register) {
     initialize,
   });
 } else {
-  throw 'Duplicate registration';
+  console.warn('Duplicate registration for opencvDecode');
 }
 
 function initialize(config) {
   self.opencvConfig = config;
-  self.register = true;
+  self.opencvDecode = true;
 }
 
 function sharpen(cv, mat, sigma) {

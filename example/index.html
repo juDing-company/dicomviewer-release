@@ -44,7 +44,7 @@
     </div>
     <div id="app"></div>
     <script src="/locale/en.js"></script>
-  <script src="/WebDicomView.min.js"></script><script src="/webDicomViewMPR.min.js"></script></body>
+  <script src="/WebDicomView.min.js"></script></body>
   <script>
     let options = {};
 
@@ -129,7 +129,6 @@
     // const hospID = '222';
 
     /* 打印 */
-
     // const wadoURL = 'http://yjpwap.clear-sz.com/api/wado';
     // const studyUID = '1.2.840.31314.14143234.20201207000000.4013655';
     // const hospID = 'ce9';
@@ -148,20 +147,20 @@
     // const hospID = '222';
 
     /* 标尺 */
-    const wadoURL = 'http://27.129.129.132:8084/api/wado';
-    const studyUID = '1.2.840.31314.14143234.20250325000000.DR00095261';
-    const hospID = '53602';
+    // const wadoURL = 'http://27.129.129.132:8084/api/wado';
+    // const studyUID = '1.2.840.31314.14143234.20250325000000.DR00095261';
+    // const hospID = '53602';
+
     /* CT多帧 */
     // const wadoURL = 'http://yjpwap.clear-sz.com/api/wado';
     // const studyUID = '1.2.156.600734.1460604628.1086380.1714954987.3863.3505660';
     // const hospID = '222';
 
     /* ct330 */
-    // const wadoURL = 'http://yjpwap.clear-sz.com/api/wado';
-    // const studyUID =
-    //   // '1.2.840.113619.2.55.3.346829569.498.1673482788.21';
-    //   '1.2.826.0.1.3680043.2.461.14830079.2019335535,1.2.826.0.1.3680043.2.461.13951944.3454694210,1.2.826.0.1.3680043.2.461.13493267.1811413257,1.2.840.113619.2.55.3.346829569.498.1673482788.21';
-    // const hospID = '222';
+    const wadoURL = 'http://yjpwap.clear-sz.com/api/wado';
+    const studyUID =
+      '1.2.826.0.1.3680043.2.461.14830079.2019335535,1.2.826.0.1.3680043.2.461.13951944.3454694210,1.2.826.0.1.3680043.2.461.13493267.1811413257,1.2.840.113619.2.55.3.346829569.498.1673482788.21';
+    const hospID = '222';
     //   '1.2.840.113619.2.55.3.346829569.498.1673482788.21';
     //   '1.2.826.0.1.3680043.2.461.13951944.3454694210,1.2.826.0.1.3680043.2.461.13493267.1811413257,1.2.840.113619.2.55.3.346829569.498.1673482788.21';
     // const hospID = '222';
@@ -174,7 +173,6 @@
     // const hospID = '222';
 
     /* 打印 */
-
     // const wadoURL = 'http://yjpwap.clear-sz.com/api/wado';
     // const studyUID = '1.2.840.31314.14143234.20201207000000.4013655';
     // const hospID = 'ce9';
@@ -228,9 +226,14 @@
     // const hospID = "61358"
 
     /* MR 900 MPR*/
-    // const wadoURL = "http://223.96.94.69:8084/api/wado"
-    // const studyUID = "1.2.840.113619.2.340.3.1721146459.895.1704468734.619"
-    // const hospID = "53358"
+    // const wadoURL = 'http://223.96.94.69:8084/api/wado';
+    // const studyUID = '1.2.840.113619.2.340.3.1721146459.895.1704468734.619';
+    // const hospID = '53358';
+
+    /* 医创新MR */
+    // const wadoURL = 'https://aliim.chinayichuang.com/Wado';
+    // const studyUID = '2.25.270198312297865039296985380725610330393.202502040002';
+    // const hospID = 'ab94b5958b3f43cea59cbb71515249c3';
 
     /* 黑屏 MPR*/
     // const wadoURL = "http://36.133.181.189:8084/api/wado"
@@ -372,7 +375,7 @@
     document.getElementById('init').addEventListener('click', () => init());
     document.getElementById('destroy').addEventListener('click', () => {
       webDicomView.destroy();
-      webDicomView = undefined;
+      webDicomView = null;
     });
   </script>
 </html>
