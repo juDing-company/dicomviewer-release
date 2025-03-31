@@ -1,18 +1,17 @@
 {
-  "aboutUs": {
-    "description": "版权所有，未经授权的复制或传播本内容将受到民事和刑事处罚。"
-  },
+  "seriesLayoutDefault": { "x": 3, "y": 2 },
   "imageTypeDefault": 0,
   "isDesensitize": true,
-  "losslessMPR": true,
   "syncLabels": true,
   "syncMarkersImage": true,
+  "aboutUs": { "description": "版权所有，未经授权的复制或传播本内容将受到民事和刑事处罚。" },
+  "losslessMPR": true,
   "toolsBar": {
-    "enhanceVisibility": true,
-    "languageVisibility": true,
     "majModeVisibility": true,
+    "languageVisibility": true,
+    "enhanceVisibility": true,
+    "seriesBarVisibility": true,
     "navigationBottomLayout": true,
-    "printVisibility": true,
-    "seriesBarVisibility": true
+    "printVisibility": true
   }
 }
