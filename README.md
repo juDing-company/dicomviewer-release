@@ -26,7 +26,7 @@
 - 支持标尺
 - 新增高性能模式
 
-### 改进
+#### 改进
 - 序列栏显示优化
 - 移动端布局优化
 - 提示语优化
@@ -138,6 +138,15 @@
 - 内存优化，支持库升级到2.0
 
 
+###  V1.7.1
+
+####  新增功能
+- 新增DR拼接
+
+####  调整
+- “当前序列不再序列窗口中，图像未渲染，请拖拽或者双击加载至当前窗口” 提示语去除
+
+
 ## 部署、接入
 
 ![image.](https://s1.ax1x.com/2023/08/08/pPVYEwV.png)
@@ -177,7 +186,7 @@
             { /* 可选参数 */
                 publicPath?:'dicomviewer-cornerstone/', /* 推荐使用window.staticResourceURLPrefix代替！ 公共目录路径，默认情况无需配置，系统默认推断，注： V1.4.1 开始支持，代替GPUBenchmarksURL */
                 GPUBenchmarksURL?:"./dicomviewer-cornerstone/GPUbenchmarks", /* 1.4.1废弃！  GPUBenchmarks路径，默认无需配置,注：系统会自动补全，如提示GPU路径不存在，结合实际调整路径 */
-                sharedArrayBuffer?:boolean, /* 开启MPR渲染加速，默认自动检测系统支持*/
+                sharedArrayBuffer?:boolean, /* 开启MPR渲染加速，默认自动检测系统支持,注： V1.7 开始废弃， **/
                 imageTypeDefault?:-1 | 0 | 1, /* -1 png有损模式 0 png无损模式 1 dcm专业模式 ,注：PC 默认专业模式 mobile 默认：无损模式, 用户自主选择后以用户选择为默认 */
                 seriesLayoutDefault?:{x:number, y:number}  /* 序列布局，注：配置后，内部默认配置失效  */
                 languageDefault?: string, /* 语言，例：'zh-CN' | 'en'，注：默认无需配置!系统自动检测，可按下方文档任意扩展语言包 */
