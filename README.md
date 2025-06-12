@@ -142,7 +142,7 @@
 ###  V1.7.1
 
 ####  新增功能
-- 新增DR拼接
+- 新增DR拼接，默认显示。详见imageStitchingVisibility配置关闭
 
 ####  调整
 - “当前序列不再序列窗口中，图像未渲染，请拖拽或者双击加载至当前窗口” 提示语去除
@@ -164,7 +164,7 @@
 
 ####  新增功能
 - 网络环境差提示语
-- 添加 minLoadSpeed，minDecodeSpeed,concurrentNetwork 配置
+- 添加 minLoadSpeed，minDecodeSpeed,concurrentNetwork,imageStitchingVisibility 配置
 
 ####  优化
 - 全量下载模式优化
@@ -294,6 +294,7 @@
                     imageModeVisibility?:boolean:/* 模式按钮显示隐藏，默认显示 */,
                     languageVisibility?:boolean /* 语言显示隐藏，默认隐藏 */
                     printVisibility?:boolean /* 打印胶片显示隐藏，默认隐藏，注： V1.6.0 开始支持 */
+                    imageStitchingVisibility?:boolean /* DR拼接显示隐藏，默认显示，注： V1.7.3 开始支持 */
                     customMenu?:{ /* 自定义菜单，谨慎配置，详情见下方：customMenu配置  */
                         main?:ToolData[], /* 2D菜单 */
                         MPR?:ToolData[], /* MPR菜单 */
