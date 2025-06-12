@@ -47,6 +47,7 @@
   <script src="/WebDicomView.min.js"></script></body>
   <script>
     let options = {};
+    let token;
 
     /* CT2 */
     // const wadoURL = "http://192.168.85.118:8084/api/Wado"
@@ -159,6 +160,16 @@
     // const wadoURL = 'http://yjpwap.clear-sz.com/api/wado';
     // const studyUID = '1.2.156.600734.1460604628.1086380.1714954987.3863.3505660';
     // const hospID = '222';
+
+    /* 大田慢慢慢 */
+    // const wadoURL = 'http://110.83.220.178:5980/Wado';
+    // const studyUID = '1.2.840.31314.14143234.20250528000000.20075560';
+    // const hospID = 'dtxzyy';
+
+    // const wadoURL = 'http://192.168.85.113/prod-api/im/Wado/';
+    // const studyUID = '1.3.6.1.4.1.44316.6.102.1.2023091384336494.746252101381252750643';
+    // const hospID = '1';
+    // token = 'Bearer rNXiYpoyuNwMAkBrJU+ajQ==';
 
     /* ct330 */
     const wadoURL = 'http://yjpwap.clear-sz.com/api/wado';
@@ -355,6 +366,7 @@
       webDicomView = new WebDicomView(document.querySelector('#app'), wadoURL, hospID, studyUID, {
         ...(await config.json()),
         token:
+          token ||
           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiMTU3Njg0NTAzNjciLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIxLDEiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IuW8oOeGn-WcsCIsIkNsaWVudElkIjoiZTNkYzQzNzk1MmVmNGVmMzk1YTAzMzI3YTZkODdmZjEiLCJIb3NwaXRhbENvZGUiOiIyMjIiLCJIb3NwaXRhbElkIjoiMjY3IiwiT2ZmaWNlQ29kZSI6IjEiLCJleHAiOjQ4Nzk4OTM5OTIsImlzcyI6IndlYmFwaS5jbiIsImF1ZCI6IldlYkFwaSJ9.1RPz2XPyBybu0xBgoL-LprimfYHb_Y2zpIJyvCeClmA',
         /* 可选参数,配置项以README.md为准 */
         // theme: {
