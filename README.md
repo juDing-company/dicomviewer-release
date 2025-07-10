@@ -175,6 +175,12 @@
 - token 可以自定义Bearer前缀
 
 
+###  V1.7.4
+
+####  改进
+- 修复部分png显示黑屏
+
+
 ## 部署、接入
 
 ![image.](https://s1.ax1x.com/2023/08/08/pPVYEwV.png)
