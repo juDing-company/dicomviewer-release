@@ -104,6 +104,7 @@
 - 同步器优化
 - 线程注册优化
 
+
 ###  V1.5.4
 
 ####  改进
@@ -141,16 +142,16 @@
 ###  V1.7.1
 
 ####  新增功能
-- 新增DR拼接
+- 新增DR拼接，默认显示。详见imageStitchingVisibility配置关闭
 
 ####  调整
 - “当前序列不再序列窗口中，图像未渲染，请拖拽或者双击加载至当前窗口” 提示语去除
+
 
 ###  V1.7.2
 
 ####  改进
 - 修复有损模式部分MPR显示不完整
-
 
 ####  优化
 - 部分鸿蒙系统webGL支持不完整进行兼容
@@ -159,12 +160,25 @@
 - 环境检测机制由导入检测改为初始化检测
 
 
+###  V1.7.3
+
+####  新增功能
+- 网络环境差提示语
+- 添加 minLoadSpeed，minDecodeSpeed, concurrentNetwork, imageStitchingVisibility 配置
+
+####  优化
+- 全量下载模式优化
+
+####  调整
+- 全量下载模式下，强制将滚动下载（scrollPreload）关闭
+- 全量下载模式下，改为只显示当前序列的进度条
+- token 可以自定义Bearer前缀
+
+
 ###  V1.8.0
 
 ####  新增
 - 自动、手动去床
-
-
 
 
 ## 部署、接入
@@ -192,8 +206,8 @@
     ...
     <!-- 可以在locale/目录新增、自定义语言包导入，注：已内置中文语言，再次导入会覆盖内置。 -->
     <script src="./dicomviewer-cornerstone/locale/en.js">
-    <!-- 启用MPR功能请导入该模块，不启用请勿导入，以免造成资源加载浪费，注：defer可以优化加载避免阻塞 -->
-    <script defer src="./dicomviewer-cornerstone/webDicomViewMPR.min.js"></script>
+    <!-- 已废弃无需手动导入！！！改为懒加载！！！启用MPR功能请导入该模块，不启用请勿导入，以免造成资源加载浪费，注：defer可以优化加载避免阻塞 -->
+    <!-- <script defer src="./dicomviewer-cornerstone/webDicomViewMPR.min.js"></script> -->
     <!-- 核心基础模块，请结合实际情况放在所有script标签最未处，以免造成不必要的阻塞 -->
     <script src="./dicomviewer-cornerstone/WebDicomView.min.js"></script>
   </body>
@@ -217,15 +231,19 @@
                 isInternal?:boolean, /* 获取影像路径内外网，默认外网云存储 */
                 clientType?:number, /* 客户端类型，默认值是0 */
                 cacheImagesDefault?:boolean, /* 是否启用缓存，默认启用 */
-                scrollPreload?:boolean, /* 是否启用滚动加载，默认启用 */
+                scrollPreload?:boolean, /* 是否启用滚动加载，默认启用。 注：V1.7.3以后fullLoad=true scrollPreload关闭 */
                 scrollPreloadNum?:number, /* 滚动预加载数量, 默认9 注：scrollPreload为true 生效*/
                 seriesPreFetchNum?:number, /* 各序列初始预加载数量, 默认0,0为自动 */
-                fullLoad?:boolean, /* 关闭序列按需加载，开启全部序列下载，默认序列按需加载 */
+                fullLoad?:boolean, /* 开启全部序列下载，默认序列按需下载 */
+                minLoadSpeed?: number; /* 最小下载速度预警，0为关闭，默认120KB/s。注：V1.7.3开始支持 */
+                minDecodeSpeed?: number; /* 最小解码速度预警，0为关闭，默认2000KB/s。注：V1.7.3开始支持 */
                 minRenderCountMPR3D?:number, /* MPR/3D最小渲染数量 */
                 losslessMPR?:boolean, /* MPR无损渲染，默认true,注： V1.4.1开始支持*/
                 logoURL?:url | base64 | ' ', /*  注：' '(内有空格)为不显示logo */
                 syncLabels?:boolean, /* 保存标注，默认false,注： V1.5开始支持*/
                 syncMarkersImage?:boolean, /* 保存关键影像，默认false,注： V1.5开始支持*/
+                bedboardSegmentThreshold?:number, /* 去床阈值，默认15,支持范围1-30 注： V1.8.0开始支持*/
+                concurrentNetwork?:number, /* 下载并发数，默认6, 注： V1.7.3开始支持*/
                 closePageResetDefault?: { /* 关闭页面恢复默认设置 */
                     imageType?:boolean, /* 影像模式 */
                     cacheImages?:boolean, /* 缓存 */
@@ -283,6 +301,7 @@
                     imageModeVisibility?:boolean:/* 模式按钮显示隐藏，默认显示 */,
                     languageVisibility?:boolean /* 语言显示隐藏，默认隐藏 */
                     printVisibility?:boolean /* 打印胶片显示隐藏，默认隐藏，注： V1.6.0 开始支持 */
+                    imageStitchingVisibility?:boolean /* DR拼接显示隐藏，默认显示，注： V1.7.3 开始支持 */
                     customMenu?:{ /* 自定义菜单，谨慎配置，详情见下方：customMenu配置  */
                         main?:ToolData[], /* 2D菜单 */
                         MPR?:ToolData[], /* MPR菜单 */

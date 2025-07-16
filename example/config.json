@@ -7,6 +7,10 @@
   "losslessMPR": true,
   "syncLabels": true,
   "syncMarkersImage": true,
+  "minLoadSpeed": 120,
+  "minDecodeSpeed": 2000,
+  "bedboardSegmentThreshold": 15,
+  "concurrentNetwork": 1,
   "toolsBar": {
     "enhanceVisibility": true,
     "languageVisibility": true,
