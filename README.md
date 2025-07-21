@@ -179,6 +179,10 @@
 
 ####  改进
 - 修复部分png显示黑屏
+###  V1.8.0
+
+####  新增
+- 自动、手动去床
 
 
 ## 部署、接入
@@ -242,6 +246,7 @@
                 logoURL?:url | base64 | ' ', /*  注：' '(内有空格)为不显示logo */
                 syncLabels?:boolean, /* 保存标注，默认false,注： V1.5开始支持*/
                 syncMarkersImage?:boolean, /* 保存关键影像，默认false,注： V1.5开始支持*/
+                bedboardSegmentThreshold?:number, /* 去床阈值，默认15,支持范围1-30 注： V1.8.0开始支持*/
                 concurrentNetwork?:number, /* 下载并发数，默认6, 注： V1.7.3开始支持*/
                 closePageResetDefault?: { /* 关闭页面恢复默认设置 */
                     imageType?:boolean, /* 影像模式 */
