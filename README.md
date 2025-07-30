@@ -180,6 +180,12 @@
 ####  新增
 - 自动、手动去床
 
+###  V1.9.0
+
+####  新增
+- 自定义四角信息
+- metaData源数据保存开关
+
 
 ## 部署、接入
 
@@ -218,36 +224,37 @@
             hospID as string,
             studyUID: string,
             { /* 可选参数 */
-                publicPath?:'dicomviewer-cornerstone/', /* 推荐使用window.staticResourceURLPrefix代替！ 公共目录路径，默认情况无需配置，系统默认推断，注： V1.4.1 开始支持，代替GPUBenchmarksURL */
-                GPUBenchmarksURL?:"./dicomviewer-cornerstone/GPUbenchmarks", /* 1.4.1废弃！  GPUBenchmarks路径，默认无需配置,注：系统会自动补全，如提示GPU路径不存在，结合实际调整路径 */
-                sharedArrayBuffer?:boolean, /* 开启MPR渲染加速，默认自动检测系统支持,注： V1.7 开始废弃， **/
-                imageTypeDefault?:-1 | 0 | 1, /* -1 png有损模式 0 png无损模式 1 dcm专业模式 ,注：PC 默认专业模式 mobile 默认：无损模式, 用户自主选择后以用户选择为默认 */
-                seriesLayoutDefault?:{x:number, y:number}  /* 序列布局，注：配置后，内部默认配置失效  */
-                languageDefault?: string, /* 语言，例：'zh-CN' | 'en'，注：默认无需配置!系统自动检测，可按下方文档任意扩展语言包 */
-                token?:string,
-                departCode?:string,
-                isDesensitize?:boolean, /* 是否脱敏，默认false */
-                isKeyImage?:boolean, /* 是否关键影像，默认false */
-                isInternal?:boolean, /* 获取影像路径内外网，默认外网云存储 */
-                clientType?:number, /* 客户端类型，默认值是0 */
+                aroundTagsConfigs?:AroundTagsConfigs, /* 自定义四角信息，谨慎配置，详情见下方：aroundTagsConfigs配置，注：V1.9.0开始支持 */
                 cacheImagesDefault?:boolean, /* 是否启用缓存，默认启用 */
+                clientType?:number, /* 客户端类型，默认值是0 */
+                concurrentNetwork?:number, /* 下载并发数，默认6, 注： V1.7.3开始支持 */
+                departCode?:string,
+                fullLoad?:boolean, /* 开启全部序列下载，默认序列按需下载 */
+                GPUBenchmarksURL?:"./dicomviewer-cornerstone/GPUbenchmarks", /* 1.4.1废弃！GPUBenchmarks路径，默认无需配置,注：系统会自动补全，如提示GPU路径不存在，结合实际调整路径 */
+                imageTypeDefault?:-1 | 0 | 1, /* -1 png有损模式 0 png无损模式 1 dcm专业模式，注：PC 默认专业模式 mobile 默认：无损模式, 用户自主选择后以用户选择为默认 */
+                isDesensitize?:boolean, /* 是否脱敏，默认false */
+                isInternal?:boolean, /* 获取影像路径内外网，默认外网云存储 */
+                isKeyImage?:boolean, /* 是否关键影像，默认false */
+                languageDefault?: string, /* 语言，例：'zh-CN' | 'en'，注：默认无需配置!系统自动检测，可按下方文档任意扩展语言包 */
+                logoURL?:url | base64 | ' ', /*  注：' '(内有空格)为不显示logo */
+                losslessMPR?:boolean, /* MPR无损渲染，默认true,注：V1.4.1开始支持*/
+                minDecodeSpeed?: number; /* 最小解码速度预警，0为关闭，默认2000KB/s。注：V1.7.3开始支持 */
+                minLoadSpeed?: number; /* 最小下载速度预警，0为关闭，默认120KB/s。注：V1.7.3开始支持 */
+                minRenderCountMPR3D?:number, /* MPR/3D最小渲染数量 */
+                publicPath?:'dicomviewer-cornerstone/', /* 推荐使用window.staticResourceURLPrefix代替！ 公共目录路径，默认情况无需配置，系统默认推断，注： V1.4.1 开始支持，代替GPUBenchmarksURL */
+                saveOriginAllMetaData?:boolean, /* 是否保存后端metaData完整源数据，默认false，注：V1.9.0开始支持 */
                 scrollPreload?:boolean, /* 是否启用滚动加载，默认启用。 注：V1.7.3以后fullLoad=true scrollPreload关闭 */
                 scrollPreloadNum?:number, /* 滚动预加载数量, 默认9 注：scrollPreload为true 生效*/
+                seriesLayoutDefault?:{x:number, y:number}  /* 序列布局，注：配置后，内部默认配置失效  */
                 seriesPreFetchNum?:number, /* 各序列初始预加载数量, 默认0,0为自动 */
-                fullLoad?:boolean, /* 开启全部序列下载，默认序列按需下载 */
-                minLoadSpeed?: number; /* 最小下载速度预警，0为关闭，默认120KB/s。注：V1.7.3开始支持 */
-                minDecodeSpeed?: number; /* 最小解码速度预警，0为关闭，默认2000KB/s。注：V1.7.3开始支持 */
-                minRenderCountMPR3D?:number, /* MPR/3D最小渲染数量 */
-                losslessMPR?:boolean, /* MPR无损渲染，默认true,注： V1.4.1开始支持*/
-                logoURL?:url | base64 | ' ', /*  注：' '(内有空格)为不显示logo */
+                sharedArrayBuffer?:boolean, /* 开启MPR渲染加速，默认自动检测系统支持,注： V1.7 开始废弃 **/
                 syncLabels?:boolean, /* 保存标注，默认false,注： V1.5开始支持*/
                 syncMarkersImage?:boolean, /* 保存关键影像，默认false,注： V1.5开始支持*/
-                bedboardSegmentThreshold?:number, /* 去床阈值，默认15,支持范围1-30 注： V1.8.0开始支持*/
-                concurrentNetwork?:number, /* 下载并发数，默认6, 注： V1.7.3开始支持*/
+                token?:string,
                 closePageResetDefault?: { /* 关闭页面恢复默认设置 */
                     imageType?:boolean, /* 影像模式 */
                     cacheImages?:boolean, /* 缓存 */
-                    tackSynchronizerType?: boolean, /* 滚动联动模式,注： V1.5 开始支持， */
+                    tackSynchronizerType?: boolean, /* 滚动联动模式,注： V1.5 开始支持 */
                 },
                 AI?:{
                     resultURL: url,/* AI分析结果接口地址，注：parseSuccess设为false时可以不配置*/
@@ -359,11 +366,12 @@
 - 默认配置打印(请以此为模板进行修改！！！)：
 
 ```
-    console.log(webDicomView.getMenuDefault(isI18n?:boolean))<!-- isI18n：是否返回国际化菜单，不传则自动判断 ==> 检测加载了多个语言包&&(设置了默认语言||开启了语言菜单显示)）） -->
+    console.log(WebDicomView.getMenuDefault(isI18n?:boolean))<!-- isI18n：是否返回国际化菜单，不传则自动判断 ==> 检测加载了多个语言包&&(设置了默认语言||开启了语言菜单显示)）） -->
 ```
 
-```
+- 类型声明
 
+```
     interface ToolData {
         toolTag: string;/* 禁止修改参数！注：此项为菜单UID */
         toolName: (() => string) | string /* 禁止修改参数！注：未配置国际化时，此项也可以当菜单伪UID(本土语言语意性强) 可以不配置toolTag */
@@ -375,6 +383,60 @@
         icon?: (() => string) | string /* 必须是本系统内已有的iconClass */
         children?: ToolData[]
     }
+```
+
+## aroundTagsConfigs 配置
+
+- 默认配置打印(供参考)：
+
+```
+    console.log(WebDicomView.getAroundTagsConfigsDefault())
+```
+
+- 如需使用后端metaData原始数据，saveOriginAllMetaData设置为true.
+
+- 类型声明
+
+```
+type Marker = 'ltMarker' | 'rtMarker' | 'lbMarker' | 'rbMarker';
+
+type TagRender = (params: {
+    study: Study;
+    series: Series;
+    meta: Meta;
+    metaData: typeof metaData;
+    viewport: Viewport;
+    imageId: string
+  }) => string;
+
+type Key =
+  | { key: string } /* 内置语言字典 */
+  | ({ descEN: string } | { descCN: string }); /* /* 自定义英文\中文 */
+  | { showKey: false }; /* 不显示key */
+
+type Tag =
+  | { studyTag: keyof Study } /* 读取Study，主要用于获取脱敏数据 */
+  | { metaDataTag: keyof (Meta & HttpMetaToDicomMeta) } /* 读取http自定义Meta */
+  | { DICOMTag: number } /* 读取标准DICOM tag */
+  | { value: string } /* 自定义值 */
+  | { tagRender: TagRender }; /* 自定义渲染 */
+
+type TagsConfigItem = Key &
+  Tag & {
+    showKey?: boolean; /* 是否显示key */
+    style?: { [key: string]: string }; /* 自定义样式 */
+    formatter?: (...args: any[]) => string; /* 格式化函数 */
+  };
+
+type AroundTagsConfig = {
+  [key in Marker]?: TagsConfigItem[];
+};
+
+type AroundTagsConfigs = { /* 会与内置默认配置合并 */
+  default?: AroundTagsConfig;
+  [key in modality]: AroundTagsConfig | undefined;
+};
+
 ```
 
 ## 国际化
