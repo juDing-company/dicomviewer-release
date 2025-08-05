@@ -34,7 +34,9 @@ const defaultConfig = {
     {
       key: 'imageNumber',
       tagRender: ({ study, meta }) =>
-        [study?.studyID || meta.studyID, meta.seriesNumber, `<i>${meta.instanceNumber}</i>`].join('-').replace(/-{2,}/, '-'),
+        [study?.studyID || meta.studyID, meta.seriesNumber, `<tmpl>${meta.instanceNumber}</tmpl>`]
+          .join('-')
+          .replace(/-{2,}/, '-'),
     },
     {
       key: 'synchronizer',
@@ -112,12 +114,25 @@ const CT = {
     {
       key: 'time',
       showKey: false,
-      metaDataTag: '_acquisitionTime',
+      metaDataTag: 'acquisitionTime',
+      tagRender: ({ meta }) => {
+        const { acquisitionTime: { hours, minutes, seconds } = {} } = meta;
+
+        if (!hours || !minutes || !seconds) return '';
+
+        return [hours, minutes, seconds]
+          .map(v => String(v).padStart(2, 0))
+          .join(':')
+          .replace(/\/{2,}/, ':');
+      },
     },
     {
       key: 'imageNumber',
       showKey: false,
-      tagRender: ({ series, meta }) => [`<i>${meta.instanceNumber}</i>`, series.loadIds.length].join('/').replace(/\/{2,}/, '/'),
+      tagRender: ({ study, meta }) =>
+        [study?.studyID || meta.studyID, meta.seriesNumber, `<tmpl>${meta.instanceNumber}</tmpl>`]
+          .join('-')
+          .replace(/-{2,}/, '-'),
     },
   ],
   rtMarker: [
@@ -201,7 +216,17 @@ const CT2 = {
     {
       key: 'time',
       showKey: false,
-      metaDataTag: '_acquisitionTime',
+      metaDataTag: 'acquisitionTime',
+      tagRender: ({ meta }) => {
+        const { acquisitionTime: { hours, minutes, seconds } = {} } = meta;
+
+        if (!hours || !minutes || !seconds) return '';
+
+        return [hours, minutes, seconds]
+          .map(v => String(v).padStart(2, 0))
+          .join(':')
+          .replace(/\/{2,}/, ':');
+      },
     },
     {
       key: 'descriptionLite',
@@ -211,7 +236,10 @@ const CT2 = {
     {
       key: 'imageNumber',
       showKey: false,
-      tagRender: ({ series, meta }) => [`<i>${meta.instanceNumber}</i>`, series.loadIds.length].join('/').replace(/\/{2,}/, '/'),
+      tagRender: ({ study, meta }) =>
+        [study?.studyID || meta.studyID, meta.seriesNumber, `<tmpl>${meta.instanceNumber}</tmpl>`]
+          .join('-')
+          .replace(/-{2,}/, '-'),
     },
   ],
   rtMarker: [
@@ -291,12 +319,25 @@ const DX = {
     {
       key: 'time',
       showKey: false,
-      metaDataTag: '_acquisitionTime',
+      metaDataTag: 'acquisitionTime',
+      tagRender: ({ meta }) => {
+        const { acquisitionTime: { hours, minutes, seconds } = {} } = meta;
+
+        if (!hours || !minutes || !seconds) return '';
+
+        return [hours, minutes, seconds]
+          .map(v => String(v).padStart(2, 0))
+          .join(':')
+          .replace(/\/{2,}/, ':');
+      },
     },
     {
       key: 'imageNumber',
       showKey: false,
-      tagRender: ({ series, meta }) => [`<i>${meta.instanceNumber}</i>`, series.loadIds.length].join('/').replace(/\/{2,}/, '/'),
+      tagRender: ({ study, meta }) =>
+        [study?.studyID || meta.studyID, meta.seriesNumber, `<tmpl>${meta.instanceNumber}</tmpl>`]
+          .join('-')
+          .replace(/-{2,}/, '-'),
     },
   ],
   rtMarker: [
@@ -375,7 +416,17 @@ const DX2 = {
     {
       key: 'time',
       showKey: false,
-      metaDataTag: '_acquisitionTime',
+      metaDataTag: 'acquisitionTime',
+      tagRender: ({ meta }) => {
+        const { acquisitionTime: { hours, minutes, seconds } = {} } = meta;
+
+        if (!hours || !minutes || !seconds) return '';
+
+        return [hours, minutes, seconds]
+          .map(v => String(v).padStart(2, 0))
+          .join(':')
+          .replace(/\/{2,}/, ':');
+      },
     },
     {
       key: 'descriptionLite',
@@ -385,7 +436,10 @@ const DX2 = {
     {
       key: 'imageNumber',
       showKey: false,
-      tagRender: ({ series, meta }) => [`<i>${meta.instanceNumber}</i>`, series.loadIds.length].join('/').replace(/\/{2,}/, '/'),
+      tagRender: ({ study, meta }) =>
+        [study?.studyID || meta.studyID, meta.seriesNumber, `<tmpl>${meta.instanceNumber}</tmpl>`]
+          .join('-')
+          .replace(/-{2,}/, '-'),
     },
   ],
   rtMarker: [
@@ -460,12 +514,25 @@ const MR = {
     {
       key: 'time',
       showKey: false,
-      metaDataTag: '_acquisitionTime',
+      metaDataTag: 'acquisitionTime',
+      tagRender: ({ meta }) => {
+        const { acquisitionTime: { hours, minutes, seconds } = {} } = meta;
+
+        if (!hours || !minutes || !seconds) return '';
+
+        return [hours, minutes, seconds]
+          .map(v => String(v).padStart(2, 0))
+          .join(':')
+          .replace(/\/{2,}/, ':');
+      },
     },
     {
       key: 'imageNumber',
       showKey: false,
-      tagRender: ({ series, meta }) => [`<i>${meta.instanceNumber}</i>`, series.loadIds.length].join('/').replace(/\/{2,}/, '/'),
+      tagRender: ({ study, meta }) =>
+        [study?.studyID || meta.studyID, meta.seriesNumber, `<tmpl>${meta.instanceNumber}</tmpl>`]
+          .join('-')
+          .replace(/-{2,}/, '-'),
     },
   ],
   rtMarker: [
@@ -538,7 +605,17 @@ const MR2 = {
     {
       key: 'time',
       showKey: false,
-      metaDataTag: '_acquisitionTime',
+      metaDataTag: 'acquisitionTime',
+      tagRender: ({ meta }) => {
+        const { acquisitionTime: { hours, minutes, seconds } = {} } = meta;
+
+        if (!hours || !minutes || !seconds) return '';
+
+        return [hours, minutes, seconds]
+          .map(v => String(v).padStart(2, 0))
+          .join(':')
+          .replace(/\/{2,}/, ':');
+      },
     },
     {
       key: 'descriptionLite',
@@ -548,7 +625,10 @@ const MR2 = {
     {
       key: 'imageNumber',
       showKey: false,
-      tagRender: ({ series, meta }) => [`<i>${meta.instanceNumber}</i>`, series.loadIds.length].join('/').replace(/\/{2,}/, '/'),
+      tagRender: ({ study, meta }) =>
+        [study?.studyID || meta.studyID, meta.seriesNumber, `<tmpl>${meta.instanceNumber}</tmpl>`]
+          .join('-')
+          .replace(/-{2,}/, '-'),
     },
   ],
   rtMarker: [
@@ -609,7 +689,7 @@ export default {
     description: '版权所有，未经授权的复制或传播本内容将受到民事和刑事处罚。',
   },
   imageTypeDefault: 0,
-  isDesensitize: true,
+  isDesensitize: false,
   losslessMPR: true,
   syncLabels: true,
   syncMarkersImage: true,
