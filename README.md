@@ -224,7 +224,7 @@
     ...
     <!-- 可以在locale/目录新增、自定义语言包导入，注：已内置中文语言，再次导入会覆盖内置。 -->
     <script src="./dicomviewer-cornerstone/locale/en.js">
-    <!-- 已废弃无需手动导入！！！改为懒加载！！！启用MPR功能请导入该模块，不启用请勿导入，以免造成资源加载浪费，注：defer可以优化加载避免阻塞 -->
+    <!-- V1.7.3已废弃,无需手动导入,改为懒加载！启用MPR功能请导入该模块，不启用请勿导入，以免造成资源加载浪费，注：defer可以优化加载避免阻塞 -->
     <!-- <script defer src="./dicomviewer-cornerstone/webDicomViewMPR.min.js"></script> -->
     <!-- 核心基础模块，请结合实际情况放在所有script标签最未处，以免造成不必要的阻塞 -->
     <script src="./dicomviewer-cornerstone/WebDicomView.min.js"></script>
@@ -236,54 +236,54 @@
             hospID as string,
             studyUID: string,
             { /* 可选参数 */
-                aroundTagsConfigs?:AroundTagsConfigs, /* 自定义四角信息，谨慎配置，详情见下方：aroundTagsConfigs配置，注：V1.9.0开始支持; V.10.0开始不建议继续使用，现已转入hangingSetting配置 */
-                bedboardSegmentThreshold?:number, /* 去床阈值，默认15,支持范围1-30 注： V1.8.0开始支持*/
-                cacheImagesDefault?:boolean, /* 是否启用缓存，默认启用 */
-                clientType?:number, /* 客户端类型，默认值是0 */
-                concurrentNetwork?:number, /* 下载并发数，默认6, 注： V1.7.3开始支持 */
-                departCode?:string,
-                fullLoad?:boolean, /* 开启全部序列下载，默认序列按需下载 */
-                GPUBenchmarksURL?:"./dicomviewer-cornerstone/GPUbenchmarks", /* 1.4.1废弃！GPUBenchmarks路径，默认无需配置,注：系统会自动补全，如提示GPU路径不存在，结合实际调整路径 */
-                hangingSetting?:HangingSetting, /* 挂片配置，谨慎配置，详情见下方：hangingSetting挂片模块文档指引，注：V1.10.0开始支持 */
-                hangingSettingTabBar?:TabBar,/* 挂片菜单显示配置，详情见下方：hangingSetting挂片模块文档指引，注：V1.10.0开始支持 */
-                imageTypeDefault?:-1 | 0 | 1, /* -1 png有损模式 0 png无损模式 1 dcm专业模式，注：PC 默认专业模式 mobile 默认：无损模式, 用户自主选择后以用户选择为默认 */
-                isDesensitize?:boolean, /* 是否脱敏，默认false */
-                isInternal?:boolean, /* 获取影像路径内外网，默认外网云存储 */
-                isKeyImage?:boolean, /* 是否关键影像，默认false */
+                aroundTagsConfigs?: AroundTagsConfigs, /* 自定义四角信息，谨慎配置，详情见下方：aroundTagsConfigs配置，注：V1.9.0开始支持; V.10.0开始不建议继续使用，现已转入hangingSetting配置 */
+                bedboardSegmentThreshold?: number, /* 去床阈值，默认15,支持范围1-30 注： V1.8.0开始支持*/
+                cacheImagesDefault?: boolean, /* 是否启用缓存，默认启用 */
+                clientType?: number, /* 客户端类型，默认值是0 */
+                concurrentNetwork?: number, /* 下载并发数，默认6, 注： V1.7.3开始支持 */
+                departCode?: string, /* 部门编码，默认空 */
+                fullLoad?: boolean, /* 开启全部序列下载，默认序列按需下载 */
+                GPUBenchmarksURL?:  "./dicomviewer-cornerstone/GPUbenchmarks", /* 1.4.1废弃！GPUBenchmarks路径，默认无需配置,注：系统会自动补全，如提示GPU路径不存在，结合实际调整路径 */
+                hangingSetting?: HangingSetting, /* 挂片配置，谨慎配置，详情见下方：hangingSetting挂片模块文档指引，注：V1.10.0开始支持 */
+                hangingSettingTabBar?: TabBar,/* 挂片菜单显示配置，详情见下方：hangingSetting挂片模块文档指引，注：V1.10.0开始支持 */
+                imageTypeDefault?: -1 | 0 | 1, /* -1 png有损模式 0 png无损模式 1 dcm专业模式，注：PC 默认专业模式 mobile 默认：无损模式, 用户自主选择后以用户选择为默认 */
+                isDesensitize?: boolean, /* 是否脱敏，默认false */
+                isInternal?: boolean, /* 获取影像路径内外网，默认外网云存储 */
+                isKeyImage?: boolean, /* 是否关键影像，默认false */
                 languageDefault?: string, /* 语言，例：'zh-CN' | 'en'，注：默认无需配置!系统自动检测，可按下方文档任意扩展语言包 */
-                logoURL?:url | base64 | ' ', /*  注：' '(内有空格)为不显示logo */
-                losslessMPR?:boolean, /* MPR无损渲染，默认true,注：V1.4.1开始支持*/
+                logoURL?: url | base64 | ' ', /*  注：' '(内有空格)为不显示logo */
+                losslessMPR?: boolean, /* MPR无损渲染，默认true,注：V1.4.1开始支持*/
                 minDecodeSpeed?: number; /* 最小解码速度预警，0为关闭，默认2000KB/s。注：V1.7.3开始支持 */
                 minLoadSpeed?: number; /* 最小下载速度预警，0为关闭，默认120KB/s。注：V1.7.3开始支持 */
-                minRenderCountMPR3D?:number, /* MPR/3D最小渲染数量 */
-                publicPath?:'dicomviewer-cornerstone/', /* 推荐使用window.staticResourceURLPrefix代替！ 公共目录路径，默认情况无需配置，系统默认推断，注： V1.4.1 开始支持，代替GPUBenchmarksURL */
-                saveOriginAllMetaData?:boolean, /* 是否保存后端metaData完整源数据，默认false，注：V1.9.0开始支持 */
-                scrollPreload?:boolean, /* 是否启用滚动加载，默认启用。 注：V1.7.3以后fullLoad=true scrollPreload关闭 */
-                scrollPreloadNum?:number, /* 滚动预加载数量, 默认9 注：scrollPreload为true生效*/
-                seriesLayoutDefault?:{x:number, y:number}  /* 序列布局，注：配置后，内部默认配置失效；注：V1.10.0开始废弃，改用挂片配置：hangingSetting*/
-                seriesPreFetchNum?:number, /* 各序列初始预加载数量, 默认0,0为自动 */
-                sharedArrayBuffer?:boolean, /* 开启MPR渲染加速，默认自动检测系统支持,注： V1.7 开始废弃 **/
-                syncLabels?:boolean, /* 保存标注，默认false,注： V1.5开始支持*/
-                syncMarkersImage?:boolean, /* 保存关键影像，默认false,注： V1.5开始支持*/
-                token?:string,
-                aboutUs?:{
-                    copyright?:string | false, /* 公司名称; 注：false为不显示 */
-                    description?:string | false, /* 简介; 注：false为不显示 */
-                    imgURl?:url | base64 | false, /* 注：默认无需配置!,false为不显示 */
-                    tel?:string | false, /* 电话; 注：false为不显示 */
-                    version?:string | false, /* 版本号，例如1.1.1_20230101; 注：默认无需配置!,false为不显示 */
+                minRenderCountMPR3D?: number, /* MPR/3D最小渲染数量 */
+                publicPath?: 'dicomviewer-cornerstone/', /* 推荐使用window.staticResourceURLPrefix代替！ 公共目录路径，默认情况无需配置，系统默认推断，注： V1.4.1 开始支持，代替GPUBenchmarksURL */
+                saveOriginAllMetaData?: boolean, /* 是否保存后端metaData完整源数据，默认false，注：V1.9.0开始支持 */
+                scrollPreload?: boolean, /* 是否启用滚动加载，默认启用。 注：V1.7.3以后fullLoad=true scrollPreload关闭 */
+                scrollPreloadNum?: number, /* 滚动预加载数量, 默认9 注：scrollPreload为true生效*/
+                seriesLayoutDefault?: {x: number, y: number}  /* 序列布局，注：配置后，内部默认配置失效；注：V1.10.0开始废弃，改用挂片配置：hangingSetting*/
+                seriesPreFetchNum?: number, /* 各序列初始预加载数量, 默认0,0为自动 */
+                sharedArrayBuffer?: boolean, /* 开启MPR渲染加速，默认自动检测系统支持,注： V1.7 开始废弃 **/
+                syncLabels?: boolean, /* 保存标注，默认false,注： V1.5开始支持*/
+                syncMarkersImage?: boolean, /* 保存关键影像，默认false,注： V1.5开始支持*/
+                token?: string,
+                aboutUs?: {
+                    copyright?: string | false, /* 公司名称; 注：false为不显示 */
+                    description?: string | false, /* 简介; 注：false为不显示 */
+                    imgURl?: url | base64 | false, /* 注：默认无需配置!,false为不显示 */
+                    tel?: string | false, /* 电话; 注：false为不显示 */
+                    version?: string | false, /* 版本号，例如1.1.1_20230101; 注：默认无需配置!,false为不显示 */
                 },
-                AI?:{
-                    active?:boolean, /* AI按钮高亮为选中，显示AI结果 默认false */
-                    getParseHandler:({ studyArr, departCode, hospID }) => { /* 申请AI分析，执行业务层事件 */
-                    jumpFirstAI?:boolean, /* 跳转到序列首张AI 默认false */
-                    parseSuccess?:boolean, /* 已获得AI分析结果 默认false，注：设为false或未配置时，点击AI按键会执行=》getParseHandler函数 */
+                AI?: {
+                    active?: boolean, /* AI按钮高亮为选中，显示AI结果 默认false */
+                    getParseHandler: ({ studyArr, departCode, hospID }) => { /* 申请AI分析，执行业务层事件 */
+                    jumpFirstAI?: boolean, /* 跳转到序列首张AI 默认false */
+                    parseSuccess?: boolean, /* 已获得AI分析结果 默认false，注：设为false或未配置时，点击AI按键会执行=》getParseHandler函数 */
                     resultURL: url,/* AI分析结果接口地址，注：parseSuccess设为false时可以不配置*/
                         /*
                         业务层获得AI分析结果后
                         可执行以下方法打开AI(结合实际情况选择)
                         new WebDicomView(...,{
-                            AI:{
+                            AI: {
                                 ...
                             }
                         })
@@ -303,38 +303,38 @@
                     }
                 },
                 closePageResetDefault?: { /* 关闭页面恢复默认设置 */
-                    cacheImages?:boolean, /* 缓存 */
-                    imageType?:boolean, /* 影像模式 */
+                    cacheImages?: boolean, /* 缓存 */
+                    imageType?: boolean, /* 影像模式 */
                     tackSynchronizerType?: boolean, /* 滚动联动模式,注： V1.5 开始支持 */
                 },
-                theme?:{
-                    'background-active'?:string, /* 背景选中色  例：rgba(0,0,0,1) or '#000' */
-                    'background-hover'?:string, /* 背景hover色  例：rgba(0,0,0,1) or '#000' */
-                    background?:string, /* 背景色  例：rgba(0,0,0) or '#000' */
-                    color?:string, /* 文字色  例：rgba(0,0,0,1) or '#000' */
-                    color2?:string, /* 辅助、其他色  例：rgba(0,0,0,1) or '#000' */
+                theme?: {
+                    'background-active'?: string, /* 背景选中色  例：rgba(0,0,0,1) or '#000' */
+                    'background-hover'?: string, /* 背景hover色  例：rgba(0,0,0,1) or '#000' */
+                    background?: string, /* 背景色  例：rgba(0,0,0) or '#000' */
+                    color?: string, /* 文字色  例：rgba(0,0,0,1) or '#000' */
+                    color2?: string, /* 辅助、其他色  例：rgba(0,0,0,1) or '#000' */
                 },
-                toolsBar?:{
-                    aboutUsVisibility?:boolean, /* 关于我们显示隐藏，默认显示*/
-                    AIVisibility?:boolean, /* AI显示隐藏，根据是否配置AI参数自动判断*/
-                    enhanceVisibility?:boolean, /* 增强显示隐藏，默认隐藏，不加载opencvopencv模块*/
-                    fasModeVisibility?:boolean /* 有损模式显示隐藏，默认显示，平台不支持压缩则关闭该模式选项 */,
-                    fastImageModeVisibility?:boolean /* 废弃改为 fasModeVisibility*/,
-                    imageModeVisibility?:boolean:/* 模式按钮显示隐藏，默认显示 */,
-                    imageStitchingVisibility?:boolean /* DR拼接显示隐藏，默认显示，注： V1.7.3 开始支持 */
-                    languageVisibility?:boolean /* 语言显示隐藏，默认隐藏 */
-                    majModeVisibility?:boolean /* 专业模式显示隐藏，默认隐藏 ，1.4.0 改为默认隐藏*/,
-                    MPRFusionVisibility?:boolean /*  MPR融合显示隐藏*，默认显示/,
-                    MPRVisibility?:boolean, /* MPR显示隐藏，默认显示 */
-                    navigationBottomLayout:?:boolean, /* 序列栏底部显示，默认true,V1.10.0开始废弃,改为挂片设置 */
-                    printVisibility?:boolean /* 打印胶片显示隐藏，默认隐藏，注： V1.6.0 开始支持 */
-                    seriesBarVisibility?:boolean,/* 序列栏按钮显示隐藏，默认显示 */
-                    staModeVisibility?:boolean /* 无损模式显示隐藏，默认显示 */,
-                    VRTVisibility?:boolean, /* 3D显示隐藏，默认调取接口判断*/
-                    customMenu?:{ /* 自定义菜单，谨慎配置，详情见下方：customMenu配置  */
-                        main?:ToolData[], /* 2D菜单 */
-                        MPR?:ToolData[], /* MPR菜单 */
-                        VRT?:ToolData[] /* 3D菜单 */
+                toolsBar?: {
+                    aboutUsVisibility?: boolean, /* 关于我们显示隐藏，默认显示*/
+                    AIVisibility?: boolean, /* AI显示隐藏，根据是否配置AI参数自动判断*/
+                    enhanceVisibility?: boolean, /* 增强显示隐藏，默认隐藏，不加载opencvopencv模块*/
+                    fasModeVisibility?: boolean /* 有损模式显示隐藏，默认显示，平台不支持压缩则关闭该模式选项 */,
+                    fastImageModeVisibility?: boolean /* 废弃改为 fasModeVisibility*/,
+                    imageModeVisibility?: boolean: /* 模式按钮显示隐藏，默认显示 */,
+                    imageStitchingVisibility?: boolean /* DR拼接显示隐藏，默认显示，注： V1.7.3 开始支持 */
+                    languageVisibility?: boolean /* 语言显示隐藏，默认隐藏 */
+                    majModeVisibility?: boolean /* 专业模式显示隐藏，默认隐藏 ，1.4.0 改为默认隐藏*/,
+                    MPRFusionVisibility?: boolean /*  MPR融合显示隐藏*，默认显示/,
+                    MPRVisibility?: boolean, /* MPR显示隐藏，默认显示 */
+                    navigationBottomLayout: ?: boolean, /* 序列栏底部显示，默认true,V1.10.0开始废弃,改为挂片设置 */
+                    printVisibility?: boolean /* 打印胶片显示隐藏，默认隐藏，注： V1.6.0 开始支持 */
+                    seriesBarVisibility?: boolean,/* 序列栏按钮显示隐藏，默认显示 */
+                    staModeVisibility?: boolean /* 无损模式显示隐藏，默认显示 */,
+                    VRTVisibility?: boolean, /* 3D显示隐藏，默认调取接口判断*/
+                    customMenu?: { /* 自定义菜单，谨慎配置，详情见下方：customMenu配置  */
+                        main?: ToolData[], /* 2D菜单 */
+                        MPR?: ToolData[], /* MPR菜单 */
+                        VRT?: ToolData[] /* 3D菜单 */
                     }
                 },
             }
@@ -381,7 +381,7 @@
 - 默认配置打印(请以此为模板进行修改！！！)：
 
 ```
-    console.log(WebDicomView.getMenuDefault(isI18n?:boolean))<!-- isI18n：是否返回国际化菜单，不传则自动判断 ==> 检测加载了多个语言包&&(设置了默认语言||开启了语言菜单显示)）） -->
+    console.log(WebDicomView.getMenuDefault(isI18n?: boolean))<!-- isI18n：是否返回国际化菜单，不传则自动判断 ==> 检测加载了多个语言包&&(设置了默认语言||开启了语言菜单显示)）） -->
 ```
 
 - 类型声明
@@ -488,11 +488,13 @@ type AroundTagsConfigs = { /* 会与内置默认配置合并 */
 - 可以将json文件作为基础配置放置于服务器，或提供接口服务，避免业务耦合
 
 ```
-const config = await fetch("/webDicomViewConfig.json");
+const config = await (await fetch('/example/config.json')).json();
+const config2 = (await import('/example/config.js')).default;
 const options = {};
 
 new WebDicomView(document.querySelector("#app"), wadoURL, hospID, studyUID, {
-  ...(await config.json()),
+  ...config,
+  ...config2,
   ...options,
 });
 ```
