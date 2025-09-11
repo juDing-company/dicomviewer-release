@@ -1,695 +1,11 @@
+/*! Version: 1.10.0.250911 | Build time: 2025/9/11 10:07:43 */
 /** @prettier  */
-
-const defaultConfig = {
-  ltMarker: [
-    {
-      key: 'name',
-      studyTag: 'name',
-      metaDataTag: 'patientName',
-      DICOMTag: 0x0010010,
-    },
-    {
-      key: 'ID',
-      studyTag: 'patientID',
-      metaDataTag: 'patientID',
-    },
-    {
-      key: 'modality',
-      metaDataTag: 'modality',
-    },
-    {
-      key: 'sex',
-      metaDataTag: '_patientSex',
-    },
-    {
-      key: 'age',
-      metaDataTag: '_patientAge',
-    },
-  ],
-  rtMarker: [
-    {
-      key: 'date',
-      metaDataTag: '_acquisitionDate',
-    },
-    {
-      key: 'imageNumber',
-      tagRender: ({ study, meta }) =>
-        [study?.studyID || meta.studyID, meta.seriesNumber, `<tmpl>${meta.instanceNumber}</tmpl>`]
-          .join('-')
-          .replace(/-{2,}/, '-'),
-    },
-    {
-      key: 'synchronizer',
-      value: '',
-      showKey: false,
-    },
-  ],
-  lbMarker: [
-    {
-      showKey: false,
-      tagRender: ({ metaData, imageId }) => metaData.get('_referringPhysicianModule', imageId),
-    },
-    {
-      key: 'KVP',
-      metaDataTag: 'KVP',
-    },
-    {
-      key: 'thickness',
-      metaDataTag: 'sliceThickness',
-    },
-    {
-      key: 'descriptionLite',
-      metaDataTag: 'seriesDescription',
-    },
-  ],
-  rbMarker: [
-    {
-      key: 'cruxDesc',
-      value: '',
-      showKey: false,
-    },
-    {
-      key: 'scale',
-      value: '',
-    },
-    {
-      key: 'windowCenter',
-      value: '',
-    },
-    {
-      key: 'windowWidth',
-      value: '',
-    },
-    {
-      key: 'orgname',
-      showKey: false,
-      studyTag: 'orgname',
-      metaDataTag: 'institutionName',
-    },
-  ],
-};
-const CT = {
-  ltMarker: [
-    {
-      key: 'ID',
-      showKey: false,
-      studyTag: 'patientID',
-      metaDataTag: 'patientID',
-    },
-    {
-      key: 'name',
-      showKey: false,
-      studyTag: 'name',
-      metaDataTag: 'patientName',
-    },
-    {
-      showKey: false,
-      tagRender: ({ meta }) => [meta.patientBirth, meta._patientSex, meta._patientAge].join('/').replace(/\/{2,}/, '/'),
-    },
-    {
-      key: 'date',
-      showKey: false,
-      metaDataTag: '_acquisitionDate',
-    },
-    {
-      key: 'time',
-      showKey: false,
-      metaDataTag: 'acquisitionTime',
-      tagRender: ({ meta }) => {
-        const { acquisitionTime: { hours, minutes, seconds } = {} } = meta;
-
-        if (!hours || !minutes || !seconds) return '';
-
-        return [hours, minutes, seconds]
-          .map(v => String(v).padStart(2, 0))
-          .join(':')
-          .replace(/\/{2,}/, ':');
-      },
-    },
-    {
-      key: 'imageNumber',
-      showKey: false,
-      tagRender: ({ study, meta }) =>
-        [study?.studyID || meta.studyID, meta.seriesNumber, `<tmpl>${meta.instanceNumber}</tmpl>`]
-          .join('-')
-          .replace(/-{2,}/, '-'),
-    },
-  ],
-  rtMarker: [
-    {
-      key: 'orgname',
-      showKey: false,
-      studyTag: 'orgname',
-      metaDataTag: 'institutionName',
-    },
-    {
-      showKey: false,
-      metaDataTag: 'manufacturer',
-    },
-    {
-      showKey: false,
-      metaDataTag: 'svn',
-    },
-  ],
-  lbMarker: [
-    {
-      key: 'KVP',
-      showKey: false,
-      metaDataTag: 'KVP',
-    },
-    {
-      key: 'thickness',
-      showKey: false,
-      metaDataTag: 'sliceThickness',
-    },
-  ],
-  rbMarker: [
-    {
-      key: 'cruxDesc',
-      value: '',
-      showKey: false,
-    },
-    {
-      key: 'scale',
-      showKey: false,
-      value: '',
-    },
-    {
-      key: 'windowCenter',
-      showKey: false,
-      value: '',
-    },
-    {
-      key: 'windowWidth',
-      showKey: false,
-      value: '',
-    },
-  ],
-};
-const CT2 = {
-  ltMarker: [
-    {
-      key: 'ID',
-      showKey: false,
-      studyTag: 'patientID',
-      metaDataTag: 'patientID',
-    },
-    {
-      key: 'name',
-      showKey: false,
-      studyTag: 'name',
-      metaDataTag: 'patientName',
-    },
-    {
-      showKey: false,
-      tagRender: ({ meta }) => [meta.patientBirth, meta._patientSex, meta._patientAge].join('/').replace(/\/{2,}/, '/'),
-    },
-    {
-      showKey: false,
-      metaDataTag: 'studyID',
-    },
-    {
-      key: 'date',
-      showKey: false,
-      metaDataTag: '_acquisitionDate',
-    },
-    {
-      key: 'time',
-      showKey: false,
-      metaDataTag: 'acquisitionTime',
-      tagRender: ({ meta }) => {
-        const { acquisitionTime: { hours, minutes, seconds } = {} } = meta;
-
-        if (!hours || !minutes || !seconds) return '';
-
-        return [hours, minutes, seconds]
-          .map(v => String(v).padStart(2, 0))
-          .join(':')
-          .replace(/\/{2,}/, ':');
-      },
-    },
-    {
-      key: 'descriptionLite',
-      showKey: false,
-      metaDataTag: 'seriesDescription',
-    },
-    {
-      key: 'imageNumber',
-      showKey: false,
-      tagRender: ({ study, meta }) =>
-        [study?.studyID || meta.studyID, meta.seriesNumber, `<tmpl>${meta.instanceNumber}</tmpl>`]
-          .join('-')
-          .replace(/-{2,}/, '-'),
-    },
-  ],
-  rtMarker: [
-    {
-      key: 'orgname',
-      showKey: false,
-      studyTag: 'orgname',
-      metaDataTag: 'institutionName',
-    },
-    {
-      showKey: false,
-      metaDataTag: 'manufacturer',
-    },
-    {
-      showKey: false,
-      metaDataTag: 'svn',
-    },
-  ],
-  lbMarker: [
-    {
-      key: 'KVP',
-      showKey: false,
-      metaDataTag: 'KVP',
-    },
-    {
-      key: 'thickness',
-      showKey: false,
-      metaDataTag: 'sliceThickness',
-    },
-  ],
-  rbMarker: [
-    {
-      key: 'cruxDesc',
-      value: '',
-      showKey: false,
-    },
-    {
-      key: 'scale',
-      showKey: false,
-      value: '',
-    },
-    {
-      key: 'windowCenter',
-      showKey: false,
-      value: '',
-    },
-    {
-      key: 'windowWidth',
-      showKey: false,
-      value: '',
-    },
-  ],
-};
-const DX = {
-  ltMarker: [
-    {
-      key: 'ID',
-      showKey: false,
-      studyTag: 'patientID',
-      metaDataTag: 'patientID',
-    },
-    {
-      key: 'name',
-      showKey: false,
-      studyTag: 'name',
-      metaDataTag: 'patientName',
-    },
-    {
-      showKey: false,
-      tagRender: ({ meta }) => [meta.patientBirth, meta._patientSex, meta._patientAge].join('/').replace(/\/{2,}/, '/'),
-    },
-    {
-      key: 'date',
-      showKey: false,
-      metaDataTag: '_acquisitionDate',
-    },
-    {
-      key: 'time',
-      showKey: false,
-      metaDataTag: 'acquisitionTime',
-      tagRender: ({ meta }) => {
-        const { acquisitionTime: { hours, minutes, seconds } = {} } = meta;
-
-        if (!hours || !minutes || !seconds) return '';
-
-        return [hours, minutes, seconds]
-          .map(v => String(v).padStart(2, 0))
-          .join(':')
-          .replace(/\/{2,}/, ':');
-      },
-    },
-    {
-      key: 'imageNumber',
-      showKey: false,
-      tagRender: ({ study, meta }) =>
-        [study?.studyID || meta.studyID, meta.seriesNumber, `<tmpl>${meta.instanceNumber}</tmpl>`]
-          .join('-')
-          .replace(/-{2,}/, '-'),
-    },
-  ],
-  rtMarker: [
-    {
-      key: 'orgname',
-      showKey: false,
-      studyTag: 'orgname',
-      metaDataTag: 'institutionName',
-    },
-    {
-      showKey: false,
-      metaDataTag: 'manufacturer',
-    },
-    {
-      showKey: false,
-      metaDataTag: 'svn',
-    },
-  ],
-  lbMarker: [
-    {
-      key: 'KVP',
-      showKey: false,
-      metaDataTag: 'KVP',
-    },
-  ],
-  rbMarker: [
-    {
-      key: 'cruxDesc',
-      value: '',
-      showKey: false,
-    },
-    {
-      key: 'scale',
-      showKey: false,
-      value: '',
-    },
-    {
-      key: 'windowCenter',
-      showKey: false,
-      value: '',
-    },
-    {
-      key: 'windowWidth',
-      showKey: false,
-      value: '',
-    },
-  ],
-};
-const DX2 = {
-  ltMarker: [
-    {
-      key: 'ID',
-      showKey: false,
-      studyTag: 'patientID',
-      metaDataTag: 'patientID',
-    },
-    {
-      key: 'name',
-      showKey: false,
-      studyTag: 'name',
-      metaDataTag: 'patientName',
-    },
-    {
-      showKey: false,
-      tagRender: ({ meta }) => [meta.patientBirth, meta._patientSex, meta._patientAge].join('/').replace(/\/{2,}/, '/'),
-    },
-    {
-      showKey: false,
-      metaDataTag: 'studyID',
-    },
-    {
-      key: 'date',
-      showKey: false,
-      metaDataTag: '_acquisitionDate',
-    },
-    {
-      key: 'time',
-      showKey: false,
-      metaDataTag: 'acquisitionTime',
-      tagRender: ({ meta }) => {
-        const { acquisitionTime: { hours, minutes, seconds } = {} } = meta;
-
-        if (!hours || !minutes || !seconds) return '';
-
-        return [hours, minutes, seconds]
-          .map(v => String(v).padStart(2, 0))
-          .join(':')
-          .replace(/\/{2,}/, ':');
-      },
-    },
-    {
-      key: 'descriptionLite',
-      showKey: false,
-      metaDataTag: 'seriesDescription',
-    },
-    {
-      key: 'imageNumber',
-      showKey: false,
-      tagRender: ({ study, meta }) =>
-        [study?.studyID || meta.studyID, meta.seriesNumber, `<tmpl>${meta.instanceNumber}</tmpl>`]
-          .join('-')
-          .replace(/-{2,}/, '-'),
-    },
-  ],
-  rtMarker: [
-    {
-      key: 'orgname',
-      showKey: false,
-      studyTag: 'orgname',
-      metaDataTag: 'institutionName',
-    },
-    {
-      showKey: false,
-      metaDataTag: 'manufacturer',
-    },
-    {
-      showKey: false,
-      metaDataTag: 'svn',
-    },
-  ],
-  lbMarker: [
-    {
-      key: 'KVP',
-      showKey: false,
-      metaDataTag: 'KVP',
-    },
-  ],
-  rbMarker: [
-    {
-      key: 'cruxDesc',
-      value: '',
-      showKey: false,
-    },
-    {
-      key: 'scale',
-      showKey: false,
-      value: '',
-    },
-    {
-      key: 'windowCenter',
-      showKey: false,
-      value: '',
-    },
-    {
-      key: 'windowWidth',
-      showKey: false,
-      value: '',
-    },
-  ],
-};
-const MR = {
-  ltMarker: [
-    {
-      key: 'ID',
-      showKey: false,
-      studyTag: 'patientID',
-      metaDataTag: 'patientID',
-    },
-    {
-      key: 'name',
-      showKey: false,
-      studyTag: 'name',
-      metaDataTag: 'patientName',
-    },
-    {
-      showKey: false,
-      tagRender: ({ meta }) => [meta.patientBirth, meta._patientSex, meta._patientAge].join('/').replace(/\/{2,}/, '/'),
-    },
-    {
-      key: 'date',
-      showKey: false,
-      metaDataTag: '_acquisitionDate',
-    },
-    {
-      key: 'time',
-      showKey: false,
-      metaDataTag: 'acquisitionTime',
-      tagRender: ({ meta }) => {
-        const { acquisitionTime: { hours, minutes, seconds } = {} } = meta;
-
-        if (!hours || !minutes || !seconds) return '';
-
-        return [hours, minutes, seconds]
-          .map(v => String(v).padStart(2, 0))
-          .join(':')
-          .replace(/\/{2,}/, ':');
-      },
-    },
-    {
-      key: 'imageNumber',
-      showKey: false,
-      tagRender: ({ study, meta }) =>
-        [study?.studyID || meta.studyID, meta.seriesNumber, `<tmpl>${meta.instanceNumber}</tmpl>`]
-          .join('-')
-          .replace(/-{2,}/, '-'),
-    },
-  ],
-  rtMarker: [
-    {
-      key: 'orgname',
-      showKey: false,
-      studyTag: 'orgname',
-      metaDataTag: 'institutionName',
-    },
-    {
-      showKey: false,
-      metaDataTag: 'manufacturer',
-    },
-    {
-      showKey: false,
-      metaDataTag: 'svn',
-    },
-  ],
-  lbMarker: [],
-  rbMarker: [
-    {
-      key: 'cruxDesc',
-      value: '',
-      showKey: false,
-    },
-    {
-      key: 'scale',
-      showKey: false,
-      value: '',
-    },
-    {
-      key: 'windowCenter',
-      showKey: false,
-      value: '',
-    },
-    {
-      key: 'windowWidth',
-      showKey: false,
-      value: '',
-    },
-  ],
-};
-const MR2 = {
-  ltMarker: [
-    {
-      key: 'ID',
-      showKey: false,
-      studyTag: 'patientID',
-      metaDataTag: 'patientID',
-    },
-    {
-      key: 'name',
-      showKey: false,
-      studyTag: 'name',
-      metaDataTag: 'patientName',
-    },
-    {
-      showKey: false,
-      tagRender: ({ meta }) => [meta.patientBirth, meta._patientSex, meta._patientAge].join('/').replace(/\/{2,}/, '/'),
-    },
-    {
-      showKey: false,
-      metaDataTag: 'studyID',
-    },
-    {
-      key: 'date',
-      showKey: false,
-      metaDataTag: '_acquisitionDate',
-    },
-    {
-      key: 'time',
-      showKey: false,
-      metaDataTag: 'acquisitionTime',
-      tagRender: ({ meta }) => {
-        const { acquisitionTime: { hours, minutes, seconds } = {} } = meta;
-
-        if (!hours || !minutes || !seconds) return '';
-
-        return [hours, minutes, seconds]
-          .map(v => String(v).padStart(2, 0))
-          .join(':')
-          .replace(/\/{2,}/, ':');
-      },
-    },
-    {
-      key: 'descriptionLite',
-      showKey: false,
-      metaDataTag: 'seriesDescription',
-    },
-    {
-      key: 'imageNumber',
-      showKey: false,
-      tagRender: ({ study, meta }) =>
-        [study?.studyID || meta.studyID, meta.seriesNumber, `<tmpl>${meta.instanceNumber}</tmpl>`]
-          .join('-')
-          .replace(/-{2,}/, '-'),
-    },
-  ],
-  rtMarker: [
-    {
-      key: 'orgname',
-      showKey: false,
-      studyTag: 'orgname',
-      metaDataTag: 'institutionName',
-    },
-    {
-      showKey: false,
-      metaDataTag: 'manufacturer',
-    },
-    {
-      showKey: false,
-      metaDataTag: 'svn',
-    },
-  ],
-  lbMarker: [],
-  rbMarker: [
-    {
-      key: 'cruxDesc',
-      value: '',
-      showKey: false,
-    },
-    {
-      key: 'scale',
-      showKey: false,
-      value: '',
-    },
-    {
-      key: 'windowCenter',
-      showKey: false,
-      value: '',
-    },
-    {
-      key: 'windowWidth',
-      showKey: false,
-      value: '',
-    },
-  ],
-};
-const hr = aroundTagsConfig => {
-  return {
-    ...aroundTagsConfig,
-    rtMarker: [
-      ...aroundTagsConfig.rtMarker,
-      {
-        showKey: false,
-        value: 'CYHR',
-      },
-    ],
-  };
-};
-
 export default {
   aboutUs: {
     description: '版权所有，未经授权的复制或传播本内容将受到民事和刑事处罚。',
   },
   imageTypeDefault: 0,
-  isDesensitize: false,
+  isDesensitize: true,
   losslessMPR: true,
   syncLabels: true,
   syncMarkersImage: true,
@@ -700,17 +16,207 @@ export default {
     enhanceVisibility: true,
     languageVisibility: true,
     majModeVisibility: true,
-    navigationBottomLayout: true,
     printVisibility: true,
     seriesBarVisibility: true,
   },
-  aroundTagsConfigs: {
-    default: defaultConfig,
-    CT: hr(CT),
-    MR: hr(MR),
-    DX: hr(DX),
-    DR: hr(DX),
-    MG: DX,
-    RF: DX,
+  /*   aroundTagsConfigs: {
+    defaultDisable: {
+      ltMarker: [
+        {
+          key: 'name',
+          studyTag: 'name',
+          metaDataTag: 'patientName',
+          DICOMTag: 0x00100010,
+        },
+        {
+          key: 'ID',
+          studyTag: 'patientID',
+          metaDataTag: 'patientID',
+        },
+        {
+          key: 'modality',
+          metaDataTag: 'modality',
+        },
+        {
+          key: 'sex',
+          metaDataTag: '_patientSex',
+        },
+        {
+          key: 'age',
+          metaDataTag: '_patientAge',
+        },
+      ],
+      rtMarker: [
+        {
+          key: 'date',
+          metaDataTag: '_acquisitionDate',
+        },
+        {
+          key: 'imageNumber',
+          tagRender: ({ study, meta }) =>
+            [study?.studyID || meta.studyID, meta.seriesNumber, meta.instanceNumber].join('-').replace(/-{2,}/, '-'),
+        },
+        {
+          key: 'synchronizer',
+          value: '',
+          showKey: false,
+        },
+      ],
+      lbMarker: [
+        {
+          key: '',
+          showKey: false,
+          tagRender: ({ metaData, imageId }) => metaData.get('_referringPhysicianModule', imageId),
+        },
+        {
+          key: 'KVP',
+          metaDataTag: 'KVP',
+        },
+        {
+          key: 'thickness',
+          metaDataTag: 'sliceThickness',
+        },
+        {
+          key: 'descriptionLite',
+          metaDataTag: 'seriesDescription',
+        },
+      ],
+      rbMarker: [
+        {
+          key: 'cruxDesc',
+          value: '',
+          showKey: false,
+        },
+        {
+          key: 'scale',
+          value: '',
+        },
+        {
+          key: 'windowCenter',
+          value: '',
+        },
+        {
+          key: 'windowWidth',
+          value: '',
+        },
+        {
+          key: 'hospitals',
+          showKey: false,
+          studyTag: 'orgname',
+          metaDataTag: 'institutionName',
+        },
+      ],
+    },
+  }, */
+  /*   hangingSetting: {
+    layout: {
+      navMenu: 'BT',
+      modalityGrids: [
+        {
+          modality: 'CTest',
+          series: {
+            x: 3,
+            y: 1,
+          },
+          image: {
+            x: 1,
+            y: 1,
+          },
+        },
+        {
+          modality: 'defaultTest',
+          series: {
+            x: 3,
+            y: 1,
+          },
+          image: {
+            x: 1,
+            y: 1,
+          },
+        },
+      ],
+    },
+    aroundTags: {
+      defaultTest: {
+        ltMarker: [
+          {
+            id: 44030001,
+            key: 'name',
+            studyTag: 'name',
+            metaDataTag: 'patientName',
+            DICOMTag: 0x00100010,
+          },
+          {
+            id: 44030002,
+            key: 'ID',
+            studyTag: 'patientID',
+            metaDataTag: 'patientID',
+          },
+          {
+            id: 44030003,
+            key: 'modality',
+            metaDataTag: 'modality',
+          },
+          {
+            id: 44030004,
+            key: 'sex',
+            metaDataTag: '_patientSex',
+          },
+          {
+            id: 44030005,
+            key: 'age',
+            metaDataTag: '_patientAge',
+          },
+        ],
+        rtMarker: [
+          {
+            id: 44030006,
+            key: 'date',
+            metaDataTag: '_acquisitionDate',
+          },
+          {
+            id: 44030007,
+            key: 'imageNumber',
+            tagRender: ({ study, meta }) =>
+              [study?.studyID || meta.studyID, meta.seriesNumber, meta.instanceNumber].join('-').replace(/-{2,}/, '-'),
+          },
+        ],
+        lbMarker: [
+          {
+            id: 44030009,
+            key: 'HR',
+            showKey: false,
+            tagRender: ({ metaData, imageId }) => metaData.get('_referringPhysicianModule', imageId),
+          },
+          {
+            id: 44030010,
+            key: 'KVP',
+            metaDataTag: 'KVP',
+          },
+          {
+            id: 44030011,
+            key: 'thickness',
+            metaDataTag: 'sliceThickness',
+          },
+          {
+            id: 44030012,
+            key: 'descriptionLite',
+            metaDataTag: 'seriesDescription',
+          },
+        ],
+        rbMarker: [
+          { id: 440300014, key: 'scale', value: ' ' },
+          { id: 440300015, key: 'windowCenter', value: ' ' },
+          { id: 440300016, key: 'windowWidth', value: ' ' },
+          { id: 440300017, key: 'hospitals', showKey: false, studyTag: 'orgname', metaDataTag: 'institutionName' },
+        ],
+      },
+    },
+  }, */
+  hangingSettingTabBar: {
+    layoutVisibility: true,
+    aroundTagsVisibility: true,
+    otherVisibility: true,
+    quickMenuVisibility: true,
   },
 };
