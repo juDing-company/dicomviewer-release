@@ -68,7 +68,6 @@
       descEN: string;
       WW: number;
       WC: number;
-      divider?: boolean;
       keyboard?: Keyboard;
     }
 
