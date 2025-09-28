@@ -186,11 +186,18 @@
 ####  新增
 - 自动、手动去床
 
+
 ###  V1.9.0
 
 ####  新增
 - 自定义四角信息
 - metaData源数据保存开关
+
+
+###  V1.9.1
+
+####  新增
+- 菜单自定义
 
 
 ###  V1.10.0
@@ -389,15 +396,53 @@
 ```
     interface ToolData {
         children?: ToolData[]
+        clickHandle?: () => void; /* 点击事件 */
+        disActive?: boolean; /* 不可选中 */
         divider?: boolean /* 分割线 */
-        icon?: (() => string) | string /* 必须是本系统内已有的iconClass */
-        iconImg?: url｜base64 /* img代替icon */
+        icon?: (() => string | string[]) | string | string[]; /* iconClass */
+        iconImg?: url｜base64 /* svg、img代替icon */
         iconText?: string /* 文本内容代替icon */
+        isLonelyGroup?: boolean; /* 独立分组，独立active */
+        isToggle?: boolean;  /* 独立开关类型 */
+        quickMenuVisibility?: (() => boolean | undefined) | boolean; /* 右键菜单显示隐藏 */
         toolName: (() => string) | string /* 禁止修改参数！注：未配置国际化时，此项也可以当菜单伪UID(本土语言语意性强) 可以不配置toolTag */
         toolNameAlias?: string; /* 菜单重命名 */
         toolTag: string;/* 禁止修改参数！注：此项为菜单UID */
         visibility?: (() => boolean) | boolean /* 显示隐藏，注：默认无需配置!!！（要隐藏该菜单请直接屏蔽或删除该条数据）1.内部会根据PC、mobile环境自动判断，如自行配置，则以配置项为准；2. toolsBar配置单独约定的[XXX]Visibility配置，请不要在此处配置!!!此配置只暴力处理显示隐藏，不处理于此相关的功能，例如enhanceVisibility 才会触发依赖模块加载 */
     }
+```
+
+- 添加自定义菜单选项
+
+```
+const customMenu = (() => {
+    const menu = WebDicomView.getMenuDefault(true);
+
+    // 给PC=>2D菜单,添加一个测试菜单
+    menu.PC.main.unshift({
+      toolName: 'test',
+      icon: ['my-icon', 'icon-test'],
+      // or
+      iconImg: './test.svg',
+      clickHandle: () => {
+        console.log('test');
+      },
+      disActive: true,
+    });
+
+    return menu.PC;
+    // or
+    return menu.mobile;
+  })()
+
+{
+  ···
+ toolsBar:{
+  ···
+  customMenu,
+ }
+}
+
 ```
 
 ## ~~aroundTagsConfigs 配置~~
