@@ -171,11 +171,15 @@
     // const hospID = '1';
     // token = 'Bearer rNXiYpoyuNwMAkBrJU+ajQ==';
 
-
     /* 汕头第二附属 */
     // const wadoURL = 'https://cloud.st120.cn:8084/api/wado';
     // const studyUID = 'CT202507030021';
     // const hospID = '18806';
+
+    /* error only2 */
+    // const wadoURL = 'http://117.159.7.210:37754/api/wado';
+    // const studyUID = 'ZCMR20255035';
+    // const hospID = '14852';
 
     /* ct330 */
     const wadoURL = 'https://yjpwap.clear-sz.com/api/wado';
@@ -190,7 +194,8 @@
     // const wadoURL = 'https://yjpwap.clear-sz.com/api/wado';
     // const studyUID = '1.2.194.0.108707908.20220729113612.1767.15186.9410615';
     // const hospID = '222';
-    //   '1.2.194.0.108707908.20220729113612.1767.15186.9410615,1.2.194.0.108707908.20220727144515.1473.15186.9405379,1.2.194.0.108707908.20220729120042.1807.15186.9410764,1.2.194.0.108707908.20220728094938.150.15186.9407142,1.2.194.0.108707908.20220728102509.1947.15186.9407477,1.2.194.0.108707908.20220728150340.1447.15186.9408441';
+    // const wadoURL = 'http://yjpwap.clear-sz.com/api/wado';
+    // const studyUID = '1.2.194.0.108707908.20220729113612.1767.15186.9410615,1.2.194.0.108707908.20220727144515.1473.15186.9405379,1.2.194.0.108707908.20220729120042.1807.15186.9410764,1.2.194.0.108707908.20220728094938.150.15186.9407142,1.2.194.0.108707908.20220728102509.1947.15186.9407477,1.2.194.0.108707908.20220728150340.1447.15186.9408441';
     // const hospID = '222';
 
     /* 500 png花屏 */
@@ -387,6 +392,32 @@
         // },
         // languageDefault: 'en',
         ...options,
+        // toolsBar: {
+        //   ...config.toolsBar,
+        //   ...config2.toolsBar,
+        //   ...options.toolsBar,
+        //   customMenu: (() => {
+        //     const menu = WebDicomView.getMenuDefault(true);
+
+        //     menu.PC.main.unshift({
+        //       toolName: 'childrenTest',
+        //       icon: ['test', 'icon-dicom-MPR'],
+        //       clickHandle: () => console.log('childrenTest'),
+        //       isLonelyGroup: true,
+        //       children: [
+        //         {
+        //           toolName: 'test',
+        //           clickHandle: () => console.log('test'),
+        //           disActive: true,
+        //           iconImg:
+        //             'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAICAYAAADwdn+XAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGUlEQVQokWP8////fwYKABMlmkcNGCwGAAAgqgQM9HLeWgAAAABJRU5ErkJggg==',
+        //         },
+        //       ],
+        //     });
+
+        //     return menu.PC;
+        //   })(),
+        // },
       });
       // webDicomView.addStudy('1.2.392.200036.9125.2.138612190166.20230507000190')
       // webDicomView.activeAI({
@@ -401,6 +432,7 @@
       // console.log(webDicomView.getMenuDefault());
       // console.log(webDicomView.getAroundTagsConfigsDefault());
       // console.log(webDicomView.i18n.getLanguage());
+      // console.log(webDicomView.getHangingSettingDefault());
     }
 
     init();
@@ -412,5 +444,6 @@
     // console.log(WebDicomView.getMenuDefault());
     // console.log(WebDicomView.getAroundTagsConfigsDefault());
     // console.log(WebDicomView.i18n.getLanguage());
+    // console.log(WebDicomView.getHangingSettingDefault());
   </script>
 </html>

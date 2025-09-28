@@ -1,3 +1,4 @@
+/*! Version: 1.10.0.250928 | Build time: 9/28/2025, 4:36:55 PM */
 /** @prettier  */
 export default {
   aboutUs: {
@@ -15,97 +16,137 @@ export default {
     enhanceVisibility: true,
     languageVisibility: true,
     majModeVisibility: true,
-    navigationBottomLayout: true,
     printVisibility: true,
     seriesBarVisibility: true,
   },
-  aroundTagsConfigs: {
-    default: {
-      ltMarker: [
+  hangingSetting: {
+    /*  layout: {
+      navMenu: 'BT',
+      modalityGrids: [
         {
-          key: 'name',
-          studyTag: 'name',
-          metaDataTag: 'patientName',
-          DICOMTag: 0x0010010,
+          modality: 'CTest',
+          series: {
+            x: 3,
+            y: 1,
+          },
+          image: {
+            x: 1,
+            y: 1,
+          },
         },
         {
-          key: 'ID',
-          studyTag: 'patientID',
-          metaDataTag: 'patientID',
-        },
-        {
-          key: 'modality',
-          metaDataTag: 'modality',
-        },
-        {
-          key: 'sex',
-          metaDataTag: '_patientSex',
-        },
-        {
-          key: 'age',
-          metaDataTag: '_patientAge',
-        },
-      ],
-      rtMarker: [
-        {
-          key: 'date',
-          metaDataTag: '_acquisitionDate',
-        },
-        {
-          key: 'imageNumber',
-          tagRender: ({ study, meta }) =>
-            [study?.studyID || meta.studyID, meta.seriesNumber, meta.instanceNumber].join('-').replace(/-{2,}/, '-'),
-        },
-        {
-          key: 'synchronizer',
-          value: '',
-          showKey: false,
+          modality: 'defaultTest',
+          series: {
+            x: 3,
+            y: 1,
+          },
+          image: {
+            x: 1,
+            y: 1,
+          },
         },
       ],
-      lbMarker: [
-        {
-          key: '',
-          showKey: false,
-          tagRender: ({ metaData, imageId }) => metaData.get('_referringPhysicianModule', imageId),
+    }, */
+    /*  aroundTags: {
+      configs: {
+        defaultTest: {
+          ltMarker: [
+            {
+              id: 44030001,
+              key: 'name',
+              studyTag: 'name',
+              metaDataTag: 'patientName',
+              DICOMTag: 0x00100010,
+            },
+            {
+              id: 44030002,
+              key: 'ID',
+              studyTag: 'patientID',
+              metaDataTag: 'patientID',
+            },
+            {
+              id: 44030003,
+              key: 'modality',
+              metaDataTag: 'modality',
+            },
+            {
+              id: 44030004,
+              key: 'sex',
+              metaDataTag: '_patientSex',
+            },
+            {
+              id: 44030005,
+              key: 'age',
+              metaDataTag: '_patientAge',
+            },
+          ],
+          rtMarker: [
+            {
+              id: 44030006,
+              key: 'date',
+              metaDataTag: '_acquisitionDate',
+            },
+            {
+              id: 44030007,
+              key: 'imageNumber',
+              tagRender: ({ study, meta }) =>
+                [study?.studyID || meta.studyID, meta.seriesNumber, meta.instanceNumber].join('-').replace(/-{2,}/, '-'),
+            },
+          ],
+          lbMarker: [
+            {
+              id: 44030009,
+              key: 'HR',
+              showKey: false,
+              tagRender: ({ metaData, imageId }) => metaData.get('_referringPhysicianModule', imageId),
+            },
+            {
+              id: 44030010,
+              key: 'KVP',
+              metaDataTag: 'KVP',
+            },
+            {
+              id: 44030011,
+              key: 'thickness',
+              metaDataTag: 'sliceThickness',
+            },
+            {
+              id: 44030012,
+              key: 'descriptionLite',
+              metaDataTag: 'seriesDescription',
+            },
+          ],
+          rbMarker: [
+            { id: 440300014, key: 'scale', value: ' ' },
+            { id: 440300015, key: 'windowCenter', value: ' ' },
+            { id: 440300016, key: 'windowWidth', value: ' ' },
+            { id: 440300017, key: 'hospitals', showKey: false, studyTag: 'orgname', metaDataTag: 'institutionName' },
+          ],
         },
+      },
+    }, */
+    /* other: {
+      WWWCMenu: [
         {
-          key: 'KVP',
-          metaDataTag: 'KVP',
-        },
-        {
-          key: 'thickness',
-          metaDataTag: 'sliceThickness',
-        },
-        {
-          key: 'descriptionLite',
-          metaDataTag: 'seriesDescription',
+          descCN: 'test',
+          descEN: 'test',
+          WW: 1,
+          WC: 1,
+          keyboard: {
+            key: 'a',
+            // altKey: true,
+            // ctrlKey: true,
+            // metaKey: true,
+            // shiftKey: true,
+          },
         },
       ],
-      rbMarker: [
-        {
-          key: 'cruxDesc',
-          value: '',
-          showKey: false,
-        },
-        {
-          key: 'scale',
-          value: '',
-        },
-        {
-          key: 'windowCenter',
-          value: '',
-        },
-        {
-          key: 'windowWidth',
-          value: '',
-        },
-        {
-          key: 'orgname',
-          showKey: false,
-          studyTag: 'orgname',
-          metaDataTag: 'institutionName',
-        },
-      ],
-    },
+    }, */
+  },
+  hangingSettingTabBar: {
+    layoutVisibility: true,
+    aroundTagsVisibility: true,
+    otherVisibility: true,
+    quickMenuVisibility: true,
   },
 };
