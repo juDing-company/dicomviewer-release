@@ -206,6 +206,13 @@
 - 挂片协议
 
 
+###  V1.11.0
+
+####  调整
+- 3D调窗
+- 
+
+
 ## 部署、接入
 
 ![image.](https://youke1.picui.cn/s1/2025/09/09/68bfd1ef3846c.png)
@@ -404,7 +411,7 @@
         iconText?: string /* 文本内容代替icon */
         isLonelyGroup?: boolean; /* 独立分组，独立active */
         isToggle?: boolean;  /* 独立开关类型 */
-        quickMenuVisibility?: (() => boolean | undefined) | boolean; /* 右键菜单显示隐藏 */
+        quickMenuVisibility?: (() => boolean) | boolean; /* 右键菜单显示隐藏 */
         toolName: (() => string) | string /* 禁止修改参数！注：未配置国际化时，此项也可以当菜单伪UID(本土语言语意性强) 可以不配置toolTag */
         toolNameAlias?: string; /* 菜单重命名 */
         toolTag: string;/* 禁止修改参数！注：此项为菜单UID */

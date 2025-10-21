@@ -1,4 +1,4 @@
-/*! Version: 1.10.0.250928 | Build time: 9/28/2025, 4:36:55 PM */
+/*! Version: 1.11.0.251021 | Build time: 10/21/2025, 5:02:33 PM */
 /** @prettier  */
 export default {
   aboutUs: {
@@ -11,7 +11,6 @@ export default {
   syncMarkersImage: true,
   minLoadSpeed: 120,
   minDecodeSpeed: 2000,
-  concurrentNetwork: 1,
   toolsBar: {
     enhanceVisibility: true,
     languageVisibility: true,
