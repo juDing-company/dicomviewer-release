@@ -39,6 +39,7 @@
 
   <body>
     <div class="button">
+      <button id="reboot">reboot</button>
       <button id="init">init</button>
       <button id="destroy">destroy</button>
     </div>
@@ -146,11 +147,6 @@
     // const studyUID = '1.2.840.113820.0.1.20120313.104119';
     // const hospID = '222';
 
-    /* 融合 */
-    // const wadoURL = 'https://yjpwap.clear-sz.com/api/wado';
-    // const studyUID = '1.2.840.113619.2.290.3.279748623.450.1708072093.835';
-    // const hospID = '222';
-
     /* 标尺 */
     // const wadoURL = 'http://27.129.129.132:8084/api/wado';
     // const studyUID = '1.2.840.31314.14143234.20250325000000.DR00095261';
@@ -184,7 +180,7 @@
     /* ct330 */
     const wadoURL = 'https://yjpwap.clear-sz.com/api/wado';
     const studyUID =
-      '1.2.840.113745.101000.1008000.38250.3914.6539381,1.2.826.0.1.3680043.2.461.14830079.2019335535,1.2.826.0.1.3680043.2.461.13951944.3454694210,1.2.826.0.1.3680043.2.461.13493267.1811413257,1.2.840.113619.2.55.3.346829569.498.1673482788.21';
+      '1.2.826.0.1.3680043.2.461.14830079.2019335535';
     const hospID = '222';
     //   '1.2.840.113619.2.55.3.346829569.498.1673482788.21';
     //   '1.2.826.0.1.3680043.2.461.13951944.3454694210,1.2.826.0.1.3680043.2.461.13493267.1811413257,1.2.840.113619.2.55.3.346829569.498.1673482788.21';
@@ -226,6 +222,9 @@
     // const hospID = '222';
 
     /* PET-CT */
+    // const wadoURL = 'https://yjpwap.clear-sz.com/api/wado';
+    // const studyUID = '1.2.840.113619.2.290.3.279748623.450.1708072093.835';
+    // const hospID = '222';
     // const wadoURL = 'https://yjpwap.clear-sz.com/api/wado';
     // const studyUID = '1.2.840.113619.2.290.3.279748623.56.1709271117.583';
     // const hospID = '222';
@@ -381,7 +380,7 @@
         ...config2,
         token:
           token ||
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiMTgzMTExMTMzMzMiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIxLDEiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IuWwj-mZiOS6jOWPtyIsIkNsaWVudElkIjoiZTNkYzQzNzk1MmVmNGVmMzk1YTAzMzI3YTZkODdmZjEiLCJIb3NwaXRhbENvZGUiOiIyMjIiLCJIb3NwaXRhbElkIjoiMjY3IiwiT2ZmaWNlQ29kZSI6IjEiLCJOdW1ObyI6Ijg5NTU5IiwiU2lnbiI6IjIxMWJjNjU5OTQ1OTc5OGY2YTZkOGZmMGJjMzM5NzkwIiwiZXhwIjoyNjE1NTIyOTQ1LCJpc3MiOiJ3ZWJhcGkuY24iLCJhdWQiOiJXZWJBcGkifQ.mV0WN5Ic5C5tVLBRvP5uphYWzkmKPg1Q5ylTcYUPCdM',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYzg4OGJjYjY4ZWI1NDMzZWEzNWI0ZDFiMjI1NjI0MzMiLCJDbGllbnRJZCI6ImM4ODhiY2I2OGViNTQzM2VhMzViNGQxYjIyNTYyNDMzIiwiSG9zcGl0YWxJZCI6IjEiLCJIb3NwaXRhbENvZGUiOiIwMDEiLCJBY2NvdW50IjoiMjM4OTg4NzkiLCJTaWduIjoiYjJlNjczNTkwZWFhZjNmZjk2NmUxZWU1MzdhNDY5NDUiLCJleHAiOjIwMjU2NTk4NDQsImlzcyI6IndlYmFwaS5jbiIsImF1ZCI6IldlYkFwaSJ9.NiOm8-Gtc6VQqF_Bbe-nHueGhxAvyfZFm5FdoBaKWGs',
         /* 可选参数,配置项以README.md为准 */
         // theme: {
         //   background: 'rgb(102,145,254)',
@@ -436,7 +435,12 @@
     }
 
     init();
-    document.getElementById('init').addEventListener('click', () => init());
+    document.getElementById('reboot').addEventListener('click', () => {
+      webDicomView.reboot();
+    });
+    document.getElementById('init').addEventListener('click', () => {
+      init();
+    });
     document.getElementById('destroy').addEventListener('click', () => {
       webDicomView.destroy();
       webDicomView = null;

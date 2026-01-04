@@ -205,12 +205,44 @@
 ####  新增
 - 挂片协议
 
+###  V1.10.1
+
+####  改进
+- 修复兼容IM：id、imageInstanceUid不一致问题
 
 ###  V1.11.0
 
 ####  调整
 - 3D调窗
-- 
+- 容积布局调整
+
+####  优化
+- 视图预设: 空气、骨骼
+- 低性能设备旋转卡顿
+
+#### 修复
+- MPR加载卡顿
+
+## dicomviewer 最低配置要求
+
+### 浏览器要求
+— 64位浏览器（推荐chrome、Edge）
+
+### 系统要求
+- 64位操作系统（Windows 11以下不推荐使用，微软已停止安全更新）
+- PC更新最新驱动
+- IOS更新最新系统
+- 鸿蒙更新最新系统
+
+### 最低硬件要求
+—  CPU: 4核CPU（3D相关功能性能越好速度越快）
+—  内存: 8GB（MPR图像越多需要内存越大）
+—  硬盘: 60GB（避免空间不足，无法缓存）
+-  显卡: 支持OpenGL 2.0及以上（建议独立显卡，部分Intel集显有内存泄露风险）
+-  网络: 需要稳定的网络连接
+
+### 环境要求
+- 运行环境有空闲的内存、CPU占用率，请退出高消耗程序，及时清理后台程序
 
 
 ## 部署、接入
@@ -332,23 +364,23 @@
                     aboutUsVisibility?: boolean, /* 关于我们显示隐藏，默认显示*/
                     AIVisibility?: boolean, /* AI显示隐藏，根据是否配置AI参数自动判断*/
                     enhanceVisibility?: boolean, /* 增强显示隐藏，默认隐藏，不加载opencvopencv模块*/
-                    fasModeVisibility?: boolean /* 有损模式显示隐藏，默认显示，平台不支持压缩则关闭该模式选项 */,
-                    fastImageModeVisibility?: boolean /* 废弃改为 fasModeVisibility*/,
-                    imageModeVisibility?: boolean: /* 模式按钮显示隐藏，默认显示 */,
-                    imageStitchingVisibility?: boolean /* DR拼接显示隐藏，默认显示，注： V1.7.3 开始支持 */
-                    languageVisibility?: boolean /* 语言显示隐藏，默认隐藏 */
-                    majModeVisibility?: boolean /* 专业模式显示隐藏，默认隐藏 ，1.4.0 改为默认隐藏*/,
-                    MPRFusionVisibility?: boolean /*  MPR融合显示隐藏*，默认显示/,
+                    fasModeVisibility?: boolean, /* 有损模式显示隐藏，默认显示，平台不支持压缩则关闭该模式选项 */
+                    fastImageModeVisibility?: boolean, /* 废弃改为 fasModeVisibility*/
+                    imageModeVisibility?: boolean, /* 模式按钮显示隐藏，默认显示 */
+                    imageStitchingVisibility?: boolean, /* DR拼接显示隐藏，默认显示，注： V1.7.3 开始支持 */
+                    languageVisibility?: boolean, /* 语言显示隐藏，默认隐藏 */
+                    majModeVisibility?: boolean, /* 专业模式显示隐藏，默认隐藏 ，1.4.0 改为默认隐藏*/
+                    MPRFusionVisibility?: boolean, /*  MPR融合显示隐藏*，默认显示/
                     MPRVisibility?: boolean, /* MPR显示隐藏，默认显示 */
                     navigationBottomLayout: ?: boolean, /* 序列栏底部显示，默认true,V1.10.0开始废弃,改为挂片设置 */
-                    printVisibility?: boolean /* 打印胶片显示隐藏，默认隐藏，注： V1.6.0 开始支持 */
-                    seriesBarVisibility?: boolean,/* 序列栏按钮显示隐藏，默认显示 */
-                    staModeVisibility?: boolean /* 无损模式显示隐藏，默认显示 */,
+                    printVisibility?: boolean, /* 打印胶片显示隐藏，默认隐藏，注： V1.6.0 开始支持 */
+                    seriesBarVisibility?: boolean, /* 序列栏按钮显示隐藏，默认显示 */
+                    staModeVisibility?: boolean, /* 无损模式显示隐藏，默认显示 */
                     VRTVisibility?: boolean, /* 3D显示隐藏，默认调取接口判断*/
                     customMenu?: { /* 自定义菜单，谨慎配置，详情见下方：customMenu配置  */
                         main?: ToolData[], /* 2D菜单 */
                         MPR?: ToolData[], /* MPR菜单 */
-                        VRT?: ToolData[] /* 3D菜单 */
+                        VRT?: ToolData[], /* 3D菜单 */
                     }
                 },
             }
@@ -481,18 +513,17 @@ type TagRender = (params: {
 type Key =
   | { key: string } /* 内置语言字典 */
   | ({ descEN: string } | { descCN: string }); /* 自定义英文/中文 */
-  | { showKey: false }; /* 不显示key */
 
 type Tag =
   | { studyTag: keyof Study } /* 读取Study，主要用于获取脱敏数据 */
   | { metaDataTag: keyof (Meta & HttpMetaToDicomMeta) } /* 读取http自定义Meta */
-  | { DICOMTag: number } /* 读取标准DICOM tag */
+  | { dicomTag: string } /* 读取标准DICOM tag */
   | { value: string } /* 自定义值 */
   | { tagRender: TagRender }; /* 自定义渲染 */
 
 type TagsConfigItem = Key &
   Tag & {
-    id?: string; /* v1.10.0新增，用于标识唯一 */
+    id: string; /* v1.10.0新增，用于标识唯一 */
     formatter?: (...args: any[]) => string; /* 格式化函数 */
     showKey?: boolean; /* 是否显示key */
     style?: { [key: string]: string }; /* 自定义样式 */

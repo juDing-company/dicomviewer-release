@@ -1,0 +1,47 @@
+import type { TypedArray } from '@/index.d';
+export declare function isPixelDataURL(url: string): boolean;
+export declare function setAttributes(el: HTMLElement, attributes: Record<string, string | number | boolean>): void;
+export declare function subarrayToArrayBuffer<T extends TypedArray>(typedArray: T, start: number, end: number): ArrayBuffer;
+export declare function mergeArrayBuffers(buffers: ArrayBuffer[]): ArrayBuffer;
+export declare function booleanToNumber(value?: boolean): number;
+export declare function extractDecimalNumber(str: string): number;
+export declare function mousewheelScroll(target: HTMLElement, direction?: 'x' | 'y'): void;
+export declare function deepCopy<T>(value: T): T;
+export declare function clamp(value: number, min: number, max: number): number;
+export declare function toggleClassName(target: HTMLElement | Element | null | undefined, force?: boolean, toggleClass?: string): boolean;
+export declare function toggleElsClassName(nodeList: NodeListOf<HTMLElement>, force: (element: HTMLElement, index: number, nodeList: NodeListOf<HTMLElement>) => boolean | undefined, toggleClass?: string): void;
+export declare function scrollIntoView(element: HTMLElement, ms?: number, arg?: boolean | ScrollIntoViewOptions): Promise<void>;
+export declare function capitalizeFirstLetter(input: string | undefined): string;
+export declare function replaceLastDelimiter(input: string, replacement: string, delimiter?: string, delimiter2?: string): string;
+export declare function replaceTemplate(str: string, newContent: string): string;
+export declare function randerLabelGroup(options: {
+    content: HTMLElement;
+    className?: string;
+    label?: string;
+    description?: string;
+}): HTMLDivElement | HTMLElement | HTMLTextAreaElement | HTMLInputElement | HTMLFormElement | HTMLAnchorElement | HTMLButtonElement | HTMLSpanElement | HTMLUListElement | HTMLObjectElement | HTMLAreaElement | HTMLAudioElement | HTMLBaseElement | HTMLQuoteElement | HTMLBodyElement | HTMLBRElement | HTMLCanvasElement | HTMLTableCaptionElement | HTMLTableColElement | HTMLDataElement | HTMLDataListElement | HTMLModElement | HTMLDetailsElement | HTMLDialogElement | HTMLDListElement | HTMLEmbedElement | HTMLFieldSetElement | HTMLHeadingElement | HTMLHeadElement | HTMLHRElement | HTMLHtmlElement | HTMLIFrameElement | HTMLImageElement | HTMLLabelElement | HTMLLegendElement | HTMLLIElement | HTMLLinkElement | HTMLMapElement | HTMLMenuElement | HTMLMetaElement | HTMLMeterElement | HTMLOListElement | HTMLOptGroupElement | HTMLOptionElement | HTMLOutputElement | HTMLParagraphElement | HTMLPictureElement | HTMLPreElement | HTMLProgressElement | HTMLScriptElement | HTMLSelectElement | HTMLSlotElement | HTMLSourceElement | HTMLStyleElement | HTMLTableElement | HTMLTableSectionElement | HTMLTableCellElement | HTMLTemplateElement | HTMLTimeElement | HTMLTitleElement | HTMLTableRowElement | HTMLTrackElement | HTMLVideoElement;
+export declare function renderRadioGroup<T extends {
+    name: string;
+    type: string;
+}>(synchronizerType: Array<T>, defaultValue: string, groupName: string, onChangeCallback: (params: T) => void, className?: string): HTMLDivElement | HTMLElement | HTMLTextAreaElement | HTMLInputElement | HTMLFormElement | HTMLAnchorElement | HTMLButtonElement | HTMLSpanElement | HTMLUListElement | HTMLObjectElement | HTMLAreaElement | HTMLAudioElement | HTMLBaseElement | HTMLQuoteElement | HTMLBodyElement | HTMLBRElement | HTMLCanvasElement | HTMLTableCaptionElement | HTMLTableColElement | HTMLDataElement | HTMLDataListElement | HTMLModElement | HTMLDetailsElement | HTMLDialogElement | HTMLDListElement | HTMLEmbedElement | HTMLFieldSetElement | HTMLHeadingElement | HTMLHeadElement | HTMLHRElement | HTMLHtmlElement | HTMLIFrameElement | HTMLImageElement | HTMLLabelElement | HTMLLegendElement | HTMLLIElement | HTMLLinkElement | HTMLMapElement | HTMLMenuElement | HTMLMetaElement | HTMLMeterElement | HTMLOListElement | HTMLOptGroupElement | HTMLOptionElement | HTMLOutputElement | HTMLParagraphElement | HTMLPictureElement | HTMLPreElement | HTMLProgressElement | HTMLScriptElement | HTMLSelectElement | HTMLSlotElement | HTMLSourceElement | HTMLStyleElement | HTMLTableElement | HTMLTableSectionElement | HTMLTableCellElement | HTMLTemplateElement | HTMLTimeElement | HTMLTitleElement | HTMLTableRowElement | HTMLTrackElement | HTMLVideoElement;
+export declare function renderSelectGroup<T extends {
+    label?: string;
+    value: string;
+}>(options: Array<T>, defaultValue?: string, onChangeCallback?: (params: T['value']) => void): HTMLSelectElement;
+export declare function renderDivGroup(className: string, ...nodes: (Node | string)[]): HTMLDivElement | HTMLElement | HTMLTextAreaElement | HTMLInputElement | HTMLFormElement | HTMLAnchorElement | HTMLButtonElement | HTMLSpanElement | HTMLUListElement | HTMLObjectElement | HTMLAreaElement | HTMLAudioElement | HTMLBaseElement | HTMLQuoteElement | HTMLBodyElement | HTMLBRElement | HTMLCanvasElement | HTMLTableCaptionElement | HTMLTableColElement | HTMLDataElement | HTMLDataListElement | HTMLModElement | HTMLDetailsElement | HTMLDialogElement | HTMLDListElement | HTMLEmbedElement | HTMLFieldSetElement | HTMLHeadingElement | HTMLHeadElement | HTMLHRElement | HTMLHtmlElement | HTMLIFrameElement | HTMLImageElement | HTMLLabelElement | HTMLLegendElement | HTMLLIElement | HTMLLinkElement | HTMLMapElement | HTMLMenuElement | HTMLMetaElement | HTMLMeterElement | HTMLOListElement | HTMLOptGroupElement | HTMLOptionElement | HTMLOutputElement | HTMLParagraphElement | HTMLPictureElement | HTMLPreElement | HTMLProgressElement | HTMLScriptElement | HTMLSelectElement | HTMLSlotElement | HTMLSourceElement | HTMLStyleElement | HTMLTableElement | HTMLTableSectionElement | HTMLTableCellElement | HTMLTemplateElement | HTMLTimeElement | HTMLTitleElement | HTMLTableRowElement | HTMLTrackElement | HTMLVideoElement;
+export declare function dataURLToArrayBuffer(dataURL: string): ArrayBuffer;
+export declare function ImageDataToArraybuffer(canvas: HTMLCanvasElement, ImageData: ImageData): Promise<ArrayBuffer>;
+export declare function isWebGLExtensionSupported(extensionName: string): boolean;
+export declare function isStaticBlockSupported(): boolean;
+export declare function isOffscreenCanvasSupported(): boolean;
+export declare function performanceLevel(jsHeapSizeLimit: number): 1 | 2 | 1.5 | 0.6;
+export declare function peelIDAlias(valve: string): string;
+export declare function extractByPercentage(arr: Array<any>, percentage: number): any[];
+export declare function removeChildElement(el: HTMLElement, depth?: number): void;
+export declare function downloadFileURL(url: string, fileName?: string): void;
+export declare function dateFormat(dateStr: string, format: string): string;
+export declare function stopBubble(e: Event): void;
+export declare function wait<T = unknown>(ms?: number): Promise<T>;
+export declare function removeTrailingEmpty(arr: any[]): void;
+export declare function formatDicomTag(tag: number | string): string;
+export declare function withTimeout<T extends Promise<any>>(promise: T, timeoutCallback: (resolve: (value: Awaited<T>) => void, reject: (reason?: unknown) => void) => void, ms?: number): Promise<T>;

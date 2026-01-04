@@ -126,7 +126,7 @@ type Key =
 type Tag =
   | { studyTag: keyof Study } /* 读取Study，主要用于获取脱敏数据 */
   | { metaDataTag: keyof (Meta & HttpMetaToDicomMeta) } /* 读取http自定义Meta */
-  | { DICOMTag: number } /* 读取标准DICOM tag */
+  | { dicomTag: string } /* 读取标准DICOM tag */
   | { value: string } /* 自定义值 */
   | { tagRender: TagRender }; /* 自定义渲染 */
 
