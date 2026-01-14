@@ -6,6 +6,8 @@ type AtLeastOne = {
     toolName: (() => string) | string;
 };
 type ToolData = {
+    /** @deprecated Use clickHandler instead */
+    clickHandle?: () => void;
     toolName?: (() => string) | string;
     toolNameAlias?: string;
     toolTag?: string;
@@ -24,7 +26,7 @@ type ToolData = {
     quickMenuVisibility?: (() => boolean) | boolean;
     floatRight?: boolean;
     children?: ToolData[];
-    clickHandle?: () => void;
+    clickHandler?: () => void;
 } & AtLeastOne;
 interface Store {
     main: ToolData[];

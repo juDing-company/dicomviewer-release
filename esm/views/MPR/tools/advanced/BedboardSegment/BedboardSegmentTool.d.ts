@@ -1,7 +1,7 @@
-import _WholeBodySegmentTool from '@/views/MPR/tools/WholeBodySegmentTool';
+import { WholeBodySegmentTool } from '@/views/MPR/tools';
 import type { SVGDrawingHelper } from '@cornerstonejs/tools/dist/esm/types';
 import type { Types } from '@cornerstonejs/core';
-declare class BedboardSegmentTool extends _WholeBodySegmentTool {
+declare class BedboardSegmentTool extends WholeBodySegmentTool {
     runSegment: {
         (...args: any[]): any;
         cancel: () => void;

@@ -6,8 +6,6 @@ import type { Series } from '@/dicom';
 export type ImageType = -1 | 0 | 1;
 export type ImageCacheTypeDefault = 0 | 1;
 declare const store: {
-    /** @deprecated  */
-    sharedArrayBuffer: undefined | boolean;
     instanceOptions: WebDicomViewOptions & {
         container: string | HTMLDivElement;
         wado: string;
@@ -18,6 +16,8 @@ declare const store: {
     isMobile: boolean;
     isDEV: boolean;
     webDicomView: WebDicomView;
+    /** @deprecated  */
+    sharedArrayBuffer: undefined | boolean;
     forceIM: boolean;
     imageTypeDefault: ImageType | undefined;
     _imageType: ImageType | null;
@@ -27,6 +27,8 @@ declare const store: {
     tackSynchronizerType: StackSynchronizerTypes;
     _imageCacheTypeDefault: ImageCacheTypeDefault;
     imageCacheTypeDefault: ImageCacheTypeDefault;
+    _use3DLite: boolean;
+    use3DLite: boolean;
     logoURL: string;
     cavanAroundInfo: boolean;
     minRenderCountMPR3D: number;
@@ -43,12 +45,13 @@ declare const store: {
         parseSuccess: boolean;
         resultURL: URL;
     };
-    navBarMobileVisibility: boolean;
     toolsBar: {
         /** @deprecated This method is deprecated and should not be used. fasModeVisibility should be used instead */
         fastImageModeVisibility: any;
         /** @deprecated This method is deprecated and should not be used. MPRFusionVisibility should be used instead */
         MPRFusion2Visibility: boolean;
+        /** @deprecated */
+        navigationBottomLayout: boolean;
         aboutUsVisibility: boolean;
         AIVisibility: boolean;
         enhanceVisibility: boolean;

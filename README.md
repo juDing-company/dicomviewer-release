@@ -205,10 +205,12 @@
 ####  新增
 - 挂片协议
 
+
 ###  V1.10.1
 
 ####  改进
 - 修复兼容IM：id、imageInstanceUid不一致问题
+
 
 ###  V1.11.0
 
@@ -222,6 +224,13 @@
 
 #### 修复
 - MPR加载卡顿
+
+
+###  V1.11.1
+
+####  新增
+- 3DLite模式
+
 
 ## dicomviewer 最低配置要求
 
@@ -435,7 +444,8 @@
 ```
     interface ToolData {
         children?: ToolData[]
-        clickHandle?: () => void; /* 点击事件 */
+        clickHandle?: () => void; /* 点击事件，即将废弃，建议使用clickHandler */
+        clickHandler?: () => void; /* 点击事件 */
         disActive?: boolean; /* 不可选中 */
         divider?: boolean /* 分割线 */
         icon?: (() => string | string[]) | string | string[]; /* iconClass */
@@ -463,7 +473,7 @@ const customMenu = (() => {
       icon: ['my-icon', 'icon-test'],
       // or
       iconImg: './test.svg',
-      clickHandle: () => {
+      clickHandler: () => {
         console.log('test');
       },
       disActive: true,

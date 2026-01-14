@@ -4,6 +4,7 @@ interface ToolProps {
     overlap?: boolean;
     autoSegment?: boolean;
     controller?: boolean;
+    menuControllerEvent?: any;
 }
 declare class BedboardSegment extends AdvancedSegmentBaseTool {
     static toolName: string;
@@ -23,7 +24,7 @@ declare class BedboardSegment extends AdvancedSegmentBaseTool {
     constructor(props: ToolProps);
     protected init(): Promise<void>;
     controllerRender(): void;
-    MenuControllerRender(event: {
+    menuControllerRender(event: {
         btnTarget: HTMLElement;
         events?: Event;
         forceRender?: boolean;
@@ -33,6 +34,5 @@ declare class BedboardSegment extends AdvancedSegmentBaseTool {
     toolActive(): void;
     segmentRegister(): void;
     segmentVolumeRender: () => void;
-    destroy(): void;
 }
 export default BedboardSegment;
