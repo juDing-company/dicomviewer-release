@@ -1,0 +1,10 @@
+import type Cornerstone from '@cornerstonejs/core';
+import type { Meta, MetaDataMap } from './index.d';
+declare const metaDataMap: MetaDataMap;
+declare const init2DProvider: () => void;
+declare const destroy2DProvider: () => void;
+declare const init3DProvider: (metaData3D: (typeof Cornerstone)["metaData"]) => void;
+declare const destroy3DProvider: (metaData3D: (typeof Cornerstone)["metaData"]) => void;
+declare const addMetaData: (imageId: string, data: Meta) => void;
+declare const clearMetaData: () => void;
+export { metaDataMap, addMetaData, clearMetaData, init2DProvider, init3DProvider, destroy2DProvider, destroy3DProvider };

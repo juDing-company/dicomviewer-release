@@ -1,0 +1,140 @@
+import MovePopup from '../components/Popup/MovePopup';
+import { type CustomLayout, type CustomLayoutMap } from './store/customLayoutMap';
+import PageState, { type State } from './store/PageState';
+import { GridStack } from 'gridstack';
+import './index.less';
+import type { AxiosProgressEvent } from 'axios';
+interface Title {
+    dom?: HTMLElement;
+    text: string;
+    show: boolean;
+    fontSize: number;
+    lineHeight: number;
+}
+interface GridLayoutOptions {
+    layout?: string;
+    customLayout?: CustomLayout;
+    layoutIndex?: keyof CustomLayoutMap;
+}
+export interface PrintLayoutOptions extends GridLayoutOptions {
+    activeToolType?: ActiveToolType;
+    colorType?: string;
+    debuger?: boolean;
+    filmType?: string;
+    fontSize?: number;
+    isGlobalLayout?: boolean;
+    margin?: number;
+    orientation?: boolean;
+    orientationType?: string;
+    scaleOverlay?: boolean;
+    sizeType?: string;
+    studyInfoPadding?: number;
+    studyInfoStatus?: boolean;
+    synchronizerType?: SynchronizerType;
+    title?: Title;
+    customPostFilmService?: (wadoURL: string, data: {
+        studyUID: string;
+        patientName?: string;
+        sex?: string;
+        imagesData: Blob[];
+        imageIds: string[][];
+    }, onUploadProgress: (progressEvent: AxiosProgressEvent) => void) => Promise<any>;
+}
+type SynchronizerType = 'study' | 'series' | 'image';
+type ActiveToolType = 'Wwwc' | 'Pan' | 'Zoom';
+export declare class PrintLayout {
+    eventNamespace: string;
+    studyUID?: string;
+    colorType: string;
+    filmType: string;
+    isGlobalLayout: boolean;
+    layout: number[];
+    margin: number;
+    orientation: boolean;
+    orientationType: string;
+    scaleOverlay: boolean;
+    size: number[];
+    sizeType: string;
+    studyInfoPadding: number;
+    zoom: number;
+    options: PrintLayoutOptions;
+    QRCodeImageState?: State;
+    synchronizerType: SynchronizerType;
+    private _activeToolType;
+    private _fontSize;
+    private _isInit;
+    private _studyInfoStatus;
+    grid?: GridStack;
+    movePopup?: MovePopup;
+    title: Title;
+    activeContainer?: HTMLElement;
+    configContainer?: HTMLElement;
+    gridContainer: HTMLElement;
+    pageState: PageState;
+    get activeToolType(): typeof this._activeToolType;
+    set activeToolType(value: typeof this._activeToolType);
+    get isInit(): boolean;
+    private set isInit(value);
+    get fontSize(): number;
+    set fontSize(value: number);
+    get studyInfoStatus(): boolean;
+    set studyInfoStatus(status: boolean);
+    isGray(): boolean;
+    getImagesContainer(): HTMLElement[];
+    setOrCreateTitle(): void;
+    setTitleVisibility(visibility: boolean): void;
+    setTitleFontsize(fontSize: number): void;
+    setCellHeight(reset?: boolean): void;
+    setToolOrientation(toggle?: boolean): void;
+    setToolScaleOverlay(toggle?: boolean): void;
+    setToolEnable(type: string, visibility: boolean): void;
+    setTool(type: string): void;
+    setToolActive(toolName: ActiveToolType, options?: {
+        mouseButtonMask: number;
+    }): void;
+    setToolSecondary(toolName: 'Disable' | 'Enable' | 'EnableResize' | 'DisableResize' | 'EnableMove' | 'DisableMove'): void;
+    setSize(size?: string): void;
+    setLayout(size: string): void;
+    setZoom(): void;
+    initDefault(options?: PrintLayoutOptions): void;
+    initLayout(options?: PrintLayoutOptions): Promise<void>;
+    private createConfigLayout;
+    private createPageGroup;
+    private initGridLayout;
+    private gridEvents;
+    imageToggle(target: HTMLElement, forceActive: boolean): void;
+    imageRenderedEvent: {
+        (...args: any[]): any;
+        cancel: () => void;
+        flush: () => any;
+        pending: () => boolean;
+    };
+    filmSave(): Promise<void>;
+    initCanvas(pageImage: State, container: HTMLElement): Promise<void>;
+    renderCanvasBlob(): Promise<{
+        blob: Blob;
+        imageIds: string[];
+    }>;
+    hasActive(): Promise<void>;
+    setGridStackOptions(): void;
+    getGridStackOptions(): CustomLayout;
+    changePage(options: {
+        go?: number;
+        index?: number;
+        last?: boolean;
+    }): void;
+    changeSize(value: string): void;
+    syncImages(): void;
+    updateImages(): void;
+    disableImage(element?: HTMLElement | undefined): void;
+    disableImages(): void;
+    resizeImages(): void;
+    callImages(callback: (canvas: HTMLElement) => void, strict?: boolean): void;
+    close(): Promise<void>;
+    destroy(): void;
+    destroyGridLayout(): void;
+}
+declare const print: PrintLayout;
+declare const version: any;
+export { version };
+export default print;

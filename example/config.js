@@ -1,4 +1,4 @@
-/*! Version: 1.11.0.251202 | Build time: 12/24/2025, 4:07:07 PM */
+/*! Version: 1.11.2.260116 | Build time: 2026/1/16 15:40:06 */
 /** @prettier  */
 export default {
   aboutUs: {
@@ -46,47 +46,57 @@ export default {
         },
       ],
     }, */
-    /*  aroundTags: {
+    /* aroundTags: {
       configs: {
         defaultTest: {
           ltMarker: [
             {
-              id: 44030001,
+              id: '44030001',
               key: 'name',
+              descCN: '姓名',
               studyTag: 'name',
               metaDataTag: 'patientName',
-              DICOMTag: 0x00100010,
+              dicomTag: '00100010',
             },
             {
-              id: 44030002,
+              id: '44030002',
               key: 'ID',
               studyTag: 'patientID',
               metaDataTag: 'patientID',
+              dicomTag: '00100020',
             },
             {
-              id: 44030003,
+              id: '44030003',
               key: 'modality',
+              descCN: '设备',
               metaDataTag: 'modality',
+              dicomTag: '00080060',
             },
             {
-              id: 44030004,
+              id: '44030004',
               key: 'sex',
+              descCN: '性别',
               metaDataTag: '_patientSex',
+              dicomTag: '00100040',
             },
             {
-              id: 44030005,
+              id: '44030005',
               key: 'age',
+              descCN: '年龄',
               metaDataTag: '_patientAge',
+              dicomTag: '00101010',
             },
           ],
           rtMarker: [
             {
-              id: 44030006,
+              id: '44030006',
               key: 'date',
+              descCN: '日期',
               metaDataTag: '_acquisitionDate',
+              dicomTag: '00080022',
             },
             {
-              id: 44030007,
+              id: '44030007',
               key: 'imageNumber',
               tagRender: ({ study, meta }) =>
                 [study?.studyID || meta.studyID, meta.seriesNumber, meta.instanceNumber].join('-').replace(/-{2,}/, '-'),
@@ -94,32 +104,63 @@ export default {
           ],
           lbMarker: [
             {
-              id: 44030009,
+              id: '44030009',
               key: 'HR',
               showKey: false,
-              tagRender: ({ metaData, imageId }) => metaData.get('_referringPhysicianModule', imageId),
+              tagRender: ({ metaData, imageId }) => metaData.get('_referringPhysicianModule', imageId).referringPhysicianName,
             },
             {
-              id: 44030010,
+              id: '44030010',
               key: 'KVP',
+              descCN: '电压',
               metaDataTag: 'KVP',
+              dicomTag: '00180060',
             },
             {
-              id: 44030011,
+              id: '44030011',
               key: 'thickness',
+              descCN: '层厚',
               metaDataTag: 'sliceThickness',
+              dicomTag: '00180050',
             },
             {
-              id: 44030012,
+              id: '44030012',
               key: 'descriptionLite',
+              descCN: '描述',
               metaDataTag: 'seriesDescription',
+              dicomTag: '0008103E',
             },
           ],
           rbMarker: [
-            { id: 440300014, key: 'scale', value: ' ' },
-            { id: 440300015, key: 'windowCenter', value: ' ' },
-            { id: 440300016, key: 'windowWidth', value: ' ' },
-            { id: 440300017, key: 'hospitals', showKey: false, studyTag: 'orgname', metaDataTag: 'institutionName' },
+            {
+              id: '440300014',
+              key: 'scale',
+              descCN: '缩放',
+              tagRender: ({ viewport }) => viewport?.scale || '',
+            },
+            {
+              id: '440300015',
+              key: 'windowCenter',
+              descCN: '窗位',
+              dicomTag: '00281050',
+              tagRender: ({ viewport }) => viewport.voi?.windowCenter || '',
+            },
+            {
+              id: '440300016',
+              key: 'windowWidth',
+              descCN: '窗宽',
+              dicomTag: '00281051',
+              tagRender: ({ viewport }) => viewport.voi?.windowWidth || '',
+            },
+            {
+              id: '440300017',
+              key: 'hospitals',
+              descCN: '医院',
+              showKey: false,
+              studyTag: 'orgname',
+              metaDataTag: 'institutionName',
+              dicomTag: '00080080',
+            },
           ],
         },
       },
