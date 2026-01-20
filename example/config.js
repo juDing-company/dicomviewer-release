@@ -1,4 +1,4 @@
-/*! Version: 1.11.2.260116 | Build time: 2026/1/16 15:40:06 */
+/*! Version: 1.12.0.260120 | Build time: 1/20/2026, 4:51:02 PM */
 /** @prettier  */
 export default {
   aboutUs: {
@@ -19,8 +19,9 @@ export default {
     seriesBarVisibility: true,
   },
   hangingSetting: {
-    /*  layout: {
+    /* layout: {
       navMenu: 'BT',
+      navMenuMobile: 'LT',
       modalityGrids: [
         {
           modality: 'CTest',
@@ -92,7 +93,7 @@ export default {
               id: '44030006',
               key: 'date',
               descCN: '日期',
-              metaDataTag: '_acquisitionDate',
+              metaDataTag: '_acquisitionDate2',
               dicomTag: '00080022',
             },
             {
