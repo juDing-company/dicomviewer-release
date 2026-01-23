@@ -10,17 +10,23 @@ import type { Series } from '@/dicom';
 import type { DataSet } from 'dicom-parser';
 import type { PtCell } from '@/dicom/DicomInterface';
 import type { PrintLayoutOptions, default as WebDicomViewPrint } from '@/views/Print/index';
-import type { AIOptions, WebDicomViewOptions } from '@/index.d';
+import type { AIOptions, StudyArrQuery, StudyQuery, WebDicomViewOptions } from '@/index.d';
 import type { FusionData } from '@/views/components/fusionLayout';
 import type WebDicomViewStitching from '@/views/Stitching/index';
 import type { MPRSeriesData } from '@/views/MPR/index.d';
 import type WebDicomViewMPR from '@/views/MPR/index';
 import '@/assets/css/global.less';
-type Props = [container: string | HTMLDivElement, wado: string, hospID: string, studyUID: string, options?: WebDicomViewOptions];
+type Props = [
+    container: string | HTMLDivElement,
+    wado: string,
+    hospID: string,
+    studyUID: string | StudyArrQuery,
+    options?: WebDicomViewOptions
+];
 declare class WebDicomView {
     globalContainer: HTMLDivElement;
     seriesCount: PtCell;
-    studyUIDArr: Array<string>;
+    studyArrQuery: StudyArrQuery;
     studyArr: Array<Study>;
     studyScrollIndex: number;
     reqStudyCount: number;
@@ -39,9 +45,9 @@ declare class WebDicomView {
     toastDict: any;
     constructor(...props: Props);
     private init;
-    getStudyInfoHandle(studyUID: string, studyIndex: number): Promise<void>;
+    getStudyInfoHandle(studyQuery: StudyQuery, studyIndex: number): Promise<void>;
     getStudyInfos(): Promise<void>;
-    addStudy(studyUID: string): Promise<void>;
+    addStudy(_studyUID: string | StudyQuery): Promise<void>;
     setFusionData(): void;
     activeAI(AIOptions: AIOptions): void;
     renderLayoutImageToCanvas($canvas: HTMLElement, image: Image & {
@@ -55,7 +61,8 @@ declare class WebDicomView {
     initAI(open?: boolean, preLoad?: boolean): Promise<void>;
     initSeries(studyIndex: number): Promise<void>;
     addSeries(seriesArr: Array<Series>): void;
-    restoreSeries(seriesArr: Array<Series | undefined>): Promise<void>;
+    restoreSeries(seriesArr?: Array<Series | undefined>): Promise<void>;
+    restoreNavigation(): void;
     getSeriesMeta(series: Series, studyIndex: number, seriesIndex: number): Promise<void>;
     initFirstStudySeriesLayoutState({ seriesArr }: Study): void;
     initStudyNavigation(studyIndex: number): void;
@@ -72,6 +79,7 @@ declare class WebDicomView {
     initVRT(): void;
     reloadSynchronizerTools(): Promise<void>;
     cancelToolAndDefaultViewport(): Promise<void>;
+    historyStudyTool(visibility?: boolean, forceRestore?: boolean): void;
     saveImageTool(): void;
     disableSeriesTool(): void;
     invertTool(): void;
@@ -79,7 +87,6 @@ declare class WebDicomView {
     referenceLineTool(active: boolean): Promise<void>;
     printTool(options?: PrintLayoutOptions): Promise<void>;
     seriesImagesLayout(seriesDom: HTMLElement, series: Series, ptCell: PtCell, applyGlobal?: boolean): Promise<void>;
-    isStudiesLoaded(toast?: boolean): boolean;
     magnifyTool(): void;
     queryImage(): {
         modality: any;
@@ -112,6 +119,8 @@ declare class WebDicomView {
         colormap?: unknown;
         labelmap?: boolean;
     };
+    isStudiesLoaded(toast?: boolean): boolean;
+    isEqualHospital(): boolean;
     queryStudy(studyUID: string): Study;
     querySeries(seriesUID: string): Series;
     queryCurrentContainer(tip?: boolean): import("./views/components/seriesLayout").SeriesLayoutData | {

@@ -34,5 +34,6 @@ declare class BedboardSegment extends AdvancedSegmentBaseTool {
     toolActive(): void;
     segmentRegister(): void;
     segmentVolumeRender: () => void;
+    destroy(): void;
 }
 export default BedboardSegment;

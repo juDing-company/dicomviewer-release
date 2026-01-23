@@ -291,10 +291,10 @@
   </body>
 
         webDicomView = new WebDicomView(
-            container as HTMLDivElement|string, /* 例：document.querySelector('#app') or 'app' */
-            wadoURL as string, /* 多检查使用“,”拼接；例：1.2.840.1659887560.714,1.2.840.1659887560.333 */
+            container as HTMLDivElement | string, /* 例：document.querySelector('#app') or 'app' */
+            wadoURL as string, /* wado api base url */
             hospID as string,
-            studyUID: string,
+            studyUID: string | { departCode?: string; hospID?: string; studyUID: string; }[] | string,string,... , /* 1.多检查数组；例：[{hospID:'hosp1',studyUID:'studyUID1',departCode:'depart1'}](注：注：V1.12.1开始支持)； 2.多检查“,”拼接；例：1.2.840.1,1.2.840.2; */
             { /* 可选参数 */
                 aroundTagsConfigs?: AroundTagsConfigs, /* 自定义四角信息，谨慎配置，详情见下方：aroundTagsConfigs配置，注：V1.9.0开始支持; V.10.0开始不建议继续使用，现已转入hangingSetting配置 */
                 bedboardSegmentThreshold?: number, /* 去床阈值，默认15,支持范围1-30 注： V1.8.0开始支持*/
@@ -306,6 +306,7 @@
                 GPUBenchmarksURL?:  "./dicomviewer-cornerstone/GPUbenchmarks", /* 1.4.1废弃！GPUBenchmarks路径，默认无需配置,注：系统会自动补全，如提示GPU路径不存在，结合实际调整路径 */
                 hangingSetting?: HangingSetting, /* 挂片配置，谨慎配置，详情见下方：hangingSetting挂片模块文档指引，注：V1.10.0开始支持 */
                 hangingSettingTabBar?: TabBar,/* 挂片菜单显示配置，详情见下方：hangingSetting挂片模块文档指引，注：V1.10.0开始支持 */
+                historyStudyVisibility?: boolean, /* 历史检查默认显示配置，默认不显示，注：V1.13.0开始支持 */
                 imageTypeDefault?: -1 | 0 | 1, /* -1 png有损模式 0 png无损模式 1 dcm专业模式，注：PC 默认专业模式 mobile 默认：无损模式, 用户自主选择后以用户选择为默认 */
                 isDesensitize?: boolean, /* 是否脱敏，默认false */
                 isInternal?: boolean, /* 获取影像路径内外网，默认外网云存储 */
@@ -401,7 +402,7 @@
         )
 
         /* 追加检查 */
-        webDicomView.addStudy('1.2.840.1659887560.714.444')
+        webDicomView.addStudy('studyUID' | { departCode?: string; hospID?: string; studyUID: string; })
 
         /* 显示AI结果 */
         webDicomView.activeAI({

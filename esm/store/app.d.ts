@@ -1,23 +1,26 @@
 import type { StackSynchronizerTypes } from '@/common/synchronizer/stack';
-import type { WebDicomViewOptions, AIOptions } from '@/index.d';
+import type { WebDicomViewOptions, AIOptions, StudyArrQuery } from '@/index.d';
 import type { ToolData } from './toolDataOrigin';
 import type { WebDicomView } from '@/index';
 import type { Series } from '@/dicom';
 export type ImageType = -1 | 0 | 1;
 export type ImageCacheTypeDefault = 0 | 1;
 declare const store: {
+    /** @deprecated  */
+    sharedArrayBuffer: undefined | boolean;
     instanceOptions: WebDicomViewOptions & {
+        /** @deprecated  */
+        hospID: string;
+        /** @deprecated  */
+        departCode?: string;
+        studyUID: string | StudyArrQuery;
         container: string | HTMLDivElement;
         wado: string;
-        hospID: string;
-        studyUID: string;
     };
     env: string;
     isMobile: boolean;
     isDEV: boolean;
     webDicomView: WebDicomView;
-    /** @deprecated  */
-    sharedArrayBuffer: undefined | boolean;
     forceIM: boolean;
     imageTypeDefault: ImageType | undefined;
     _imageType: ImageType | null;
@@ -45,13 +48,13 @@ declare const store: {
         parseSuccess: boolean;
         resultURL: URL;
     };
+    historyStudyVisibility: boolean;
+    navBarMobileVisibility: boolean;
     toolsBar: {
         /** @deprecated This method is deprecated and should not be used. fasModeVisibility should be used instead */
         fastImageModeVisibility: any;
         /** @deprecated This method is deprecated and should not be used. MPRFusionVisibility should be used instead */
         MPRFusion2Visibility: boolean;
-        /** @deprecated */
-        navigationBottomLayout: boolean;
         aboutUsVisibility: boolean;
         AIVisibility: boolean;
         enhanceVisibility: boolean;

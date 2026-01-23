@@ -132,9 +132,10 @@ export interface SeriesProps extends Omit<SeriesOrigin, 'imagecount'> {
 }
 export interface StudyProps {
     age: string;
+    departCode?: string;
     hasDesensitize: number;
     hasseries: string;
-    hospID: string | number;
+    hospID: string;
     imgcount: string;
     imgs?: Array<DicomInfoProps>;
     modality: string;

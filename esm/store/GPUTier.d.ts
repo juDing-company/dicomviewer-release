@@ -5,5 +5,5 @@ declare const GPUTier: {
     init: () => Promise<any>;
 };
 declare const isIntelGPU: () => Promise<boolean>;
-export { GPUTier, isIntelGPU };
-export default GPUTier;
+declare const isBasicGPU: () => Promise<boolean>;
+export { GPUTier, isIntelGPU, isBasicGPU };

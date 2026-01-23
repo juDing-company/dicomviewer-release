@@ -1,16 +1,17 @@
-/*! Version: 1.11.2.260116 | Build time: 2026/1/16 15:40:06 */
+/*! Version: 1.13..260123 | Build time: 1/23/2026, 10:46:22 AM */
 /** @prettier  */
 export default {
   aboutUs: {
     description: '版权所有，未经授权的复制或传播本内容将受到民事和刑事处罚。',
   },
+  historyStudyVisibility: true,
   imageTypeDefault: 0,
   isDesensitize: true,
   losslessMPR: true,
+  minDecodeSpeed: 2000,
+  minLoadSpeed: 120,
   syncLabels: true,
   syncMarkersImage: true,
-  minLoadSpeed: 120,
-  minDecodeSpeed: 2000,
   toolsBar: {
     enhanceVisibility: true,
     languageVisibility: true,
@@ -19,8 +20,9 @@ export default {
     seriesBarVisibility: true,
   },
   hangingSetting: {
-    /*  layout: {
+    /* layout: {
       navMenu: 'BT',
+      navMenuMobile: 'LT',
       modalityGrids: [
         {
           modality: 'CTest',
@@ -92,7 +94,7 @@ export default {
               id: '44030006',
               key: 'date',
               descCN: '日期',
-              metaDataTag: '_acquisitionDate',
+              metaDataTag: '_acquisitionDate2',
               dicomTag: '00080022',
             },
             {

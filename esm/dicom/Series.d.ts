@@ -15,7 +15,7 @@ declare class Series {
     num: string;
     seriesUID: string;
     studyUID: string;
-    seriesIndex: number;
+    index: number;
     /** @deprecated */
     dicomInfos: Array<DicomInfo>;
     loadIds: Array<string>;

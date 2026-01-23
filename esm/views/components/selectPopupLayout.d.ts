@@ -10,7 +10,7 @@ interface EventProps {
     events?: Event;
     isMenuNest?: boolean;
     forceShow?: boolean;
-    direction?: string;
+    direction?: 'top' | 'bottom';
     toolData?: ToolData;
 }
 declare class SelectPopupLayout {

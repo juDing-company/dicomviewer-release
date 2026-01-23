@@ -1,3 +1,4 @@
+import type { StudyQuery } from '@/index.d';
 interface CruxMarkInfo {
     enable: boolean;
     description: string;
@@ -14,7 +15,7 @@ declare function get(element: HTMLElement): CruxMarkInfo;
 declare function set(element: HTMLElement, data: CruxMarkInfo): void;
 declare function clear(element: HTMLElement): void;
 declare function restore(data?: Store): void;
-declare function downloadKeyImageData(studyUID: string, _updateImage?: boolean): Promise<void>;
+declare function downloadKeyImageData({ studyUID, departCode, hospID }: StudyQuery, _updateImage?: boolean): Promise<void>;
 declare function downloadAllKeyImageData(_updateImage?: boolean): Promise<void>;
 declare function uploadKeyImageData(): Promise<void>;
 export { downloadKeyImageData, downloadAllKeyImageData, uploadKeyImageData };
