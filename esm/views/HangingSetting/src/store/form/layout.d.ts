@@ -1,5 +1,5 @@
 import type { EnvMutator, EnvVar } from './utils';
-type Postion = 'LT' | 'RT' | 'BT';
+type Postion = 'LT' | 'RT' | 'BT' | 'LB' | 'BB';
 interface ModalityGrid {
     modality: string;
     series: {
@@ -18,12 +18,13 @@ type EnvState = Partial<{
 }>;
 type State = EnvVar<EnvState>;
 interface Mutator extends EnvMutator<EnvState> {
-    getNavMnenu: () => EnvState['navMenu'] | EnvState['navMenuMobile'];
-    isEqualNavMnenu: (nav: 'L' | 'R' | 'B', menu?: 'T') => boolean;
     getNavMenuOptions: () => {
         label: string;
         value: Postion;
     }[];
+    getNavMnenu: () => EnvState['navMenu'] | EnvState['navMenuMobile'];
+    isEqualNavMnenu: (nav?: 'L' | 'R' | 'B', menu?: 'T' | 'B') => boolean;
+    toggleTBMnenu: () => void;
 }
 declare const useLayoutStore: import("zustand").UseBoundStore<Omit<import("zustand").StoreApi<State & Mutator>, "setState" | "persist"> & {
     setState(partial: (State & Mutator) | Partial<State & Mutator> | ((state: State & Mutator) => (State & Mutator) | Partial<State & Mutator>), replace?: false): unknown;
@@ -38,7 +39,7 @@ declare const useLayoutStore: import("zustand").UseBoundStore<Omit<import("zusta
         getOptions: () => Partial<import("zustand/middleware").PersistOptions<State & Mutator, unknown, unknown>>;
     };
 }>;
-declare const isEqualNavMnenu: (nav: "L" | "R" | "B", menu?: "T") => boolean;
+declare const isEqualNavMnenu: (nav?: "L" | "R" | "B", menu?: "T" | "B") => boolean, toggleTBMnenu: () => void;
 export type { State, EnvState as LayoutEnvState, ModalityGrid };
-export { useLayoutStore, isEqualNavMnenu };
+export { isEqualNavMnenu, toggleTBMnenu, useLayoutStore };
 export default useLayoutStore;

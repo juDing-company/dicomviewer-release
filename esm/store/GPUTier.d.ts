@@ -6,4 +6,3 @@ declare const GPUTier: {
 };
 declare const isIntelGPU: () => Promise<boolean>;
 export { GPUTier, isIntelGPU };
-export default GPUTier;

@@ -1,4 +1,4 @@
-/*! Version: 1.12.0.260120 | Build time: 1/20/2026, 4:51:02 PM */
+/*! Version: 1.12.1.260202 | Build time: 2/2/2026, 2:25:13 PM */
 /** @prettier  */
 export default {
   aboutUs: {
