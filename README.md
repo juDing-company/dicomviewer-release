@@ -19,6 +19,11 @@
 ####  新增功能
 - 支持AI
 
+###  V1.2.1
+
+####  改进
+- 兼容部分不规范tag数据
+
 
 ###  V1.3.0
 
@@ -310,7 +315,8 @@
             hospID as string,
             studyUID: string | { departCode?: string; hospID?: string; studyUID: string; }[] | string,string,... , /* 1.多检查数组；例：[{hospID:'hosp1',studyUID:'studyUID1',departCode:'depart1'}](注：注：V1.12.1开始支持)； 2.多检查“,”拼接；例：1.2.840.1,1.2.840.2; */
             { /* 可选参数 */
-                aroundTagsConfigs?: AroundTagsConfigs, /* 自定义四角信息，谨慎配置，详情见下方：aroundTagsConfigs配置，注：V1.9.0开始支持; V.10.0开始不建议继续使用，现已转入hangingSetting配置 */
+                aroundTagsConfigs?: AroundTagsConfigs, /* 自定义四角信息，谨慎配置，详情见下方：aroundTagsConfigs配置，注：V1.9.0开始支持; V.10.0开始废弃，现已转入hangingSetting配置，仅作为 hangingSetting.aroundTags 未配置default的情况,详见 hangingSetting 配置
+*/
                 bedboardSegmentThreshold?: number, /* 去床阈值，默认15,支持范围1-30 注： V1.8.0开始支持*/
                 cacheImagesDefault?: boolean, /* 是否启用缓存，默认启用 */
                 clientType?: number, /* 客户端类型，默认值是0 */
@@ -516,7 +522,7 @@ const customMenu = (() => {
 
 ## ~~aroundTagsConfigs 配置~~
 
-- V.10.0开始不建议继续使用，现已转入hangingSetting配置
+- V.10.0开始废弃，现已转入hangingSetting配置，仅作为 hangingSetting.aroundTags 未配置default的情况,详见 hangingSetting 配置
 
 - 默认配置打印(供参考)：
 
@@ -524,7 +530,7 @@ const customMenu = (() => {
     console.log(WebDicomView.getAroundTagsConfigsDefault())
 ```
 
-- 如需使用后端metaData原始数据，saveOriginAllMetaData设置为true.
+- 如需使用后端metaData原始数据，saveOriginAllMetaData 设置为 true.
 
 - 类型声明
 
