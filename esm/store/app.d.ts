@@ -1,5 +1,5 @@
 import type { StackSynchronizerTypes } from '@/common/synchronizer/stack';
-import type { WebDicomViewOptions, AIOptions } from '@/index.d';
+import type { WebDicomViewOptions, AIOptions, StudyArrQuery } from '@/index.d';
 import type { ToolData } from './toolDataOrigin';
 import type { WebDicomView } from '@/index';
 import type { Series } from '@/dicom';
@@ -9,10 +9,13 @@ declare const store: {
     /** @deprecated  */
     sharedArrayBuffer: undefined | boolean;
     instanceOptions: WebDicomViewOptions & {
+        /** @deprecated  */
+        hospID: string;
+        /** @deprecated  */
+        departCode?: string;
+        studyUID: string | StudyArrQuery;
         container: string | HTMLDivElement;
         wado: string;
-        hospID: string;
-        studyUID: string;
     };
     env: string;
     isMobile: boolean;
@@ -45,6 +48,7 @@ declare const store: {
         parseSuccess: boolean;
         resultURL: URL;
     };
+    historyStudyVisibility: boolean;
     navBarMobileVisibility: boolean;
     toolsBar: {
         /** @deprecated This method is deprecated and should not be used. fasModeVisibility should be used instead */

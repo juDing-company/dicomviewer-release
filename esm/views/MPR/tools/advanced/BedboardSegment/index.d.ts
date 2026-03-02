@@ -11,6 +11,7 @@ declare class BedboardSegment extends AdvancedSegmentBaseTool {
     props: ToolProps;
     imageDataOverlap: any;
     toolGroups: ToolGroup[];
+    initEnd: Promise<void>;
     toolbars: Array<{
         title: string;
         sider?: {

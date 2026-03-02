@@ -81,7 +81,7 @@ declare class DicomLayoutView {
     createStudyNavigationGroup(study: Study, studyIndex: number): void;
     renderDicomIcon(container: HTMLElement, seriesArr: Array<Series>, studyIndex: number): void;
     renderStudyInfo(container: HTMLElement, study: Study, imagesLength: number): void;
-    navigatorStudyToggleStyle(container: HTMLElement, childCount: number): void;
+    navigatorStudyToggleStyle(parentContainer: HTMLElement, childCount: number): void;
     seriesBarToggle(show?: boolean): void;
     seriesBarIconToggle(show?: boolean): void;
     navigationMenuCloseHandle(resize?: boolean): Promise<void>;

@@ -3,11 +3,11 @@ import Series from './Series';
 import DicomInfo from './DicomInfo';
 import type { StudyProps, DicomInfoProps, SeriesOrigin } from './DicomInterface';
 declare class Study {
-    wado: string;
     age: string;
+    departCode?: string;
     hasDesensitize: number;
     hasseries: number;
-    hospID: string | number;
+    hospID: string;
     imgs?: Array<DicomInfoProps>;
     imgCount: number;
     modality: string;
@@ -33,9 +33,7 @@ declare class Study {
     /** @deprecated */
     seriesArrOriginal: Array<SeriesOrigin>;
     seriesArr: Array<Series>;
-    constructor({ wado, age, hasDesensitize, hasseries, hospID, imgs, imgcount: imgCount, modality, name, orginaltype: originalType, orgname, patientid: patientID, serieses: seriesArrOriginal, sex, storageType, studydate, studyid, studyuid: studyUID, studyuuid: studyUUID, totaltype, }: StudyProps & {
-        wado: string;
-    });
+    constructor({ age, departCode, hasDesensitize, hasseries, hospID, imgcount: imgCount, imgs, modality, name, orginaltype: originalType, orgname, patientid: patientID, serieses: seriesArrOriginal, sex, storageType, studydate, studyid, studyuid: studyUID, studyuuid: studyUUID, totaltype, }: StudyProps);
     setSeries(seriesArr?: Array<SeriesOrigin>): void;
     static getSeriesLayoutCount(): {
         x: number;

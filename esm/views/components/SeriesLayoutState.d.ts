@@ -1,4 +1,5 @@
-import Series from "@/dicom/Series";
+/** @prettier  */
+import Series from '@/dicom/Series';
 export interface State {
     studyUID?: string;
     seriesUID?: string;
@@ -12,12 +13,12 @@ declare class SeriesLayoutState {
     constructor(seriesArr: Series[]);
     addSeriesArr(seriesArr: Series[]): void;
     getStates(): State[];
+    getOriginState(): State[];
     getStatesLength(): number;
     getSeries(statesType?: 'states' | 'originStates'): Series[];
     getSeriesActiveIndex(seriesUID: string): any;
     removeSerie(index: number): void;
     syncState(statesType?: 'states' | 'originStates'): void;
-    getOriginState(): State[];
     setState(index: number, state: Partial<State>): void;
     setSynchronizerStatus(index: number, status: boolean): void;
     getSynchronizerStatus(index: number): boolean;

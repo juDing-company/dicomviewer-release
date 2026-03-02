@@ -1,16 +1,17 @@
-/*! Version: 1.12.1.260202 | Build time: 2/2/2026, 2:25:13 PM */
+/*! Version: 1.13.0.260206 | Build time: 3/2/2026, 11:03:40 AM */
 /** @prettier  */
 export default {
   aboutUs: {
     description: '版权所有，未经授权的复制或传播本内容将受到民事和刑事处罚。',
   },
+  historyStudyVisibility: true,
   imageTypeDefault: 0,
   isDesensitize: true,
   losslessMPR: true,
+  minDecodeSpeed: 2000,
+  minLoadSpeed: 120,
   syncLabels: true,
   syncMarkersImage: true,
-  minLoadSpeed: 120,
-  minDecodeSpeed: 2000,
   toolsBar: {
     enhanceVisibility: true,
     languageVisibility: true,

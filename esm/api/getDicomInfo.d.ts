@@ -6,8 +6,9 @@ export declare function getStudyInfoService(wadoURL: string, studyUID: string, h
 export declare function getSeriesMetaService(wadoURL: string, studyUID: string, seriesUID: string, hospID: string, params: {
     departCode?: string;
 }): Promise<any>;
+/**  @deprecated */
 export declare function getSeriesDCMPathService(wadoURL: string, studyUID: string, seriesUID: String, hospID: string): Promise<any>;
-export declare function getSeriesVRTPathService(wadoURL: string): Promise<any>;
+export declare function getSeriesVRTPathService(wadoURL?: string): Promise<any>;
 export declare function getStudyToolsDataService(wadoURL: string, studyUID: string, params: {
     hospID: string;
     departCode?: string;
