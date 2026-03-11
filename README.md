@@ -19,11 +19,6 @@
 ####  新增功能
 - 支持AI
 
-###  V1.2.1
-
-####  改进
-- 兼容部分不规范tag数据
-
 
 ###  V1.3.0
 
@@ -256,6 +251,28 @@
 - 按医保新规调整四角信息
 
 
+###  V1.12.1
+
+####  改进
+- 兼容部分不规范tag数据
+
+
+###  V1.13.0
+
+####  新增
+- 一键发送：唤起MIV
+- 跨医院检查对比
+- 历史检查
+
+#### 调整
+- 多检查默认只显示一个，点击历史检查按钮后显示。注：多检查追加不影响
+
+###  V1.14.0
+
+####  新增
+- 支持分片数据
+
+
 ## dicomviewer 最低配置要求
 
 ### 浏览器要求
@@ -313,7 +330,7 @@
             container as HTMLDivElement | string, /* 例：document.querySelector('#app') or 'app' */
             wadoURL as string, /* wado api base url */
             hospID as string,
-            studyUID: string | { departCode?: string; hospID?: string; studyUID: string; }[] | string,string,... , /* 1.多检查数组；例：[{hospID:'hosp1',studyUID:'studyUID1',departCode:'depart1'}](注：注：V1.12.1开始支持)； 2.多检查“,”拼接；例：1.2.840.1,1.2.840.2; */
+            studyUID: string | { departCode?: string; hospID?: string; studyUID: string; }[] | string,string,... , /* 1.多检查数组；例：[{hospID:'hosp1',studyUID:'studyUID1',departCode:'depart1'}](注：注：V1.13.0开始支持)； 2.多检查“,”拼接；例：1.2.840.1,1.2.840.2; */
             { /* 可选参数 */
                 aroundTagsConfigs?: AroundTagsConfigs, /* 自定义四角信息，谨慎配置，详情见下方：aroundTagsConfigs配置，注：V1.9.0开始支持; V.10.0开始废弃，现已转入hangingSetting配置，仅作为 hangingSetting.aroundTags 未配置default的情况,详见 hangingSetting 配置
 */

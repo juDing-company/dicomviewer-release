@@ -11,7 +11,7 @@ declare class BedboardSegment extends AdvancedSegmentBaseTool {
     props: ToolProps;
     imageDataOverlap: any;
     toolGroups: ToolGroup[];
-    initEnd: Promise<void>;
+    initPromise: Promise<void>;
     toolbars: Array<{
         title: string;
         sider?: {
@@ -30,7 +30,7 @@ declare class BedboardSegment extends AdvancedSegmentBaseTool {
         events?: Event;
         forceRender?: boolean;
         range?: number;
-    }): void;
+    }): Promise<void>;
     runSegment: (value: number) => Promise<void>;
     toolActive(): void;
     segmentRegister(): void;
