@@ -88,8 +88,8 @@
     interface HangingSetting {
       layout?: {
         modalityGrids?: ModalityGrid[],
-        navMenu?: 'LT' | 'RT' | 'BT';
-        navMenuMobile?: 'LT' | 'BT';
+        navMenu?: 'LT' | 'RT' | 'BT' | 'LB' | 'RB' | 'BB';
+        navMenuMobile?: 'LT' | 'BT' | 'LB' | 'BB';
       },
       aroundTags?: {
         configs?: AroundTagsConfigs,

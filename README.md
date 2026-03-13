@@ -266,6 +266,16 @@
 - 多检查默认只显示一个，点击历史检查按钮后显示。注：多检查追加不影响
 
 
+###  V1.13.1
+
+####  新增
+- 工具栏、序列栏配置项
+
+#### 调整
+- 工具栏：mobile默认置顶
+- 序列栏：mobile默认展开
+
+
 ## dicomviewer 最低配置要求
 
 ### 浏览器要求
@@ -347,6 +357,7 @@
                 minDecodeSpeed?: number; /* 最小解码速度预警，0为关闭，默认2000KB/s。注：V1.7.3开始支持 */
                 minLoadSpeed?: number; /* 最小下载速度预警，0为关闭，默认120KB/s。注：V1.7.3开始支持 */
                 minRenderCountMPR3D?: number, /* MPR/3D最小渲染数量 */
+                navBarMobileVisibility?: boolean, /* 移动端导航栏默认显示配置，默认显示，注：V1.13.1开始支持 */
                 publicPath?: 'dicomviewer-cornerstone/', /* 推荐使用window.staticResourceURLPrefix代替！ 公共目录路径，默认情况无需配置，系统默认推断，注： V1.4.1 开始支持，代替GPUBenchmarksURL */
                 saveOriginAllMetaData?: boolean, /* 是否保存后端metaData完整源数据，默认false，注：V1.9.0开始支持 */
                 scrollPreload?: boolean, /* 是否启用滚动加载，默认启用。 注：V1.7.3以后fullLoad=true scrollPreload关闭 */
@@ -414,10 +425,10 @@
                     imageModeVisibility?: boolean, /* 模式按钮显示隐藏，默认显示 */
                     imageStitchingVisibility?: boolean, /* DR拼接显示隐藏，默认显示，注： V1.7.3 开始支持 */
                     languageVisibility?: boolean, /* 语言显示隐藏，默认隐藏 */
-                    majModeVisibility?: boolean, /* 专业模式显示隐藏，默认隐藏 ，1.4.0 改为默认隐藏*/
+                    majModeVisibility?: boolean, /* 专业模式显示隐藏，默认隐藏，1.4.0 改为默认隐藏*/
                     MPRFusionVisibility?: boolean, /*  MPR融合显示隐藏*，默认显示/
                     MPRVisibility?: boolean, /* MPR显示隐藏，默认显示 */
-                    navigationBottomLayout: ?: boolean, /* 序列栏底部显示，默认true,V1.10.0开始废弃,改为挂片设置 */
+                    navigationBottomLayout?: boolean, /* 序列栏底部显示，V1.10.0开始废弃，改为挂片设置 */
                     printVisibility?: boolean, /* 打印胶片显示隐藏，默认隐藏，注： V1.6.0 开始支持 */
                     seriesBarVisibility?: boolean, /* 序列栏按钮显示隐藏，默认显示 */
                     staModeVisibility?: boolean, /* 无损模式显示隐藏，默认显示 */
