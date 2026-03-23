@@ -19,11 +19,6 @@
 ####  新增功能
 - 支持AI
 
-###  V1.2.1
-
-####  改进
-- 兼容部分不规范tag数据
-
 
 ###  V1.3.0
 
@@ -255,6 +250,13 @@
 - 序列栏：mobile默认收起
 - 按医保新规调整四角信息
 
+
+###  V1.12.1
+
+####  改进
+- 兼容部分不规范tag数据
+
+
 ###  V1.13.0
 
 ####  新增
@@ -274,6 +276,11 @@
 #### 调整
 - 工具栏：mobile默认置顶
 - 序列栏：mobile默认展开
+
+###  V1.13.2
+
+#### 调整
+- addStudy方法新增historyStudyVisibility参数，默认true，可选false
 
 
 ## dicomviewer 最低配置要求
@@ -333,7 +340,7 @@
             container as HTMLDivElement | string, /* 例：document.querySelector('#app') or 'app' */
             wadoURL as string, /* wado api base url */
             hospID as string,
-            studyUID: string | { departCode?: string; hospID?: string; studyUID: string; }[] | string,string,... , /* 1.多检查数组；例：[{hospID:'hosp1',studyUID:'studyUID1',departCode:'depart1'}](注：注：V1.12.1开始支持)； 2.多检查“,”拼接；例：1.2.840.1,1.2.840.2; */
+            studyUID: string | { departCode?: string; hospID?: string; studyUID: string; }[] | string,string,... , /* 1.多检查数组；例：[{hospID:'hosp1',studyUID:'studyUID1',departCode:'depart1'}](注：注：V1.13.0开始支持)； 2.多检查“,”拼接；例：1.2.840.1,1.2.840.2; */
             { /* 可选参数 */
                 aroundTagsConfigs?: AroundTagsConfigs, /* 自定义四角信息，谨慎配置，详情见下方：aroundTagsConfigs配置，注：V1.9.0开始支持; V.10.0开始废弃，现已转入hangingSetting配置，仅作为 hangingSetting.aroundTags 未配置default的情况,详见 hangingSetting 配置
 */
@@ -443,7 +450,7 @@
         )
 
         /* 追加检查 */
-        webDicomView.addStudy('studyUID' | { departCode?: string; hospID?: string; studyUID: string; })
+        webDicomView.addStudy('studyUID' | { departCode?: string; hospID?: string; studyUID: string; }, historyStudyVisibility: true)
 
         /* 显示AI结果 */
         webDicomView.activeAI({

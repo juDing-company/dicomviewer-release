@@ -47,7 +47,7 @@ declare class WebDicomView {
     private init;
     getStudyInfoHandle(studyQuery: StudyQuery, studyIndex: number): Promise<void>;
     getStudyInfos(): Promise<void>;
-    addStudy(_studyUID: string | StudyQuery): Promise<void>;
+    addStudy(_studyUID: string | StudyQuery, historyStudyVisibility?: boolean): Promise<void>;
     setFusionData(): void;
     activeAI(AIOptions: AIOptions): void;
     renderLayoutImageToCanvas($canvas: HTMLElement, image: Image & {
