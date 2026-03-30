@@ -1,10 +1,11 @@
-/*! Version: 1.14.0.260311 | Build time: 3/11/2026, 10:26:20 AM */
+/*! Version: 1.14.0.260326 | Build time: 2026/3/30 10:53:50 */
 /** @prettier  */
 export default {
   aboutUs: {
     description: '版权所有，未经授权的复制或传播本内容将受到民事和刑事处罚。',
   },
   historyStudyVisibility: true,
+  // navBarMobileVisibility: false,
   imageTypeDefault: 0,
   isDesensitize: true,
   losslessMPR: true,

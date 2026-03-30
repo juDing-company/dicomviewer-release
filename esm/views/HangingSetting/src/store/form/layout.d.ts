@@ -1,5 +1,5 @@
 import type { EnvMutator, EnvVar } from './utils';
-type Postion = 'LT' | 'RT' | 'BT' | 'LB' | 'BB';
+type Postion = 'LT' | 'RT' | 'BT' | 'LB' | 'RB' | 'BB';
 interface ModalityGrid {
     modality: string;
     series: {
@@ -14,7 +14,7 @@ interface ModalityGrid {
 type EnvState = Partial<{
     modalityGrids: ModalityGrid[];
     navMenu: Postion;
-    navMenuMobile: Exclude<Postion, 'RT'>;
+    navMenuMobile: Exclude<Postion, 'RT' | 'RB'>;
 }>;
 type State = EnvVar<EnvState>;
 interface Mutator extends EnvMutator<EnvState> {

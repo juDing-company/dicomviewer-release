@@ -267,6 +267,22 @@
 #### 调整
 - 多检查默认只显示一个，点击历史检查按钮后显示。注：多检查追加不影响
 
+
+###  V1.13.1
+
+####  新增
+- 工具栏、序列栏配置项
+
+#### 调整
+- 工具栏：mobile默认置顶
+- 序列栏：mobile默认展开
+
+###  V1.13.2
+
+#### 调整
+- addStudy方法新增historyStudyVisibility参数，默认true，可选false
+
+
 ###  V1.14.0
 
 ####  新增
@@ -332,8 +348,7 @@
             hospID as string,
             studyUID: string | { departCode?: string; hospID?: string; studyUID: string; }[] | string,string,... , /* 1.多检查数组；例：[{hospID:'hosp1',studyUID:'studyUID1',departCode:'depart1'}](注：注：V1.13.0开始支持)； 2.多检查“,”拼接；例：1.2.840.1,1.2.840.2; */
             { /* 可选参数 */
-                aroundTagsConfigs?: AroundTagsConfigs, /* 自定义四角信息，谨慎配置，详情见下方：aroundTagsConfigs配置，注：V1.9.0开始支持; V.10.0开始废弃，现已转入hangingSetting配置，仅作为 hangingSetting.aroundTags 未配置default的情况,详见 hangingSetting 配置
-*/
+                aroundTagsConfigs?: AroundTagsConfigs, /* 自定义四角信息，谨慎配置，详情见下方：aroundTagsConfigs配置，注：V1.9.0开始支持; V.10.0开始废弃，现已转入hangingSetting配置，仅作为 hangingSetting.aroundTags 未配置default的情况,详见 hangingSetting 配置 */
                 bedboardSegmentThreshold?: number, /* 去床阈值，默认15,支持范围1-30 注： V1.8.0开始支持*/
                 cacheImagesDefault?: boolean, /* 是否启用缓存，默认启用 */
                 clientType?: number, /* 客户端类型，默认值是0 */
@@ -354,6 +369,7 @@
                 minDecodeSpeed?: number; /* 最小解码速度预警，0为关闭，默认2000KB/s。注：V1.7.3开始支持 */
                 minLoadSpeed?: number; /* 最小下载速度预警，0为关闭，默认120KB/s。注：V1.7.3开始支持 */
                 minRenderCountMPR3D?: number, /* MPR/3D最小渲染数量 */
+                navBarMobileVisibility?: boolean, /* 移动端导航栏默认显示配置，默认显示，注：V1.13.1开始支持 */
                 publicPath?: 'dicomviewer-cornerstone/', /* 推荐使用window.staticResourceURLPrefix代替！ 公共目录路径，默认情况无需配置，系统默认推断，注： V1.4.1 开始支持，代替GPUBenchmarksURL */
                 saveOriginAllMetaData?: boolean, /* 是否保存后端metaData完整源数据，默认false，注：V1.9.0开始支持 */
                 scrollPreload?: boolean, /* 是否启用滚动加载，默认启用。 注：V1.7.3以后fullLoad=true scrollPreload关闭 */
@@ -421,10 +437,10 @@
                     imageModeVisibility?: boolean, /* 模式按钮显示隐藏，默认显示 */
                     imageStitchingVisibility?: boolean, /* DR拼接显示隐藏，默认显示，注： V1.7.3 开始支持 */
                     languageVisibility?: boolean, /* 语言显示隐藏，默认隐藏 */
-                    majModeVisibility?: boolean, /* 专业模式显示隐藏，默认隐藏 ，1.4.0 改为默认隐藏*/
+                    majModeVisibility?: boolean, /* 专业模式显示隐藏，默认隐藏，1.4.0 改为默认隐藏*/
                     MPRFusionVisibility?: boolean, /*  MPR融合显示隐藏*，默认显示/
                     MPRVisibility?: boolean, /* MPR显示隐藏，默认显示 */
-                    navigationBottomLayout: ?: boolean, /* 序列栏底部显示，默认true,V1.10.0开始废弃,改为挂片设置 */
+                    navigationBottomLayout?: boolean, /* 序列栏底部显示，V1.10.0开始废弃，改为挂片设置 */
                     printVisibility?: boolean, /* 打印胶片显示隐藏，默认隐藏，注： V1.6.0 开始支持 */
                     seriesBarVisibility?: boolean, /* 序列栏按钮显示隐藏，默认显示 */
                     staModeVisibility?: boolean, /* 无损模式显示隐藏，默认显示 */
@@ -439,7 +455,7 @@
         )
 
         /* 追加检查 */
-        webDicomView.addStudy('studyUID' | { departCode?: string; hospID?: string; studyUID: string; })
+        webDicomView.addStudy('studyUID' | { departCode?: string; hospID?: string; studyUID: string; }, historyStudyVisibility: true)
 
         /* 显示AI结果 */
         webDicomView.activeAI({

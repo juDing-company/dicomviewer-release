@@ -47,7 +47,7 @@ declare class WebDicomView {
     private init;
     getStudyInfoHandle(studyQuery: StudyQuery, studyIndex: number): Promise<void>;
     getStudyInfos(): Promise<void>;
-    addStudy(_studyUID: string | StudyQuery): Promise<void>;
+    addStudy(_studyUID: string | StudyQuery, historyStudyVisibility?: boolean): Promise<void>;
     setFusionData(): void;
     activeAI(AIOptions: AIOptions): void;
     renderLayoutImageToCanvas($canvas: HTMLElement, image: Image & {
@@ -79,7 +79,7 @@ declare class WebDicomView {
     initVRT(): void;
     reloadSynchronizerTools(): Promise<void>;
     cancelToolAndDefaultViewport(): Promise<void>;
-    historyStudyTool(visibility?: boolean, forceRestore?: boolean): void;
+    historyStudyTool(visibility?: boolean, forceRestore?: boolean): Promise<void>;
     saveImageTool(): void;
     disableSeriesTool(): void;
     invertTool(): void;
