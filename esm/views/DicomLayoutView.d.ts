@@ -78,10 +78,10 @@ declare class DicomLayoutView {
     initTop2DTools(toolTag?: string, force?: boolean): void;
     initTopMPRTools(toolTag: string, force?: boolean): void;
     initTopVRTTools(toolTag?: string, force?: boolean): void;
-    createStudyNavigationGroup(study: Study, studyIndex: number): void;
+    createStudyNavigationGroup(study: Study, studyIndex: number, isMultiStudy: boolean): void;
     renderDicomIcon(container: HTMLElement, seriesArr: Array<Series>, studyIndex: number): void;
     renderStudyInfo(container: HTMLElement, study: Study, imagesLength: number): void;
-    navigatorStudyToggleStyle(parentContainer: HTMLElement, childCount: number): void;
+    navigatorStudyToggleStyle(parentContainer: HTMLElement, childCount: number, force?: boolean): boolean | void;
     seriesBarToggle(show?: boolean): void;
     seriesBarIconToggle(show?: boolean): void;
     navigationMenuCloseHandle(resize?: boolean): Promise<void>;

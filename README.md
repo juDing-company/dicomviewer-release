@@ -283,6 +283,12 @@
 - addStudy方法新增historyStudyVisibility参数，默认true，可选false
 
 
+###  V1.14.0
+
+####  新增
+- 支持分片数据
+
+
 ## dicomviewer 最低配置要求
 
 ### 浏览器要求
@@ -342,8 +348,7 @@
             hospID as string,
             studyUID: string | { departCode?: string; hospID?: string; studyUID: string; }[] | string,string,... , /* 1.多检查数组；例：[{hospID:'hosp1',studyUID:'studyUID1',departCode:'depart1'}](注：注：V1.13.0开始支持)； 2.多检查“,”拼接；例：1.2.840.1,1.2.840.2; */
             { /* 可选参数 */
-                aroundTagsConfigs?: AroundTagsConfigs, /* 自定义四角信息，谨慎配置，详情见下方：aroundTagsConfigs配置，注：V1.9.0开始支持; V.10.0开始废弃，现已转入hangingSetting配置，仅作为 hangingSetting.aroundTags 未配置default的情况,详见 hangingSetting 配置
-*/
+                aroundTagsConfigs?: AroundTagsConfigs, /* 自定义四角信息，谨慎配置，详情见下方：aroundTagsConfigs配置，注：V1.9.0开始支持; V.10.0开始废弃，现已转入hangingSetting配置，仅作为 hangingSetting.aroundTags 未配置default的情况,详见 hangingSetting 配置 */
                 bedboardSegmentThreshold?: number, /* 去床阈值，默认15,支持范围1-30 注： V1.8.0开始支持*/
                 cacheImagesDefault?: boolean, /* 是否启用缓存，默认启用 */
                 clientType?: number, /* 客户端类型，默认值是0 */
