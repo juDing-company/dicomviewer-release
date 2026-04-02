@@ -385,7 +385,7 @@
                     description?: string | false, /* 简介; 注：false为不显示 */
                     imgURl?: url | base64 | false, /* 注：默认无需配置!,false为不显示 */
                     tel?: string | false, /* 电话; 注：false为不显示 */
-                    version?: string | false, /* 版本号，例如1.1.1_20230101; 注：默认无需配置!,false为不显示 */
+                    version?: string | false, /* 版本号，例如1.1.1.20230101; 注：默认无需配置!,false为不显示 */
                 },
                 AI?: {
                     active?: boolean, /* AI按钮高亮为选中，显示AI结果 默认false */
