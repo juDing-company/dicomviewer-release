@@ -1,5 +1,5 @@
-import { type RenderingEngine } from '@cornerstonejs/core';
-import type { IVolumeViewport, VOIRange } from '@cornerstonejs/core/dist/esm/types';
+import type { RenderingEngine } from '@cornerstonejs/core';
+import type { IVolumeViewport, VOIRange } from '@cornerstonejs/core/types';
 interface Props {
     viewportId: string;
     container: HTMLElement;

@@ -88,6 +88,9 @@ declare class WebDicomView {
     printTool(options?: PrintLayoutOptions): Promise<void>;
     seriesImagesLayout(seriesDom: HTMLElement, series: Series, ptCell: PtCell, applyGlobal?: boolean): Promise<void>;
     magnifyTool(): void;
+    isStudiesLoaded(toast?: boolean): boolean;
+    isEqualHospital(): boolean;
+    isExistForStudyArrQuery(studyUID: string): boolean;
     queryImage(): {
         modality: any;
         imageId: string;
@@ -119,8 +122,6 @@ declare class WebDicomView {
         colormap?: unknown;
         labelmap?: boolean;
     };
-    isStudiesLoaded(toast?: boolean): boolean;
-    isEqualHospital(): boolean;
     queryStudy(studyUID: string): Study;
     querySeries(seriesUID: string): Series;
     queryCurrentContainer(tip?: boolean): import("./views/components/seriesLayout").SeriesLayoutData | {

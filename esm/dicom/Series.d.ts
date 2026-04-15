@@ -1,4 +1,4 @@
-import type { SeriesProps, ImageIcon, HttpMeta } from './DicomInterface';
+import type { SeriesProps, SeriesForward, HttpMeta } from './DicomInterface';
 import type { Meta } from '@/common/metaData/index.d';
 import type DicomInfo from './DicomInfo';
 import type Study from './Study';
@@ -6,7 +6,7 @@ declare class Series {
     describ: string;
     icon: string;
     isLoaded?: boolean;
-    imgs: Array<ImageIcon>;
+    imgs: Array<SeriesForward>;
     flatSeries: boolean;
     /** @deprecated */
     uid?: string;
@@ -32,6 +32,6 @@ declare class Series {
      * init dicom series
      * */
     initMeta(metaArr: Array<HttpMeta>, study: Study, seriesIndex: number): void;
-    getMeta0(): Meta;
+    getMeta0(type?: string): Meta;
 }
 export default Series;

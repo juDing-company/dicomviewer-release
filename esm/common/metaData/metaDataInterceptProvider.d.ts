@@ -1,2 +1,2 @@
-declare function metaDataProvider(type: string, imageId: string): any;
-export default metaDataProvider;
+declare function metaDataInterceptProvider(type: string, imageId: string): any;
+export default metaDataInterceptProvider;

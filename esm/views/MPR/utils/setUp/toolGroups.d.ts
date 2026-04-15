@@ -1,4 +1,4 @@
-import { IToolGroup, ToolConfiguration, type SetToolBindingsType } from '@cornerstonejs/tools/dist/esm/types';
+import type { IToolGroup, SetToolBindingsType, ToolConfiguration } from '@cornerstonejs/tools/types';
 export declare function setUp2DToolGroups(): void;
 export declare function setUp3DToolGroup(): void;
 export declare function disable3DToolGroup(): void;

@@ -1,5 +1,5 @@
 import AdvancedSegmentBaseTool from '../AdvancedSegmentBaseTool';
-import type ToolGroup from '@cornerstonejs/tools/dist/esm/store/ToolGroupManager/ToolGroup';
+import type { IToolGroup } from '@cornerstonejs/tools/types';
 interface ToolProps {
     overlap?: boolean;
     autoSegment?: boolean;
@@ -10,7 +10,7 @@ declare class BedboardSegment extends AdvancedSegmentBaseTool {
     static toolName: string;
     props: ToolProps;
     imageDataOverlap: any;
-    toolGroups: ToolGroup[];
+    toolGroups: IToolGroup[];
     initPromise: Promise<void>;
     toolbars: Array<{
         title: string;
