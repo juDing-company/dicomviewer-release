@@ -21,6 +21,7 @@ declare const store: {
     isMobile: boolean;
     isDEV: boolean;
     webDicomView: WebDicomView;
+    forceBigEndianToLittleEndianDdecode: boolean;
     forceIM: boolean;
     imageTypeDefault: ImageType | undefined;
     _imageType: ImageType | null;
