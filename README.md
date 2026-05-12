@@ -4,25 +4,25 @@
 
 ###  V1.0.0
 
-####  新增功能
+####  新增
 - 支持2D、3D、MPR基础模块
 
 
 ###  V1.1.0
 
-####  新增功能
+####  新增
 - 支持移动端
 
 
 ###  V1.2.0
 
-####  新增功能
+####  新增
 - 支持AI
 
 
 ###  V1.3.0
 
-####  新增功能
+####  新增
 - 支持标尺
 - 新增高性能模式
 
@@ -39,7 +39,7 @@
 
 ###  V1.4.0
 
-####  新增功能
+####  新增
 - 支持PET-CT
 
 #### 调整
@@ -49,7 +49,7 @@
 
 ###  V1.4.1
 
-####  新增功能
+####  新增
 - 新增PET-CT颜色栏
 - 新增MPR无损渲染配置：losslessMPR
 - 新增公共目录路径配置：publicPath 代替 GPUBenchmarksURL
@@ -71,7 +71,7 @@
 
 ###  V1.5.0
 
-####  新增功能
+####  新增
 - MPR 容积功能支持右键调窗、方位标识
 - 支持专业模式DSA
 - 新增3D探针
@@ -91,7 +91,7 @@
 
 ###  V1.5.2
 
-####  新增功能
+####  新增
 
 -支持有损、无损模式DSA(需后端接口调整)
 
@@ -119,7 +119,7 @@
 
 ###  V1.6.0
 
-####  新增功能
+####  新增
 - 支持PC端打印排版,默认隐藏 详见printVisibility配置开启(需后端接口配合)
 
 ####  改进
@@ -129,7 +129,7 @@
 
 ###  V1.7.0
 
-####  新增功能
+####  新增
 - 新增MPR调窗、MPR调窗快捷按键
 
 ####  调整
@@ -141,7 +141,7 @@
 
 ###  V1.7.1
 
-####  新增功能
+####  新增
 - 新增DR拼接，默认显示。详见imageStitchingVisibility配置关闭
 
 ####  调整
@@ -162,7 +162,7 @@
 
 ###  V1.7.3
 
-####  新增功能
+####  新增
 - 网络环境差提示语
 - 添加 minLoadSpeed，minDecodeSpeed, concurrentNetwork, imageStitchingVisibility 配置
 
@@ -295,6 +295,12 @@
 - 兼容部分transferSyntaxUID不规范
 
 
+###  V1.15.0
+
+####  新增
+- 多部位检查合并
+
+
 ## dicomviewer 最低配置要求
 
 ### 浏览器要求
@@ -352,7 +358,7 @@
             container as HTMLDivElement | string, /* 例：document.querySelector('#app') or 'app' */
             wadoURL as string, /* wado api base url */
             hospID as string,
-            studyUID: string | { departCode?: string; hospID?: string; studyUID: string; }[] | string,string,... , /* 1.多检查数组；例：[{hospID:'hosp1',studyUID:'studyUID1',departCode:'depart1'}](注：注：V1.13.0开始支持)； 2.多检查“,”拼接；例：1.2.840.1,1.2.840.2; */
+            studyUID: string | StudyQuery[] | string,string,... , /* 1.多检查数组；例：[{hospID:'hosp1',studyUID:'studyUID1',departCode:'depart1'}](注：注：V1.13.0开始支持)； 2.多检查“,”拼接(不推荐)；例：1.2.840.1,1.2.840.2; */
             { /* 可选参数 */
                 aroundTagsConfigs?: AroundTagsConfigs, /* 自定义四角信息，谨慎配置，详情见下方：aroundTagsConfigs配置，注：V1.9.0开始支持; V.10.0开始废弃，现已转入hangingSetting配置，仅作为 hangingSetting.aroundTags 未配置default的情况,详见 hangingSetting 配置 */
                 bedboardSegmentThreshold?: number, /* 去床阈值，默认15,支持范围1-30 注： V1.8.0开始支持*/
@@ -463,7 +469,7 @@
         )
 
         /* 追加检查 */
-        webDicomView.addStudy('studyUID' | { departCode?: string; hospID?: string; studyUID: string; }, historyStudyVisibility: true)
+        webDicomView.addStudy('studyUID' | StudyQuery, historyStudyVisibility: true)
 
         /* 显示AI结果 */
         webDicomView.activeAI({
@@ -496,6 +502,19 @@
     .style {
       height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
       height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    }
+```
+
+## 参数类型声明
+
+-  多检查StudyQuery类型声明
+
+```
+    interface StudyQuery {
+      departCode?: string;
+      hospID: string;
+      studyUID: string;
+      studyUIDCopilot?: string[]; /* 需要合并的studyUID数组；注：V1.15.0 开始支持 */
     }
 ```
 

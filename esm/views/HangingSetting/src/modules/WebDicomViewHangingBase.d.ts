@@ -24,8 +24,8 @@ declare class WebDicomViewHangingBase {
     static getAllConfigDefault(): import("../index.d").HangingSetting;
     getHangingSettingDefault: typeof WebDicomViewHangingBase.getAllConfigDefault;
     static getHangingSettingDefault: typeof WebDicomViewHangingBase.getAllConfigDefault;
-    getThemeConfig: (_varTheme?: import("@/index").Theme) => import("@hs/store/theme").ThemeConfig;
-    static getThemeConfig: (_varTheme?: import("@/index").Theme) => import("@hs/store/theme").ThemeConfig;
+    getThemeConfig: (_varTheme?: import("@/index").Theme) => import("antd").ThemeConfig;
+    static getThemeConfig: (_varTheme?: import("@/index").Theme) => import("antd").ThemeConfig;
 }
 declare const version: any;
 export { WebDicomViewHangingBase, version };

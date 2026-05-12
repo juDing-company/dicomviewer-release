@@ -12,12 +12,16 @@ export interface DicomInfoProps {
     num: string;
 }
 export interface HttpMetaOrigin {
-    /** @deprecated plese use Meta sopInstanceUID  */
+    /** @deprecated plese use Meta sopInstanceUID */
     id?: string;
-    /** @deprecated  */
+    /** @deprecated */
     uid?: string;
-    /**  @deprecated  */
+    /**  @deprecated */
     uuid?: string;
+    /** @deprecated */
+    scount?: string;
+    /** @deprecated */
+    relationid: string;
     accnum: string;
     acqdt: string;
     acqtm: string;
@@ -55,13 +59,11 @@ export interface HttpMetaOrigin {
     pixrep: string;
     pixx: string;
     pixy: string;
-    relationid: string;
     rescin: string;
     rescsl: string;
     row: string;
     rphn?: string;
     sappix: string;
-    scount?: string;
     serdes: string;
     serid: string;
     seruid: string;
@@ -87,26 +89,7 @@ export interface HttpMetaToDicomMeta extends HttpMeta {
     queryParams: QueryParamsBase;
     study: Study;
 }
-export interface DicomImageCell extends DicomInfoProps, HttpMeta {
-    maxGray: number;
-    minGray: number;
-}
-export interface viewPortCell {
-    id: number;
-    image: DicomImageCell;
-    ww: number;
-    wc: number;
-    rotation: number;
-    scale: number;
-    translation: PtCell;
-    hflip: boolean;
-    vflip: boolean;
-    pseudo: string;
-    invert: boolean;
-    wwScale: number;
-    isLoadImage: boolean;
-}
-export interface ImageIcon {
+export interface SeriesForward {
     id: string;
     imageInstanceUid: string;
     num: string;
@@ -120,7 +103,7 @@ export interface SeriesOrigin {
     desp?: string;
     flatSeries?: boolean;
     imagecount: number;
-    imgs: Array<ImageIcon>;
+    imgs: Array<SeriesForward>;
     num: string;
     sign?: string;
 }

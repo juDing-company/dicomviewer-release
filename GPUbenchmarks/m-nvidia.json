@@ -1,5 +1,5 @@
 [
-  "5",
+  "6",
   [
     "nvidia tegra",
     "",
@@ -9,7 +9,7 @@
       [
         2048,
         1440,
-        23,
+        19,
         "google nexus 9"
       ]
     ]
@@ -35,25 +35,25 @@
       [
         1920,
         1080,
-        28,
+        21,
         "nvidia tegra gk20a (ardbeg, development board)"
       ],
       [
         1920,
         1104,
-        29,
-        "google project tango"
+        32,
+        "nvidia shield tablet"
       ],
       [
         2048,
         1536,
-        21,
+        19,
         "xiaomi mi pad"
       ],
       [
         3840,
         2088,
-        8,
+        7,
         "lenovo thinkvision 28"
       ]
     ]
@@ -67,13 +67,13 @@
       [
         1920,
         1080,
-        60,
+        55,
         "nvidia shield android tv"
       ],
       [
         2560,
         1688,
-        33,
+        28,
         "google pixel c"
       ]
     ]

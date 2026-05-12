@@ -1,5 +1,5 @@
 [
-  "5",
+  "6",
   [
     "powervr rogue g6110",
     "6110",
@@ -34,7 +34,7 @@
         1920,
         1016,
         5,
-        "geekbuying geekbox tv box"
+        "sunchip cx-r8 tv box"
       ],
       [
         1920,
@@ -46,7 +46,7 @@
         1920,
         1080,
         5,
-        "10moons tv box (rogue g6110)"
+        "zidoo x6 pro tv box"
       ],
       [
         1920,
@@ -65,8 +65,8 @@
       [
         1280,
         720,
-        15,
-        "infocus m530"
+        8,
+        "walton primo nx4"
       ],
       [
         1280,
@@ -96,25 +96,25 @@
         1920,
         1080,
         6,
-        "cherry mobile x220 cosmos one plus"
+        "zopo zp999 pro lion heart (3x, komu k8 4g)"
       ],
       [
         1920,
         1152,
-        8,
+        6,
         "meizu mx4 (m460, m460a, m461)"
       ],
       [
         2392,
         1440,
-        6,
-        "hasee hl9916004"
+        5,
+        "pptv king 7s"
       ],
       [
         2560,
         1440,
         6,
-        "condor allure a100 pgn-607"
+        "stonex one"
       ]
     ]
   ],
@@ -145,7 +145,7 @@
       [
         2048,
         1464,
-        7,
+        6,
         "actions gs900a (development board)"
       ]
     ]
@@ -165,7 +165,7 @@
       [
         1920,
         1032,
-        8,
+        7,
         "renesas lager"
       ]
     ]
@@ -185,32 +185,32 @@
       [
         1280,
         720,
-        27,
+        20,
         "asus zenfone 2 (z008 ze550ml)"
       ],
       [
         1280,
         736,
         20,
-        "asus fonepad 7 (k019 fe375cg)"
+        "asus fonepad 8 (1.8 ghz, k016 fe380)"
       ],
       [
         1280,
         752,
-        27,
+        21,
         "asus zenpad 10 (p01t z300cl)"
       ],
       [
         1788,
         1080,
-        8,
+        5,
         "lg f490 liger (g6430)"
       ],
       [
         1920,
         1080,
-        15,
-        "asus zenfone zoom (intel z3560, z00xsb zx551ml)"
+        12,
+        "asus zenfone zoom (intel z3590, z00xs zx551ml)"
       ],
       [
         1920,
@@ -221,14 +221,14 @@
       [
         2048,
         1440,
-        11,
-        "asus zenpad s 8.0 (p01m z580c)"
+        10,
+        "nokia n1"
       ],
       [
         2560,
         1504,
-        9,
-        "dell venue 10 7040"
+        8,
+        "dell venue 8 7840"
       ]
     ]
   ],
@@ -253,13 +253,13 @@
       [
         1339,
         720,
-        5,
+        4,
         "vodafone vfd 720"
       ],
       [
         1344,
         720,
-        6,
+        5,
         "gionee f205"
       ]
     ]
@@ -319,19 +319,19 @@
       [
         1280,
         672,
-        25,
+        24,
         "renesas salvator-x-r8a7796"
       ],
       [
         1280,
         736,
-        25,
-        "mediatek mt8173 (development board)"
+        20,
+        "mediatek mt8173 (hexa core, development board)"
       ],
       [
         1920,
         980,
-        10,
+        7,
         "google chromebook pixel (2015, rogue gx6250)"
       ],
       [
@@ -343,38 +343,38 @@
       [
         1920,
         1020,
-        8,
+        6,
         "acer chromebook r13"
       ],
       [
         1920,
         1032,
-        13,
+        12,
         "renesas salvator-x-m3"
       ],
       [
         1920,
         1080,
-        12,
+        9,
         "xiaomi mibox 3 pro tv box"
       ],
       [
         1920,
         1128,
-        10,
+        9,
         "amazon kindle fire hd 10 (2017, kfsuwi)"
       ],
       [
         2048,
         1536,
-        7,
-        "alps jdtab j01"
+        10,
+        "xiaomi mi pad 3"
       ],
       [
         2560,
         1504,
-        7,
-        "onda f109"
+        8,
+        "teclast t10"
       ]
     ]
   ],
@@ -387,20 +387,20 @@
       [
         1280,
         672,
-        52,
+        27,
         "renesas salvator-x"
       ],
       [
         1920,
-        968,
-        30,
+        1024,
+        33,
         "renesas salvator-x-r8a7795"
       ],
       [
         1920,
         1032,
-        24,
-        "renesas salvator-x (octa core)"
+        28,
+        "renesas salvator-x-h3"
       ]
     ]
   ],
@@ -413,8 +413,8 @@
       [
         1794,
         1080,
-        6,
-        "ireadygo w3d"
+        8,
+        "mediatek mt6595 (quad core, a7, development board)"
       ],
       [
         1920,
@@ -426,7 +426,7 @@
         2392,
         1440,
         5,
-        "alcatel one touch d820"
+        "mediatek mt6595 (octa core, development board)"
       ],
       [
         2560,
@@ -445,19 +445,19 @@
       [
         1280,
         736,
-        16,
+        14,
         "dell venue 7 3740"
       ],
       [
         1920,
         1080,
-        12,
+        11,
         "lenovo p90"
       ],
       [
         1920,
         1104,
-        9,
+        7,
         "dell venue 8 3840"
       ]
     ]
@@ -486,12 +486,12 @@
         1920,
         1080,
         39,
-        "meitu v6 mp1605"
+        "meizu pro 7 high edition"
       ],
       [
         2560,
         1440,
-        25,
+        23,
         "meizu pro 7 plus"
       ]
     ]

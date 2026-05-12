@@ -1,9 +1,9 @@
-import type { Types } from '@cornerstonejs/core';
 import AdvancedBaseTool from './AdvancedBaseTool';
+import type { Types } from '@cornerstonejs/core';
 declare class AdvancedSegmentBaseTool extends AdvancedBaseTool {
     segmentationVolume?: Types.IImageVolume;
     get segmentationId(): string;
-    getSegmentationVolume(segmentationId?: string): import("@cornerstonejs/core").ImageVolume | import("@cornerstonejs/core/dist/esm/cache/classes/BaseStreamingImageVolume").BaseStreamingImageVolume;
+    getSegmentationVolume(segmentationId?: string): Types.IImageVolume | undefined;
     clearSegmentation(segmentationId?: string): void;
     destroy(): void;
 }

@@ -1,6 +1,6 @@
 import { WholeBodySegmentTool as _WholeBodySegmentTool } from '@cornerstonejs/tools';
-import type { EventTypes, SVGDrawingHelper } from '@cornerstonejs/tools/dist/esm/types';
 import type { Types } from '@cornerstonejs/core';
+import type { EventTypes, SVGDrawingHelper } from '@cornerstonejs/tools/types';
 declare class WholeBodySegmentTool extends _WholeBodySegmentTool {
     preTouchStartCallback: (evt: EventTypes.MouseDownActivateEventType) => Promise<boolean>;
     preMouseDownCallback(evt: EventTypes.MouseDownActivateEventType): Promise<boolean>;

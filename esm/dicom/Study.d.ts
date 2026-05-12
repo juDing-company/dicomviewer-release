@@ -8,6 +8,7 @@ declare class Study {
     hasDesensitize: number;
     hasseries: number;
     hospID: string;
+    /** @deprecated */
     imgs?: Array<DicomInfoProps>;
     imgCount: number;
     modality: string;
@@ -23,6 +24,7 @@ declare class Study {
     /** @deprecated */
     studyID: string;
     studyUID: string;
+    studyUIDCopilot: Array<string>;
     /** @deprecated */
     studyUUID: string;
     /** @deprecated */
@@ -30,11 +32,10 @@ declare class Study {
     /** @deprecated */
     images: Array<DicomInfo>;
     studytime: string;
-    /** @deprecated */
-    seriesArrOriginal: Array<SeriesOrigin>;
     seriesArr: Array<Series>;
-    constructor({ age, departCode, hasDesensitize, hasseries, hospID, imgcount: imgCount, imgs, modality, name, orginaltype: originalType, orgname, patientid: patientID, serieses: seriesArrOriginal, sex, storageType, studydate, studyid, studyuid: studyUID, studyuuid: studyUUID, totaltype, }: StudyProps);
-    setSeries(seriesArr?: Array<SeriesOrigin>): void;
+    constructor({ age, departCode, hasDesensitize, hasseries, hospID, imgcount: imgCount, imgs, modality, name, orginaltype: originalType, orgname, patientid: patientID, serieses, sex, storageType, studydate, studyid, studyuid: studyUID, studyuuid: studyUUID, totaltype, }: StudyProps);
+    setSeries(seriesArr: Array<SeriesOrigin>, studyUID?: string, hospID?: string): void;
+    addSeriesCopilot(seriesArr: Array<SeriesOrigin>, studyUID: string, hospID?: string): void;
     static getSeriesLayoutCount(): {
         x: number;
         y: number;
@@ -43,5 +44,8 @@ declare class Study {
         x: number;
         y: number;
     };
+    sortSeries<T extends {
+        num: string | number;
+    } = SeriesOrigin>(seriesArr: Array<T>): T[];
 }
 export default Study;

@@ -95,7 +95,7 @@ declare const store: {
     aboutUs: {
         imgURl: any;
         description: () => any;
-        originVersion: any;
+        originVersion: string;
         version: string;
         copyright: () => any;
         tel: () => any;

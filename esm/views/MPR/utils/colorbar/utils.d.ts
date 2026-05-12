@@ -1,4 +1,4 @@
-import type { RGB } from '@cornerstonejs/core/dist/esm/types';
+import type { RGB } from '@cornerstonejs/core/types';
 export declare function getImageRange(element: HTMLDivElement, volumeId: string): {
     lower: any;
     upper: any;
