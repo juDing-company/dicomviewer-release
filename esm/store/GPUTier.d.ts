@@ -1,4 +1,4 @@
-import { TierResult } from 'detect-gpu';
+import { TierResult } from '@pmndrs/detect-gpu';
 declare const GPUTier: {
     value: TierResult | undefined;
     get: () => Promise<any>;

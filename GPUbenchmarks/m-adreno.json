@@ -1,5 +1,5 @@
 [
-  "5",
+  "6",
   [
     "adreno 506",
     "506",
@@ -127,7 +127,7 @@
       [
         480,
         320,
-        16,
+        15,
         "zte z353vl cymbal t"
       ],
       [
@@ -152,31 +152,31 @@
         791,
         480,
         8,
-        "acer t012"
+        "lg spree (k120, k121), rebel (l43al, l44vl), optimus zone 3 (vs425pp)"
       ],
       [
         792,
         480,
-        6,
+        5,
         "lg k4 2017 (m151, m160, m150 phoenix 3, m153 fortune, m154 risio 2, l58vl rebel 2)"
       ],
       [
         800,
         480,
-        7,
-        "chainway c4050-q4"
+        9,
+        "denso wave bht-1700"
       ],
       [
         854,
         480,
-        6,
-        "zte q302c"
+        7,
+        "zte z832 sonata 3"
       ],
       [
         897,
         540,
         6,
-        "kyocera c6742 hydro view"
+        "kyocera c6743 hydro reach"
       ],
       [
         960,
@@ -188,19 +188,19 @@
         1024,
         552,
         6,
-        "tcl 9007 pixi 3 (7)"
+        "tcl 9015"
       ],
       [
         1184,
         720,
         4,
-        "micromax q4251 canvas juice a1"
+        "wiko tommy 2"
       ],
       [
         1187,
         720,
         4,
-        "lg phoenix 2 (k37x)"
+        "lg tribute hd (ls676, k200 x style, f740l x skin)"
       ],
       [
         1193,
@@ -212,7 +212,7 @@
         1196,
         720,
         4,
-        "obi sj2.5"
+        "wiko rainbow jam 4g"
       ],
       [
         1217,
@@ -230,19 +230,19 @@
         1280,
         720,
         4,
-        "k-touch beeline fast +"
+        "zte z959 grand x 3"
       ],
       [
         1280,
         736,
         4,
-        "alcatel 9022x one touch pixi 3 8.0"
+        "vodafone vf-1397 tab speed 6"
       ],
       [
         1280,
         752,
         4,
-        "lenovo tab 10 (x103f)"
+        "lenovo tab 2 a10-30 (tb2-x30x)"
       ]
     ]
   ],
@@ -265,16 +265,10 @@
         "lg t480s wine smart 3g"
       ],
       [
-        400,
-        400,
-        0,
-        "huawei watch"
-      ],
-      [
         734,
         480,
-        7,
-        "lg l fino (d290, d295)"
+        8,
+        "lg vs810pp transpyre"
       ],
       [
         737,
@@ -297,38 +291,38 @@
       [
         800,
         480,
-        5,
-        "cherry mobile q510"
+        6,
+        "zte z730"
       ],
       [
         854,
         480,
         6,
-        "alcatel a564c one touch pop icon"
+        "zte z792 fanfare"
       ],
       [
         886,
         540,
-        7,
+        6,
         "lg g2 mini (d610, d618, d620)"
       ],
       [
         896,
         540,
         7,
-        "htc desire 610"
+        "htc desire 612 (331zlvw)"
       ],
       [
         897,
         540,
         5,
-        "motorola xt830c moto e"
+        "vestel vsp250"
       ],
       [
         960,
         540,
-        4,
-        "huawei c8817l"
+        5,
+        "zte z797c"
       ],
       [
         1024,
@@ -339,8 +333,8 @@
       [
         1024,
         552,
-        4,
-        "asus zenfone go 6.9 (l001 zb690kg)"
+        5,
+        "prestigio pmt3277 3g multipad ranger 7.0"
       ],
       [
         982,
@@ -351,7 +345,7 @@
       [
         1024,
         600,
-        7,
+        6,
         "samsung galaxy tab 3 7.0 (sm-t215, sm-t217)"
       ],
       [
@@ -382,13 +376,13 @@
         1188,
         720,
         4,
-        "lg aka (h778, h788, f520x)"
+        "lg g3 mini (d72x, f470, ls885)"
       ],
       [
         1196,
         720,
-        3,
-        "zte z787"
+        4,
+        "zte z987 grand x max+"
       ],
       [
         1200,
@@ -406,7 +400,7 @@
         1217,
         720,
         4,
-        "kyocera e6790 duraforce xd"
+        "sony xperia t2 ultra (d53xx, xm50)"
       ],
       [
         1220,
@@ -430,7 +424,7 @@
         1280,
         732,
         4,
-        "lg g pad 7.0 (uk410, v410, vk410)"
+        "lg g pad 7.0 (v400)"
       ],
       [
         1280,
@@ -448,7 +442,7 @@
         1280,
         739,
         4,
-        "lg g pad 8.0 (v480, v49x, p490, t01)"
+        "lg g pad ii 8.0 (v607l, v498)"
       ],
       [
         1280,
@@ -460,7 +454,7 @@
         1280,
         752,
         4,
-        "asus padfone e (t008 a68m)"
+        "lg g pad 10.1 (v700, vk700)"
       ],
       [
         1216,
@@ -478,7 +472,7 @@
         1920,
         1080,
         2,
-        "zte s2002 star 1"
+        "zte star 1"
       ],
       [
         1920,
@@ -516,25 +510,25 @@
         800,
         480,
         8,
-        "covia fleaz cp-l42a pop"
+        "tcl a520l"
       ],
       [
         854,
         480,
         8,
-        "freetel ft151a priori2 lte"
+        "zte z812 maven"
       ],
       [
         897,
         540,
-        7,
-        "kyocera c6740 hydro wave"
+        6,
+        "motorola moto e2 (xt1526, xt1528)"
       ],
       [
         960,
         540,
-        5,
-        "blu studio mini lte 2"
+        6,
+        "vivo y51"
       ],
       [
         1024,
@@ -558,25 +552,25 @@
         1024,
         768,
         5,
-        "samsung sm-p350 galaxy tab a plus"
+        "samsung sm-p355 galaxy tab a 8.0"
       ],
       [
         1184,
         720,
         4,
-        "lg x screen (k500, f650)"
+        "wileyfox swift"
       ],
       [
         1188,
         720,
         4,
-        "lg band play (f570s)"
+        "lg volt 2 (ls751)"
       ],
       [
         1196,
         720,
         4,
-        "fly a5042"
+        "xolo lt2000"
       ],
       [
         1199,
@@ -611,14 +605,14 @@
       [
         1280,
         720,
-        3,
-        "bgh joy smart axs ii"
+        4,
+        "zte zmax 2 (z955, z958)"
       ],
       [
         1280,
         736,
         4,
-        "vodafone smart tab 4g"
+        "vodafone vf-1497 tab prime 6"
       ],
       [
         1280,
@@ -629,14 +623,14 @@
       [
         1216,
         800,
-        4,
+        3,
         "huawei mediapad t1 8.0 pro, lte (adreno 306)"
       ],
       [
         1280,
         800,
-        4,
-        "samsung galaxy tab e 8.0 (adreno 306, sm-t377p)"
+        3,
+        "samsung galaxy tab e nook 9.6 (sm-t560nu, sm-t567v)"
       ],
       [
         1794,
@@ -654,7 +648,7 @@
         1920,
         1080,
         2,
-        "longcheer cc01"
+        "tsutaya ts201 air stick android tv (life stick)"
       ]
     ]
   ],
@@ -674,30 +668,30 @@
         854,
         480,
         12,
-        "coolpad 3632"
+        "zte z833 avid trio"
       ],
       [
         960,
         540,
         10,
-        "samsung sm-j250g"
+        "vivo 1606"
       ],
       [
         1184,
         720,
-        5,
-        "infocus 00ww"
+        6,
+        "zte blade a512 (z10)"
       ],
       [
         1187,
         720,
-        6,
+        4,
         "lg m200"
       ],
       [
         1193,
         720,
-        6,
+        5,
         "lg k20 plus (mp260, k20 v vs501)"
       ],
       [
@@ -716,13 +710,13 @@
         1280,
         720,
         6,
-        "hisense f23"
+        "zte z971"
       ],
       [
         1280,
         736,
         6,
-        "lenovo tb-8504"
+        "lenovo tb-8x04f"
       ],
       [
         1280,
@@ -733,7 +727,7 @@
       [
         1344,
         720,
-        6,
+        5,
         "wiko view"
       ],
       [
@@ -746,12 +740,12 @@
         1368,
         720,
         6,
-        "casper via g1"
+        "tinno v12fn lite"
       ],
       [
         1280,
         800,
-        6,
+        5,
         "samsung galaxy tab a2 s (sm-t380, sm-t385)"
       ]
     ]
@@ -765,20 +759,20 @@
       [
         1196,
         720,
-        11,
-        "pantech im-a850 vega r3"
+        9,
+        "sony xperia zr (c55xx, m36h, so-04e xperia a)"
       ],
       [
         1196,
         768,
-        10,
+        6,
         "google nexus 4 (lg e960)"
       ],
       [
         1280,
         720,
-        8,
-        "blackberry z30"
+        9,
+        "zte nx403a nubia z5s mini"
       ],
       [
         1280,
@@ -789,7 +783,7 @@
       [
         1280,
         768,
-        10,
+        6,
         "lg optimus g (e97x, ls970, e987, f180, kddi lgl21)"
       ],
       [
@@ -802,7 +796,7 @@
         1794,
         1080,
         5,
-        "sony xperia z (c66xx, so-02e, l36x)"
+        "sony xperia zl (c650x, l35h)"
       ],
       [
         1848,
@@ -813,7 +807,7 @@
       [
         1920,
         1080,
-        5,
+        4,
         "zte nubia z5 (nx501, nx50x)"
       ],
       [
@@ -831,7 +825,7 @@
       [
         1920,
         1128,
-        5,
+        4,
         "sony xperia tablet z (sgp3xx, so-03e)"
       ]
     ]
@@ -845,74 +839,68 @@
       [
         800,
         480,
-        18,
+        17,
         "samsung sm-w2014"
       ],
       [
         1184,
         720,
-        27,
-        "sony so-04g xperia a4"
+        26,
+        "sony xperia z3 compact (d58xx, so-02g)"
       ],
       [
         1196,
         720,
-        21,
-        "sony xperia j1 compact (d5788)"
+        22,
+        "sony xperia z1 compact (d5503, m51w, so-02f, so-04f)"
       ],
       [
         1202,
         720,
-        21,
+        17,
         "lg g flex (d95x, ls995, lgl23, f340)"
       ],
       [
         1280,
         720,
         20,
-        "amazon fire phone (sd4930ur)"
+        "zte zkb2a spro2+ smart projector"
       ],
       [
         1280,
         768,
-        21,
+        20,
         "samsung sm-w2015 galaxy golden 2"
       ],
       [
         1280,
         960,
-        14,
+        13,
         "lg f300 optimus vu 3"
       ],
       [
         1600,
         1152,
-        15,
+        14,
         "hp pro slate 12"
-      ],
-      [
-        1440,
-        1308,
-        10,
-        "blackberry passport"
       ],
       [
         1776,
         1080,
-        11,
-        "google nexus 5"
+        13,
+        "sony xperia z3 (d66xx, d6708, l55, so-01g, sol26, 401so)"
       ],
       [
         1788,
         1080,
-        11,
+        10,
         "lg g3 a f410"
       ],
       [
         1794,
         1080,
         10,
-        "fujitsu f-01f arrows nx luge (docomo)"
+        "yota yotaphone 2 (yd201, yd206)"
       ],
       [
         1803,
@@ -923,31 +911,31 @@
       [
         1836,
         1080,
-        11,
-        "sony xperia z ultra (c68xx, xl39h, sol24, sgp412)"
+        12,
+        "wistron tiger"
       ],
       [
         1920,
         1080,
-        9,
-        "qualcomm quanta is7"
+        11,
+        "zuk z1"
       ],
       [
         1920,
         1104,
-        12,
-        "ntt docomo sh-06f sharp aquos pad"
+        11,
+        "sony xperia z3 compact tablet (sgp6xx)"
       ],
       [
         1920,
         1128,
-        12,
+        11,
         "sony xperia z2 tablet (sgp5xx, so-05f, sot21)"
       ],
       [
         1920,
         1129,
-        10,
+        9,
         "lg g pad ii (v935, v940 prada 3.0, v930 g pad x 10.1, uk932)"
       ],
       [
@@ -965,8 +953,8 @@
       [
         2392,
         1440,
-        8,
-        "fujitsu f-02g arrows nx (docomo)"
+        6,
+        "lg g3 (adreno 330, f400, d85x, lgl24, xs990, xs985, lgv31)"
       ],
       [
         2400,
@@ -977,8 +965,8 @@
       [
         2560,
         1440,
-        7,
-        "vivo x520l xplay 3s"
+        6,
+        "zte nx506j nubia z7"
       ],
       [
         2560,
@@ -989,8 +977,8 @@
       [
         2560,
         1600,
-        5,
-        "samsung sm-t525 galaxy tab pro 10.1"
+        6,
+        "samsung sm-t905 galaxy tab pro 12.2"
       ]
     ]
   ],
@@ -1003,14 +991,14 @@
       [
         1184,
         720,
-        13,
-        "lyf ls-5015 water 8"
+        14,
+        "zte mono mo-01j (docomo)"
       ],
       [
         1196,
         720,
         10,
-        "alcatel 6044 one touch pop up"
+        "sony xperia m4 aqua (e23xx)"
       ],
       [
         1200,
@@ -1021,26 +1009,26 @@
       [
         1280,
         720,
-        8,
-        "hisense c1"
+        11,
+        "zte turkcell t60"
       ],
       [
         1280,
         736,
-        10,
-        "asus zenpad 8 (adreno 405, p024 z380kl)"
+        13,
+        "zte k88"
       ],
       [
         1776,
         1080,
         7,
-        "lyf ls-5505"
+        "zte b2017"
       ],
       [
         1794,
         1080,
         6,
-        "medion life x5020"
+        "zte b2016 axon mini premium edition (p839a02)"
       ],
       [
         1798,
@@ -1052,7 +1040,7 @@
         1800,
         1080,
         6,
-        "oppo r7s plus"
+        "vizio xr6 tablet remote (adreno 405)"
       ],
       [
         1803,
@@ -1069,7 +1057,7 @@
       [
         1824,
         1080,
-        6,
+        5,
         "vargo ivargo v210101"
       ],
       [
@@ -1081,20 +1069,20 @@
       [
         1920,
         1080,
-        2,
-        "smartisan yq607 jianguo"
+        6,
+        "zte z988 grand x max 2"
       ],
       [
         1920,
         1104,
         5,
-        "lg vk815 g pad x8.3, p815l g pad ii 8.3"
+        "zte k85"
       ],
       [
         1920,
         1111,
         6,
-        "lg g pad x 8.0 (v52x)"
+        "lg qua tab px (lgt31)"
       ],
       [
         1794,
@@ -1111,7 +1099,7 @@
       [
         1830,
         1200,
-        6,
+        5,
         "huawei mediapad x3 (ple-xxx)"
       ],
       [
@@ -1143,8 +1131,8 @@
       [
         1794,
         1080,
-        15,
-        "softbank 502sh (sharp aquos xx2)"
+        16,
+        "softbank 503sh (sharp aquos xx2 mini)"
       ],
       [
         1798,
@@ -1155,8 +1143,8 @@
       [
         1920,
         1080,
-        13,
-        "qiku q terra (fhd, 8692-a00)"
+        10,
+        "xiaomi mi 4s"
       ],
       [
         2368,
@@ -1167,8 +1155,8 @@
       [
         2392,
         1440,
-        10,
-        "lg k600"
+        8,
+        "lg v10 (f600, h90x, h96x, vs990, rs987)"
       ],
       [
         2413,
@@ -1179,7 +1167,7 @@
       [
         2560,
         1440,
-        9,
+        7,
         "qiku q terra (8692-a00)"
       ],
       [
@@ -1205,19 +1193,19 @@
       [
         1920,
         1080,
-        20,
+        18,
         "samsung galaxy s5 (adreno 420, sm-g901)"
       ],
       [
         2392,
         1440,
-        13,
+        9,
         "lg g3 (adreno 420, f460)"
       ],
       [
         2560,
         1352,
-        7,
+        4,
         "qualcomm apq8084 (adreno 420, development board)"
       ],
       [
@@ -1230,18 +1218,18 @@
         2560,
         1440,
         8,
-        "qualcomm liquid (adreno 420, windows, development board)"
+        "samsung sm-g906 galaxy s5 prime"
       ],
       [
         2560,
         1532,
-        12,
+        10,
         "samsung galaxy note edge (adreno 420, sm-n915x, scl24, sc-01g)"
       ],
       [
         2560,
         1600,
-        11,
+        10,
         "amazon kindle fire hdx 8.9 (4th gen, kfsawa, kfsawi)"
       ]
     ]
@@ -1255,19 +1243,19 @@
       [
         1184,
         720,
-        53,
+        34,
         "sony xperia z5 compact (e58xx, so-02h)"
       ],
       [
         1280,
         720,
         18,
-        "zebra technologies mtp8994"
+        "zebra technologies tc70x"
       ],
       [
         1776,
         1080,
-        29,
+        24,
         "sony xperia z5 (e66xx, so-01h, sov32, 501so)"
       ],
       [
@@ -1279,13 +1267,13 @@
       [
         1920,
         1080,
-        9,
-        "nokia rm-1106"
+        24,
+        "zte nx518j nubia z9 max elite"
       ],
       [
         1920,
         1104,
-        21,
+        18,
         "ntt docomo sh-05g sharp aquos pad"
       ],
       [
@@ -1297,19 +1285,19 @@
       [
         2413,
         1440,
-        17,
+        16,
         "sirin labs solarin"
       ],
       [
         2560,
         1440,
-        7,
-        "microsoft rm-1105"
+        14,
+        "zte axon tianji elite (a2015)"
       ],
       [
         2560,
         1504,
-        16,
+        15,
         "sony xperia z4 tablet (sgp7xx, so-05g, sot31)"
       ]
     ]
@@ -1330,7 +1318,7 @@
         1184,
         720,
         15,
-        "ivvi i3-01"
+        "wileyfox swift 2 plus"
       ],
       [
         1196,
@@ -1341,14 +1329,14 @@
       [
         1199,
         720,
-        14,
+        13,
         "lg stylus 2 plus (ms550, k550)"
       ],
       [
         1280,
         720,
-        14,
-        "xiaomi land"
+        15,
+        "zte nubia nx907j"
       ],
       [
         1344,
@@ -1360,18 +1348,18 @@
         1368,
         720,
         13,
-        "micromax hs3"
+        "tinno v11dn lite"
       ],
       [
         1776,
         1080,
         7,
-        "hisense a2"
+        "wileyfox swift 2 x"
       ],
       [
         1787,
         1080,
-        7,
+        4,
         "lg qua phone px (lgv33)"
       ],
       [
@@ -1383,13 +1371,13 @@
       [
         1798,
         1080,
-        8,
+        7,
         "lg stylo 3 plus (tp450, mp450, m470)"
       ],
       [
         1802,
         1080,
-        7,
+        6,
         "lg k11 (k530, k535)"
       ],
       [
@@ -1401,8 +1389,8 @@
       [
         1920,
         1080,
-        6,
-        "lg x venture (h700, m710)"
+        7,
+        "zte z983 blade x max"
       ],
       [
         1920,
@@ -1413,7 +1401,7 @@
       [
         2004,
         1080,
-        7,
+        5,
         "lg q6 (m700, x600)"
       ],
       [
@@ -1446,12 +1434,12 @@
         1184,
         720,
         20,
-        "fujitsu f-04j docomo"
+        "kyocera torque g03 (kyv41)"
       ],
       [
         1280,
         720,
-        20,
+        19,
         "samsung galaxy j7 2017 (adreno 506, sm-j727x)"
       ],
       [
@@ -1463,7 +1451,7 @@
       [
         1356,
         720,
-        18,
+        17,
         "vivo v7 plus (1716)"
       ],
       [
@@ -1476,7 +1464,7 @@
         1776,
         1080,
         10,
-        "condor plume h1"
+        "zte c2017"
       ],
       [
         1788,
@@ -1493,8 +1481,8 @@
       [
         1920,
         1080,
-        9,
-        "blackberry bbd100"
+        10,
+        "zte z986"
       ],
       [
         1920,
@@ -1505,7 +1493,7 @@
       [
         1980,
         1080,
-        10,
+        9,
         "xiaomi redmi 5 plus"
       ],
       [
@@ -1523,14 +1511,14 @@
       [
         2094,
         1080,
-        9,
+        8,
         "samsung galaxy a6+ (sm-a605fn)"
       ],
       [
         1920,
         1200,
         9,
-        "i.safe is910.1"
+        "samsung galaxy tab a 2016 10.1 (sm-t587)"
       ]
     ]
   ],
@@ -1544,7 +1532,7 @@
         1776,
         1080,
         15,
-        "sonim xp8812"
+        "sony h4233"
       ],
       [
         1798,
@@ -1561,7 +1549,7 @@
       [
         2009,
         1080,
-        14,
+        13,
         "vestel venus z20"
       ]
     ]
@@ -1581,7 +1569,7 @@
       [
         2159,
         1080,
-        15,
+        14,
         "asus zenfone 5"
       ]
     ]
@@ -1596,7 +1584,7 @@
         1184,
         720,
         31,
-        "zebra technologies tc51"
+        "zebra technologies tc56"
       ],
       [
         1208,
@@ -1607,14 +1595,14 @@
       [
         1366,
         720,
-        29,
+        28,
         "sony xperia touch (g1109)"
       ],
       [
         1776,
         1080,
-        13,
-        "agm x2"
+        15,
+        "onkyo dp-cmx1"
       ],
       [
         1794,
@@ -1625,8 +1613,8 @@
       [
         1920,
         1080,
-        14,
-        "coolpad r116 cool1"
+        16,
+        "zte nx569 nubia z17 mini"
       ],
       [
         2048,
@@ -1643,14 +1631,14 @@
       [
         2368,
         1440,
-        10,
+        9,
         "vodafone vfd 900"
       ],
       [
         2392,
         1440,
-        10,
-        "sharp aquos z3 (fs8009)"
+        9,
+        "tgnco tg-l900s"
       ],
       [
         2413,
@@ -1662,12 +1650,12 @@
         2560,
         1440,
         9,
-        "vivo pd1522a"
+        "vivo xplay 5"
       ],
       [
         2560,
         1504,
-        9,
+        8,
         "lenovo yoga tab3 plus (yt-x703)"
       ]
     ]
@@ -1694,13 +1682,13 @@
         1920,
         1080,
         22,
-        "vivo td1608"
+        "xiaomi mi note 3"
       ],
       [
         2016,
         1080,
         21,
-        "micromax a200 canvas turbo mini"
+        "oppo r11s"
       ],
       [
         2034,
@@ -1711,7 +1699,7 @@
       [
         2131,
         1080,
-        21,
+        20,
         "xiaomi redmi note 7"
       ]
     ]
@@ -1731,73 +1719,73 @@
       [
         1776,
         1080,
-        43,
-        "softbank 506sh (sharp aquos phone xx3)"
+        42,
+        "zte axon m (z999)"
       ],
       [
         1794,
         1080,
-        49,
+        45,
         "google pixel"
       ],
       [
         1920,
         1024,
-        47,
+        41,
         "contextmedia p-wal-107-elc-03"
       ],
       [
         1920,
         1080,
-        26,
-        "nokia 6071w"
+        42,
+        "zuk z2 plus (z2131, z2132)"
       ],
       [
         2048,
         1536,
-        35,
+        33,
         "samsung galaxy tab s3 (sm-t82x)"
       ],
       [
         2368,
         1440,
-        27,
-        "motorola xt1650 (1.8 ghz)"
+        30,
+        "vertu constellation x (vm-08)"
       ],
       [
         2392,
         1440,
-        21,
-        "lg q8 (h970, x800l)"
+        20,
+        "lg v20 (f800, h91x, vs995, us996, ls997)"
       ],
       [
         2416,
         1440,
-        31,
+        30,
         "alcatel 6076s"
       ],
       [
         2560,
         1439,
-        17,
-        "hp elite x3"
+        15,
+        "qualcomm mtp8996 (adreno 530, development board)"
       ],
       [
         2560,
         1440,
-        4,
-        "hp falcon"
+        20,
+        "zte tl99 tonino lamborghini alpha-one"
       ],
       [
         2672,
         1440,
-        30,
+        21,
         "lg g6 (g600, us997, ls993, vs988, h87x)"
       ],
       [
         2880,
         1440,
-        26,
+        25,
         "baofeng ke-01"
       ],
       [
@@ -1817,85 +1805,91 @@
       [
         1184,
         720,
-        61,
+        60,
         "sony xperia xz1 compact (g8441)"
       ],
       [
         1776,
         1080,
-        57,
-        "sony xperia xz1 (g834x, sov36, so-01k, 701so)"
+        48,
+        "sony xperia xz premium (g8141, g8142, so-04j)"
       ],
       [
         1794,
         1080,
-        57,
+        49,
         "google pixel 2 (walleye)"
       ],
       [
         1920,
         1080,
-        56,
-        "zte nx595j nubia"
+        54,
+        "zte nx563j nubia z17"
       ],
       [
         1980,
         1080,
-        56,
+        49,
         "xiaomi mi mix 2"
       ],
       [
         2034,
         1080,
-        55,
+        52,
         "oneplus 5t (a5010)"
+      ],
+      [
+        2040,
+        1080,
+        52,
+        "zte nx595j nubia"
       ],
       [
         2276,
         1312,
-        43,
+        37,
         "essential ph-1"
       ],
       [
         2368,
         1440,
-        39,
+        32,
         "sharp aquos r (sh-03j, shv39, 605sh)"
       ],
       [
         2392,
         1440,
-        41,
+        40,
         "qualcomm adreno 540 (development board)"
       ],
       [
         2416,
         1440,
-        40,
+        37,
         "razer phone"
       ],
       [
         2560,
         1440,
-        36,
-        "htc u11 (u-3x, 2pzc100, 2pzc5, htv33, 601ht)"
+        34,
+        "nokia 9 (ta-1004, ta-1012, ta-1052)"
       ],
       [
         2678,
         1440,
-        35,
+        29,
         "samsung galaxy s8 active (sm-g892)"
       ],
       [
         2768,
         1440,
-        33,
+        21,
         "samsung galaxy s8+ (adreno 540, sm-g955x, sc-03j, scv35)"
       ],
       [
         2960,
         1440,
-        33,
+        25,
         "samsung galaxy note 8 (adreno 540, sm-n950, sc-01k, scv37)"
       ]
     ]
@@ -1909,7 +1903,7 @@
       [
         1557,
         678,
-        33,
+        32,
         "motorola moto g30"
       ]
     ]
@@ -1923,8 +1917,8 @@
       [
         2198,
         1080,
-        20,
-        "samsung galaxy a70 sm-a705fn"
+        15,
+        "samsung galaxy a70 sm-a705mn"
       ]
     ]
   ],
@@ -1937,7 +1931,7 @@
       [
         2088,
         1080,
-        28,
+        27,
         "google pixel 3a xl"
       ],
       [
@@ -1957,13 +1951,13 @@
       [
         2047,
         1080,
-        31,
+        30,
         "meizu x8"
       ],
       [
         2135,
         1080,
-        30,
+        28,
         "xiaomi mi 9 lite"
       ]
     ]
@@ -1978,7 +1972,7 @@
         2138,
         1080,
         38,
-        "xiaomi mi note 10"
+        "xiaomi mi note 10 lite"
       ],
       [
         2304,
@@ -2001,13 +1995,13 @@
       [
         2183,
         1080,
-        38,
+        37,
         "samsung galaxy a71 (sm-a715f)"
       ],
       [
         2210,
         1080,
-        35,
+        34,
         "xiaomi mi 9t"
       ],
       [
@@ -2019,7 +2013,7 @@
       [
         2274,
         1080,
-        37,
+        36,
         "samsung galaxy a80 sm-a805f"
       ]
     ]
@@ -2031,9 +2025,9 @@
     0,
     [
       [
-        2150,
+        2282,
         1080,
-        44,
+        41,
         "oppo reno7 z 5g"
       ]
     ]
@@ -2067,7 +2061,7 @@
       [
         2340,
         1080,
-        51,
+        45,
         "ritmix rmd-1030"
       ],
       [
@@ -2079,7 +2073,7 @@
       [
         2792,
         1440,
-        49,
+        48,
         "samsung galaxy s9+ (adreno 630, sm-g965)"
       ]
     ]
@@ -2099,25 +2093,25 @@
       [
         2064,
         1080,
-        60,
+        59,
         "samsung galaxy note 10 (adreno 640, sm-n970x)"
       ],
       [
         2280,
         1014,
-        85,
+        71,
         "google pixel 4"
       ],
       [
         2144,
         1080,
-        58,
+        57,
         "lg g8 thinq"
       ],
       [
         2181,
         1080,
-        60,
+        59,
         "samsung galaxy s10 lite"
       ],
       [
@@ -2135,13 +2129,13 @@
       [
         2210,
         1080,
-        79,
+        60,
         "xiaomi redmi k20 pro premium edition"
       ],
       [
         2214,
         1080,
-        60,
+        59,
         "asus rog phone ii (i001de zs660kl)"
       ],
       [
@@ -2153,25 +2147,25 @@
       [
         2723,
         1440,
-        55,
+        44,
         "samsung galaxy s10 (adreno 640, sm-g973x)"
       ],
       [
         2730,
         1440,
-        56,
+        49,
         "samsung galaxy s10+ (adreno 640, sm-g975x)"
       ],
       [
         2733,
         1440,
-        44,
+        43,
         "samsung galaxy s10 5g (adreno 640, sm-g977x)"
       ],
       [
         2759,
         1440,
-        56,
+        44,
         "samsung galaxy note 10+ (adreno 640, sm-n975x)"
       ],
       [
@@ -2197,14 +2191,20 @@
       [
         2166,
         1080,
-        70,
+        69,
         "xiaomi 11 lite 5g ne"
       ],
       [
         2177,
         1080,
-        69,
+        62,
         "samsung galaxy a52s 5g"
+      ],
+      [
+        2293,
+        1080,
+        58,
+        "realme gt master"
       ]
     ]
   ],
@@ -2231,13 +2231,13 @@
       [
         2168,
         1080,
-        108,
+        88,
         "samsung galaxy s20 fe 5g (sm-g781u)"
       ],
       [
         2178,
         1080,
-        108,
+        83,
         "samsung galaxy s20 5g (sm-g981n)"
       ],
       [
@@ -2249,20 +2249,26 @@
       [
         2214,
         1080,
-        117,
+        109,
         "asus rog phone 3"
       ],
       [
         2250,
         1080,
-        116,
+        109,
         "xiaomi m2007j1sc"
       ],
       [
         2274,
         1080,
-        90,
+        89,
         "asus zenfone 7"
+      ],
+      [
+        2320,
+        1080,
+        99,
+        "xiaomi redmi k40"
       ],
       [
         2400,
@@ -2273,13 +2279,13 @@
       [
         2560,
         1600,
-        80,
+        78,
         "samsung galaxy tab s7"
       ],
       [
         2933,
         1440,
-        57,
+        51,
         "samsung galaxy s20 ultra 5g (sm-g988u1)"
       ],
       [
@@ -2303,21 +2309,27 @@
     0,
     [
       [
+        2186,
+        1080,
+        60,
+        "xiaomi 11t pro"
+      ],
+      [
         2190,
         1080,
-        97,
+        91,
         "samsung galaxy s21 ultra 5g (sm-g998u1)"
       ],
       [
         2293,
-        1032,
-        119,
+        1080,
+        107,
         "realme gt 5g"
       ],
       [
         3063,
         1440,
-        98,
+        66,
         "xiaomi m11 (m2011k2c)"
       ]
     ]
@@ -2337,20 +2349,6 @@
     ]
   ],
   [
-    "qualcomm adreno 720",
-    "720",
-    "720 adreno qualcomm",
-    0,
-    [
-      [
-        2196,
-        1080,
-        109,
-        "htc u24 pro"
-      ]
-    ]
-  ],
-  [
     "qualcomm adreno 730",
     "730",
     "730 adreno qualcomm",
@@ -2359,19 +2357,19 @@
       [
         2106,
         1080,
-        120,
+        111,
         "samsung galaxy s22 (sm-s908u)"
       ],
       [
         2115,
         1080,
-        120,
+        82,
         "samsung galaxy s22 5g (sm-s901u)"
       ],
       [
         2183,
         1080,
-        121,
+        61,
         "xiaomi 12"
       ],
       [
@@ -2383,7 +2381,7 @@
       [
         2400,
         1080,
-        144,
+        118,
         "nubia red magic 7 (nx679j)"
       ],
       [
@@ -2395,13 +2393,13 @@
       [
         2988,
         1384,
-        89,
+        73,
         "samsung galaxy s22 ultra (sm-s908e)"
       ],
       [
         2800,
         1650,
-        104,
+        81,
         "samsung galaxy tab s8+ (sm-x800)"
       ]
     ]
@@ -2420,9 +2418,15 @@
       ],
       [
         2296,
-        1080,
+        1036,
         121,
         "xiaomi 13"
+      ],
+      [
+        3088,
+        1440,
+        94,
+        "samsung galaxy s23 ultra"
       ]
     ]
   ],
@@ -2433,16 +2437,16 @@
     0,
     [
       [
-        2109,
-        1080,
-        120,
-        "samsung galaxy s24"
-      ],
-      [
         2129,
         1080,
         120,
         "samsung galaxy s24 ultra"
+      ],
+      [
+        2253,
+        1035,
+        117,
+        "samsung s24 (adreno)"
       ],
       [
         2290,
@@ -2455,6 +2459,44 @@
         1152,
         121,
         "xiaomi 14"
+      ],
+      [
+        2680,
+        1260,
+        120,
+        "vivo iqoo 12"
+      ]
+    ]
+  ],
+  [
+    "qualcomm adreno 830",
+    "830",
+    "830 adreno qualcomm",
+    0,
+    [
+      [
+        2256,
+        1032,
+        60,
+        "oppo find x8 ultra"
+      ],
+      [
+        2255,
+        1038,
+        120,
+        "samsung galaxy s25 ultra"
+      ],
+      [
+        2273,
+        1035,
+        60,
+        "xiaomi 15 pro"
+      ],
+      [
+        2340,
+        1080,
+        120,
+        "samsung galaxy s25+"
       ]
     ]
   ]

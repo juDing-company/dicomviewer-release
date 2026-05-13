@@ -289,6 +289,12 @@
 - 支持分片数据
 
 
+###  V1.14.1
+
+####  改进
+- 兼容部分transferSyntaxUID不规范
+
+
 ###  V1.15.0
 
 ####  新增
@@ -360,6 +366,8 @@
                 clientType?: number, /* 客户端类型，默认值是0 */
                 concurrentNetwork?: number, /* 下载并发数，默认6, 注： V1.7.3开始支持 */
                 departCode?: string, /* 部门编码，默认空 */
+                forceBigEndianToLittleEndianDdecode?: boolean, /* 是否强制大端使用小端解码，默认false；注：V1.14.1开始支持 */
+                forceIM?: boolean, /* 是否强制使用IM、IMS、PNG联合解码，默认true */
                 fullLoad?: boolean, /* 开启全部序列下载，默认序列按需下载 */
                 GPUBenchmarksURL?:  "./dicomviewer-cornerstone/GPUbenchmarks", /* 1.4.1废弃！GPUBenchmarks路径，默认无需配置,注：系统会自动补全，如提示GPU路径不存在，结合实际调整路径 */
                 hangingSetting?: HangingSetting, /* 挂片配置，谨慎配置，详情见下方：hangingSetting挂片模块文档指引，注：V1.10.0开始支持 */
@@ -506,7 +514,7 @@
       departCode?: string;
       hospID: string;
       studyUID: string;
-      studyUIDCopilot?: string[];
+      studyUIDCopilot?: string[]; /* 需要合并的studyUID数组；注：V1.15.0 开始支持 */
     }
 ```
 

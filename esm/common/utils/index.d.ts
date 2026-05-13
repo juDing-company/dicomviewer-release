@@ -38,7 +38,7 @@ export declare function performanceLevel(jsHeapSizeLimit: number): 1 | 2 | 1.5 |
 export declare function peelIDAlias(valve: string): string;
 export declare function extractByPercentage(arr: Array<any>, percentage: number): any[];
 export declare function removeChildElement(el: HTMLElement, depth?: number): void;
-export declare function downloadFileURL(url: string, fileName?: string): void;
+export declare function downloadFileURL(url: string, fileName?: string, callback?: () => void): void;
 export declare function dateFormat(dateStr: string, format: string): string;
 export declare function stopBubble(e: Event): void;
 export declare function wait<T = unknown>(ms?: number): Promise<T>;
