@@ -131,6 +131,7 @@ export declare class PrintLayout {
     resizeImages(): void;
     callImages(callback: (canvas: HTMLElement) => void, strict?: boolean): void;
     close(): Promise<void>;
+    removeEventListener(): void;
     destroy(): void;
     destroyGridLayout(): void;
 }
