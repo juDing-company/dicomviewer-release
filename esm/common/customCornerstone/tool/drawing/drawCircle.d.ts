@@ -16,4 +16,4 @@ import { Coord } from "../index.d";
  * @param {string} [marker]
  * @returns {undefined}
  */
-export default function (context: CanvasRenderingContext2D, element: HTMLElement, center: Coord, radius: number, options: Object, coordSystem: 'canvas' | 'pixel', marker: string): void;
+export default function (context: CanvasRenderingContext2D, element: HTMLElement, center: Coord, radius: number, options: Record<string, any>, coordSystem: 'canvas' | 'pixel', marker: string, arc?: boolean): void;

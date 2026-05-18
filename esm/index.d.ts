@@ -80,7 +80,7 @@ declare class WebDicomView {
     reloadSynchronizerTools(): Promise<void>;
     cancelToolAndDefaultViewport(): Promise<void>;
     historyStudyTool(visibility?: boolean, forceRestore?: boolean): Promise<void>;
-    saveImageTool(): void;
+    saveTool(type: 'image' | 'DICOM'): Promise<void>;
     disableSeriesTool(): void;
     invertTool(): void;
     crosshairsTool(active: boolean): Promise<void>;

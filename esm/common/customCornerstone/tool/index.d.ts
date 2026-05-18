@@ -11,6 +11,7 @@ export { default as BlurAndSharpenTool } from './BlurAndSharpenTool';
 export { default as CobbAngleTool } from './CobbAngleTool';
 export { default as CrosshairsTool } from './CrosshairsTool';
 export { default as EllipticalRoiTool } from './EllipticalRoiTool';
+export { default as GraphicAnnotationTool } from './GraphicAnnotationTool';
 export { default as ScaleOverlayTool } from './ScaleOverlayTool';
 export { default as SharpenTool } from './SharpenTool';
 export { default as LengthTool } from './LengthTool';
